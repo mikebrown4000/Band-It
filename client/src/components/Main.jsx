@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
 
 
-function Welcome(props) {
+function Main(props) {
   const {
     handleChange,
     firstName,
@@ -14,7 +14,7 @@ function Welcome(props) {
     instrument,
     age,
     looking,
-    checkLooking
+    handleCheck
   } = props;
 
   return(
@@ -22,7 +22,7 @@ function Welcome(props) {
       <h1>BandIt</h1>
       <RegisterForm
         handleChange={handleChange}
-        onClick={checkLooking}
+        handleCheck={handleCheck}
         firstName={firstName}
         lastName={lastName}
         email={email}
@@ -36,4 +36,4 @@ function Welcome(props) {
   )
 }
 
-export default Welcome;
+export default Main;
