@@ -14,4 +14,26 @@ artistRouter.get('/:id', async (req, res) => {
   res.json(artist);
 })
 
+artistRouter.post('/', async (req, res) => {
+  try {
+    const { first_name, last_name, age, location, instrument } = req.body;
+
+    const user = await Artist.create({
+      first_name,
+      last_name,
+      age,
+      location,
+      instrument,
+    });
+    // const {
+    //   password_digest,
+    //   ...user,
+    // } = user
+    res.json({user})
+  }
+  catch(e) {
+    console.error(e);
+  }
+})
+
 module.exports = artistRouter;

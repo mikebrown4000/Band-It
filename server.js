@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 
 const artistRouter = require('./routes/artistRouter');
+const bandRouter = require('./routes/bandRouter')
 
 const app = express();
 app.use(logger('dev'));
@@ -16,5 +17,7 @@ app.get('/', (req, res) => {
 
 app.use('/artists', artistRouter);
 
+app.use('/bands', bandRouter);
 
-app.listen(3000, ()=> console.log('listening on 3000'));
+
+app.listen(6969, ()=> console.log('listening on 6969'));
