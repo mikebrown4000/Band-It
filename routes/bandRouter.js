@@ -8,6 +8,20 @@ bandRouter.get('/', async (req, res) => {
   res.json(bands);
 })
 
+bandRouter.post('/', async (req, res) => {
+  try{
+    const { name, location, genre } = req.body;
+    const band = Band.create({
+      name,
+      location,
+      genre
+    })
+    res.json(band)
+  } catch(e) {
+    res.status(401).send('Invalid Credentials')
+  }
+})
+
 bandRouter.get('/:id', async (req, res) => {
   const { id } = req.params;
   const band = await Band.findByPk(id);
