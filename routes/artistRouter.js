@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { Artist } = require('../models');
+const { hash, encode, compare, restrict } = require('../auth')
 
 const artistRouter = Router();
 
@@ -16,24 +17,27 @@ artistRouter.get('/:id', async (req, res) => {
 
 artistRouter.post('/', async (req, res) => {
   try {
-    const { first_name, last_name, age, location, instrument } = req.body;
+    const { first_name, last_name, email, age, location, instrument, password } = req.body;
+    console.log(req.body);
+    const password_digest = await hash(password);
 
-    const user = await Artist.create({
+    const artist = await Artist.create({
       first_name,
       last_name,
+      email,
       age,
       location,
       instrument,
+      password_digest,
     });
-    // const {
-    //   password_digest,
-    //   ...user,
-    // } = user
-    res.json({user})
+
+    delete artist.password_digest;
+
+    res.json(artist)
   }
   catch(e) {
     console.error(e);
-  }
-})
+  };
+});
 
 module.exports = artistRouter;
