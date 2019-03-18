@@ -14,7 +14,8 @@ function Main(props) {
     instrument,
     age,
     looking,
-    handleCheck
+    handleCheck,
+    handleSubmit
   } = props;
 
   return(
@@ -23,6 +24,7 @@ function Main(props) {
       <RegisterForm
         handleChange={handleChange}
         handleCheck={handleCheck}
+        handleSubmit={handleSubmit}
         firstName={firstName}
         lastName={lastName}
         email={email}

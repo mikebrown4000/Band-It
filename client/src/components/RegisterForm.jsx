@@ -11,12 +11,13 @@ function RegisterForm(props) {
     instrument,
     age,
     looking,
-    handleCheck
+    handleCheck,
+    handleSubmit
   } = props;
 
   return(
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type='text' placeholder='Fist Name' name='firstName' value={firstName} />
         <input onChange={handleChange} type='text' placeholder='Last Name' name='lastName' value={lastName} />
         <input onChange={handleChange} type='text' placeholder='Email' name='email' value={email} />
