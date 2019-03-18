@@ -39,4 +39,30 @@ artistRouter.post('/', async (req, res) => {
   };
 });
 
+artistRouter.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    console.log(req.body);
+    const artist = await Artist.findOne({
+      where: {
+        email,
+      },
+    });
+    if (artist !== null) {
+      const artistData = {
+        ...artist.dataValues
+      };
+      const authenticated = await compare(password, artistData.password_digest);
+      delete artistData.password_digest;
+      const token = await encode(artistData)
+      res.json({
+        artistData,
+        token
+      });
+    };
+    } catch (e) {
+      res.status(401).send('Invalid Credentials')
+    };
+  });
+
 module.exports = artistRouter;

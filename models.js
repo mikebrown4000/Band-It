@@ -21,6 +21,7 @@ const Artist = sequelize.define('artist', {
   },
   age: Sequelize.INTEGER,
   location: Sequelize.STRING,
+  looking: Sequelize.BOOLEAN,
   instrument: Sequelize.STRING,
   password_digest: Sequelize.STRING,
 });
