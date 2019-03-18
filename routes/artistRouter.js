@@ -8,4 +8,10 @@ artistRouter.get('/', async (req, res) => {
   res.json(artists);
 })
 
+artistRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const artist = await Artist.findByPk(id);
+  res.json(artist);
+})
+
 module.exports = artistRouter;
