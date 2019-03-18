@@ -42,10 +42,17 @@ async function seed() {
     genre: 'Rock'
   });
 
+<<<<<<< HEAD
   await firstArtist.setBand(band);
   await secondArtist.setBand(band);
   await thirdArtist.setBand(band);
   await fourthArtist.setBand(band);
+=======
+  await firstArtist.setBand(Band);
+  await secondArtist.setBand(Band);
+  await thirdArtist.setBand(Band);
+  await fourthArtist.setBand(Band);
+>>>>>>> dev
 
   process.exit();
 }
