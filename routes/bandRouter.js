@@ -11,7 +11,7 @@ bandRouter.get('/', async (req, res) => {
 bandRouter.post('/', async (req, res) => {
   try{
     const { name, location, genre } = req.body;
-    const band = Band.create({
+    const band = await Band.create({
       name,
       location,
       genre
