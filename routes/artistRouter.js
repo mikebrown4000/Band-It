@@ -18,7 +18,6 @@ artistRouter.get('/:id', async (req, res) => {
 artistRouter.post('/', async (req, res) => {
   try {
     const { first_name, last_name, email, age, location, instrument, password } = req.body;
-    console.log(req.body);
     const password_digest = await hash(password);
 
     const artist = await Artist.create({
@@ -36,7 +35,7 @@ artistRouter.post('/', async (req, res) => {
     res.json(artist)
   }
   catch(e) {
-    console.error(e);
+    res.status(401).send('invalid credentials')
   };
 });
 
