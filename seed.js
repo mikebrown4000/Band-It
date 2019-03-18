@@ -5,32 +5,32 @@ async function seed() {
   await Band.destroy({where: {}});
 
   const firstArtist = await Artist.create({
-    firstName: 'James',
-    lastName: 'Yun',
+    first_name: 'James',
+    last_name: 'Yun',
     age: 25,
     location: 'Queens',
-    instrument: 'Vocal'
+    instrument: 'Vocal',
   });
 
   const secondArtist = await Artist.create({
-    firstName: 'Mikey',
-    lastName: 'Brown',
+    first_name: 'Mikey',
+    last_name: 'Brown',
     age: 25,
     location: 'Brooklyn',
     instrument: 'Synth'
   });
 
   const thirdArtist = await Artist.create({
-    firstName: 'Annie',
-    lastName: 'H',
+    first_name: 'Annie',
+    last_name: 'H',
     age: 25,
     location: 'Brooklyn',
     instrument: 'Guitar'
   });
 
   const fourthArtist = await Artist.create({
-    firstName: 'Robert',
-    lastName: 'Morrissey',
+    first_name: 'Robert',
+    last_name: 'Morrissey',
     age: 30,
     location: 'Queens',
     instrument: 'Drums'
