@@ -8,4 +8,4 @@ artistRouter.get('/', async (req, res) => {
   res.json(artists);
 })
 
-module.exports = artistRouter
+module.exports = artistRouter;
