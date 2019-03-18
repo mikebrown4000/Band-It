@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { Artist } = require('../models');
+const { hash, encode, compare, restrict } = require('../auth')
 
 const artistRouter = Router();
 
@@ -16,24 +17,52 @@ artistRouter.get('/:id', async (req, res) => {
 
 artistRouter.post('/', async (req, res) => {
   try {
-    const { first_name, last_name, age, location, instrument } = req.body;
+    const { first_name, last_name, email, age, location, instrument, password } = req.body;
+    const password_digest = await hash(password);
 
-    const user = await Artist.create({
+    const artist = await Artist.create({
       first_name,
       last_name,
+      email,
       age,
       location,
       instrument,
+      password_digest,
     });
-    // const {
-    //   password_digest,
-    //   ...user,
-    // } = user
-    res.json({user})
+
+    delete artist.password_digest;
+
+    res.json(artist)
   }
   catch(e) {
-    console.error(e);
-  }
-})
+    res.status(401).send('invalid credentials')
+  };
+});
+
+artistRouter.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    console.log(req.body);
+    const artist = await Artist.findOne({
+      where: {
+        email,
+      },
+    });
+    if (artist !== null) {
+      const artistData = {
+        ...artist.dataValues
+      };
+      const authenticated = await compare(password, artistData.password_digest);
+      delete artistData.password_digest;
+      const token = await encode(artistData)
+      res.json({
+        artistData,
+        token
+      });
+    };
+    } catch (e) {
+      res.status(401).send('Invalid Credentials')
+    };
+  });
 
 module.exports = artistRouter;

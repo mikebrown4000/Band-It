@@ -7,6 +7,7 @@ async function seed() {
   const firstArtist = await Artist.create({
     first_name: 'James',
     last_name: 'Yun',
+    email: 'jy@gmail.com',
     age: 25,
     location: 'Queens',
     instrument: 'Vocal',
@@ -15,6 +16,7 @@ async function seed() {
   const secondArtist = await Artist.create({
     first_name: 'Mikey',
     last_name: 'Brown',
+    email: 'mb@gmail.com',
     age: 25,
     location: 'Brooklyn',
     instrument: 'Synth'
@@ -23,6 +25,7 @@ async function seed() {
   const thirdArtist = await Artist.create({
     first_name: 'Annie',
     last_name: 'H',
+    email: 'ah@gmail.com',
     age: 25,
     location: 'Brooklyn',
     instrument: 'Guitar'
@@ -31,7 +34,8 @@ async function seed() {
   const fourthArtist = await Artist.create({
     first_name: 'Robert',
     last_name: 'Morrissey',
-    age: 30,
+    email: 'rm@gmail.com',
+    age: 28,
     location: 'Queens',
     instrument: 'Drums'
   });
