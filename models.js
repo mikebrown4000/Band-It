@@ -11,17 +11,19 @@ const sequelize = new Sequelize({
 
 
 const Artist = sequelize.define('artist', {
-  firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING,
+  first_name: Sequelize.STRING,
+  last_name: Sequelize.STRING,
   age: Sequelize.INTEGER,
   location: Sequelize.STRING,
-  instrument: Sequelize.STRING
+  looking: Sequelize.BOOLEAN,
+  instrument: Sequelize.STRING,
+  password_digest: Sequelize.STRING
 });
 
 
 const Band = sequelize.define('band', {
   name: Sequelize.STRING,
-  location: Sequelize.STRING,
+  description: Sequelize.STRING,
   genre: Sequelize.STRING
 });
 

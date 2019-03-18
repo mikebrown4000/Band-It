@@ -28,7 +28,6 @@ async function seed() {
     instrument: 'Guitar'
   });
 
-
   const fourthArtist = await Artist.create({
     firstName: 'Robert',
     lastName: 'Morrissey',
@@ -37,17 +36,16 @@ async function seed() {
     instrument: 'Drums'
   });
 
-
   const band = await Band.create({
     name: 'Scones',
     location: 'Queens',
     genre: 'Rock'
   });
 
-  await firstArtist.setInstructor(Band);
-  await secondArtist.setInstructor(Band);
-  await thirdArtist.setInstructor(Band);
-  await fourthArtist.setInstructor(Band);
+  await firstArtist.setBand(band);
+  await secondArtist.setBand(band);
+  await thirdArtist.setBand(band);
+  await fourthArtist.setBand(band);
 
   process.exit();
 }
