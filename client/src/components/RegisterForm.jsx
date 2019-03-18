@@ -11,7 +11,7 @@ function RegisterForm(props) {
     instrument,
     age,
     looking,
-    checkLooking
+    handleCheck
   } = props;
 
   return(
@@ -25,7 +25,7 @@ function RegisterForm(props) {
         <input onChange={handleChange} type='text' placeholder='Instrument' name='instrument' value={instrument} />
         <input onChange={handleChange} type='number' placeholder='Age' name='age' value={age} />
         <label htmlFor='looking'>Looking For Band? </label>
-        <input checkLooking={checkLooking} type='checkbox' name='looking' value={looking} />
+        <input onClick={handleCheck} type='checkbox' name='looking' value={looking} />
         <input value='CREATE ACCOUNT' type='submit'/>
       </form>
     </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import './App.css';
-import Welcome from './components/Welcome';
+import Main from './components/Main';
 
 class App extends Component {
   constructor() {
@@ -20,7 +20,7 @@ class App extends Component {
       email: ''
     }
     this.handleChange = this.handleChange.bind(this);
-    this.checkLooking = this.checkLooking.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   handleChange(e) {
@@ -30,21 +30,20 @@ class App extends Component {
     })
   };
 
-  checkLooking() {
-    this.setState(prevState => {
-      return {
-        looking: true
-      }
-    });
+  handleCheck() {
+    this.setState(prevState => ({
+      looking: !prevState.looking
+    }));
   }
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
-        <Welcome
+        <Main
           handleChange={this.handleChange}
-          checkLooking={this.checkLooking}
+          handleCheck={this.handleCheck}
           firstName={this.state.firstName}
           lastName={this.state.lastName}
           email={this.state.email}
