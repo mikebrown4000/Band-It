@@ -4,6 +4,7 @@ import './App.css';
 import Main from './components/Main';
 import Header from './components/Header';
 import { createArtist, fetchArtists } from './services/artists';
+import { createBand, fetchBands } from './services/bands';
 
 class App extends Component {
   constructor() {
@@ -19,11 +20,15 @@ class App extends Component {
       location: '',
       looking: false,
       password: '',
-      email: ''
+      email: '',
+      band_name: '',
+      band_desc: '',
+      band_genre: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCreateBand = this.handleCreateBand.bind(this);
   }
 
   async componentDidMount() {
@@ -49,6 +54,26 @@ class App extends Component {
       looking: !prevState.looking
     }));
   }
+
+  async handleCreateBand(ev){
+    ev.preventDefault();
+    const {
+      band_name,
+      band_desc,
+      band_genre
+    } = this.state;
+
+    const newBand = await createBand({
+      band_name,
+      band_desc,
+      band_genre
+    });
+    const bands = await fetchBands();
+    this.setState({
+      bands
+    })
+  }
+
 
   async handleSubmit(e) {
     e.preventDefault();

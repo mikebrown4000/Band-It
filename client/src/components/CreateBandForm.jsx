@@ -2,12 +2,12 @@ import React from 'react';
 
 function  CreateBandForm(props){
   const { handleChange,
-          handleSubmit,
+          handleCreateBand,
           band_name,
           band_desc,
           band_genre }
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleCreateBand}>
       <input
       type="text"
       name="band_name"
@@ -31,7 +31,7 @@ function  CreateBandForm(props){
 
       <input
       type="submit"
-      onSubmit={handleSubmit}/>
+      onSubmit={handleCreateBand}/>
     </form>
   )
 
