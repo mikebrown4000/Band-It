@@ -8,6 +8,8 @@ function Header(props) {
         <Link to='/artists'>Artists</Link>
         <Link to='/bands'>Bands</Link>
         <Link to ='/createband'>Create your band</Link>
+        <Link to ='/createmusician'>Create a Musician</Link>
+
       </nav>
     </div>
   )
