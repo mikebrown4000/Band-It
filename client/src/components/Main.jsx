@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
+import CreateBandForm from './CreateBandForm';
 import ArtistList from './ArtistList';
+import BandList from './BandList';
 
 
 function Main(props) {
@@ -17,7 +19,12 @@ function Main(props) {
     age,
     looking,
     handleCheck,
-    handleSubmit
+    handleSubmit,
+    handleCreateBand,
+    name,
+    description,
+    genre,
+    bands
   } = props;
 
   return(
@@ -44,6 +51,21 @@ function Main(props) {
             artists={artists}
           />
         )}/>
+
+        <Route exact path='/createBand' render={(props) => (
+          <CreateBandForm
+            handleChange={handleChange}
+            handleCreateBand={handleCreateBand}
+            genre={genre}
+            description={description}
+            name={name}
+           />
+        )}/>
+        <Route path='/bands' render={(props) => (
+          <BandList
+            bands={bands}
+            />
+        )} />
        </div>
     </div>
   )

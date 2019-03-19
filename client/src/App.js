@@ -21,9 +21,9 @@ class App extends Component {
       looking: false,
       password: '',
       email: '',
-      band_name: '',
-      band_desc: '',
-      band_genre: ''
+      name: '',
+      description: '',
+      genre: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
@@ -33,6 +33,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.getAllArtists();
+    await this.getAllBands();
   }
 
   async getAllArtists() {
@@ -40,6 +41,13 @@ class App extends Component {
     this.setState({
       artists: artists
     });
+  }
+
+  async getAllBands(){
+    const bands = await fetchBands();
+    this.setState({
+      bands
+    })
   }
 
   handleChange(e) {
@@ -58,19 +66,24 @@ class App extends Component {
   async handleCreateBand(ev){
     ev.preventDefault();
     const {
-      band_name,
-      band_desc,
-      band_genre
+      name,
+      description,
+      genre
     } = this.state;
 
     const newBand = await createBand({
-      band_name,
-      band_desc,
-      band_genre
+      name,
+      description,
+      genre
     });
     const bands = await fetchBands();
     this.setState({
       bands
+    })
+    this.setState({
+      name: '',
+      description: '',
+      genre: ''
     })
   }
 
@@ -102,11 +115,20 @@ class App extends Component {
     this.setState({
       artists
     })
+    this.setState({
+      first_name: '',
+      last_name: '',
+      age: '',
+      instrument: '',
+      location: '',
+      looking: '',
+      password: '',
+      email: ''
+    })
   }
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Header />
@@ -122,6 +144,9 @@ class App extends Component {
           instrument={this.state.instrument}
           age={this.state.age}
           artists={this.state.artists}
+          bands={this.state.bands}
+          name={this.state.name}
+          description={this.state.description}
          />
       </div>
     );

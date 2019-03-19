@@ -3,30 +3,30 @@ import React from 'react';
 function  CreateBandForm(props){
   const { handleChange,
           handleCreateBand,
-          band_name,
-          band_desc,
-          band_genre }
+          name,
+          description,
+          genre } = props;
   return(
     <form onSubmit={handleCreateBand}>
       <input
       type="text"
       name="band_name"
       placeholder="Name Of Your Band"
-      value={band_name}
+      value={name}
       onChange={handleChange}/>
 
       <input
       type="text"
       name="band_desc"
       placeholder="Describe Your Band"
-      value={band_desc}
+      value={description}
       onChange={handleChange}/>
 
       <input
       type="text"
       name="band_genre"
       placeholder="Genre Of Your Band"
-      value={band_genre}
+      value={genre}
       onChange={handleChange}/>
 
       <input
