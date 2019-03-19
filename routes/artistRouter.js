@@ -20,7 +20,7 @@ artistRouter.get('/:id', async (req, res) => {
 // route to create a new user
 artistRouter.post('/', async (req, res) => {
   try {
-    const { first_name, last_name, email, age, location, instrument, password } = req.body;
+    const { first_name, last_name, email, age, location, instrument, password, looking } = req.body;
     const password_digest = await hash(password);
 
     const artist = await Artist.create({
@@ -31,6 +31,7 @@ artistRouter.post('/', async (req, res) => {
       location,
       instrument,
       password_digest,
+      looking
     });
 
     delete artist.password_digest;
@@ -70,5 +71,22 @@ artistRouter.post('/login', async (req, res) => {
       console.error(e);
     };
   });
+
+// route to let user to delete their account
+artistRouter.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Artist.destroy({
+      where: {
+        id
+      }
+    });
+    res.json(`Deleted${id}`);
+  } catch (e) {
+    console.log(e);
+    res.status(404).send('Artist not found');
+  }
+});
+
 
 module.exports = artistRouter;

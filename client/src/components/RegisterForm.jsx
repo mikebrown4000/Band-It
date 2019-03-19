@@ -3,8 +3,8 @@ import React from 'react';
 function RegisterForm(props) {
   const {
     handleChange,
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     email,
     password,
     location,
@@ -18,8 +18,8 @@ function RegisterForm(props) {
   return(
     <div>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} type='text' placeholder='Fist Name' name='firstName' value={firstName} />
-        <input onChange={handleChange} type='text' placeholder='Last Name' name='lastName' value={lastName} />
+        <input onChange={handleChange} type='text' placeholder='First Name' name='first_name' value={first_name} />
+        <input onChange={handleChange} type='text' placeholder='Last Name' name='last_name' value={last_name} />
         <input onChange={handleChange} type='text' placeholder='Email' name='email' value={email} />
         <input onChange={handleChange} type='text' placeholder='Password' name='password' value={password} />
         <input onChange={handleChange} type='text' placeholder='Location' name='location' value={location} />

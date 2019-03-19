@@ -28,4 +28,21 @@ bandRouter.get('/:id', async (req, res) => {
   res.json(band);
 })
 
+
+// route to let user to delete their band
+bandRouter.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Band.destroy({
+      where: {
+        id
+      }
+    });
+    res.json(`Deleted${id}`);
+  } catch (e) {
+    console.log(e);
+    res.status(404).send('Band not found');
+  }
+});
+
 module.exports = bandRouter;
