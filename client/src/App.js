@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import './App.css';
 import Main from './components/Main';
+import Header from './components/Header';
 import { createArtist, fetchArtists } from './services/artists';
 
 class App extends Component {
@@ -11,8 +12,8 @@ class App extends Component {
     this.state = {
       artists: [],
       bands: [],
-      firstName: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
       age: '',
       instrument: '',
       location: '',
@@ -23,6 +24,17 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async componentDidMount() {
+    await this.getAllArtists();
+  }
+
+  async getAllArtists() {
+    const artists = await fetchArtists();
+    this.setState({
+      artists: artists
+    });
   }
 
   handleChange(e) {
@@ -41,8 +53,8 @@ class App extends Component {
   async handleSubmit(e) {
     e.preventDefault();
     const {
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       age,
       instrument,
       location,
@@ -52,8 +64,8 @@ class App extends Component {
     } = this.state;
 
     const newArtist = await createArtist({
-      first_name: firstName,
-      last_name: lastName,
+      first_name,
+      last_name,
       age,
       instrument,
       location,
@@ -69,19 +81,22 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
+        <Header />
         <Main
           handleChange={this.handleChange}
           handleCheck={this.handleCheck}
           handleSubmit={this.handleSubmit}
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
+          first_name={this.state.first_name}
+          last_name={this.state.last_name}
           email={this.state.email}
           password={this.state.password}
           location={this.state.location}
           instrument={this.state.instrument}
           age={this.state.age}
+          artists={this.state.artists}
          />
       </div>
     );
