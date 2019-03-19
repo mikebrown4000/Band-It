@@ -6,17 +6,17 @@ const fetchArtists = async () => {
   return resp.data;
 };
 
-// const updateArtist = async (data, id) => {
-//   const resp = await api.put(`${BASE_URL}/${id}`, data);
-//   return resp.data.artist
-// }
-//
-// const deleteArtist = async (data, id) => {
-//   const resp = await api.delete(`${BASE_URL}/${id}`);
-//   return resp.data;
-// }
+const updateArtist = async (data, id) => {
+  const resp = await api.put(`${BASE_URL}/${id}`, data);
+  return resp.data.artist
+}
 
-export {
+const deleteArtist = async (data, id) => {
+  const resp = await api.delete(`${BASE_URL}/${id}`);
+  return resp.data;
+}
+
+export default {
   fetchArtists,
   updateArtist,
   deleteArtist
