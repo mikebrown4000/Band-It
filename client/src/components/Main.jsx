@@ -30,6 +30,7 @@ function Main(props) {
   return(
     <div>
       <h1>BandIt</h1>
+      <Route exact path='/' />
       <Route exact path='/createmusician' render={(props) => (
         <RegisterForm
           handleChange={handleChange}
