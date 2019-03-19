@@ -1,37 +1,15 @@
 import React, { Component } from 'react';
+import ArtistList from './ArtistList';
 import { Link, Route } from 'react-router-dom';
-import RegisterForm from './RegisterForm';
 
 
-function Welcome(props) {
-  const {
-    handleChange,
-    firstName,
-    lastName,
-    email,
-    password,
-    location,
-    instrument,
-    age,
-    looking,
-    checkLooking
-  } = props;
+
+function Welcome() {
 
   return(
     <div>
-      <h1>BandIt</h1>
-      <RegisterForm
-        handleChange={handleChange}
-        onClick={checkLooking}
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        password={password}
-        location={location}
-        instrument={instrument}
-        age={age}
-        looking={looking}
-       />
+      <Link to ='/findArtists'> Find Artists </Link>
+      <Link to ='/createBand'> Create Band </Link>
     </div>
   )
 }
