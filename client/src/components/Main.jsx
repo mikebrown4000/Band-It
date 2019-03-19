@@ -21,9 +21,9 @@ function Main(props) {
     handleCheck,
     handleSubmit,
     handleCreateBand,
-    band_name,
-    band_desc,
-    band_genre,
+    name,
+    description,
+    genre,
     bands
   } = props;
 
@@ -56,9 +56,9 @@ function Main(props) {
           <CreateBandForm
             handleChange={handleChange}
             handleCreateBand={handleCreateBand}
-            band_genre={band_genre}
-            band_desc={band_desc}
-            band_name={band_name}
+            genre={genre}
+            description={description}
+            name={name}
            />
         )}/>
         <Route path='/bands' render={(props) => (

@@ -21,9 +21,9 @@ class App extends Component {
       looking: false,
       password: '',
       email: '',
-      band_name: '',
-      band_desc: '',
-      band_genre: ''
+      name: '',
+      description: '',
+      genre: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
@@ -66,24 +66,24 @@ class App extends Component {
   async handleCreateBand(ev){
     ev.preventDefault();
     const {
-      band_name,
-      band_desc,
-      band_genre
+      name,
+      description,
+      genre
     } = this.state;
 
     const newBand = await createBand({
-      band_name,
-      band_desc,
-      band_genre
+      name,
+      description,
+      genre
     });
     const bands = await fetchBands();
     this.setState({
       bands
     })
     this.setState({
-      band_name: '',
-      band_desc: '',
-      band_genre: ''
+      name: '',
+      description: '',
+      genre: ''
     })
   }
 
@@ -145,8 +145,8 @@ class App extends Component {
           age={this.state.age}
           artists={this.state.artists}
           bands={this.state.bands}
-          band_name={this.state.band_name}
-          band_desc={this.state.band_desc}
+          name={this.state.name}
+          description={this.state.description}
          />
       </div>
     );

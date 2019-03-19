@@ -7,6 +7,7 @@ function Header(props) {
       <nav>
         <Link to='/artists'>Artists</Link>
         <Link to='/bands'>Bands</Link>
+        <Link to ='/createband'>Create your band</Link>
       </nav>
     </div>
   )

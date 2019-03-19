@@ -6,8 +6,9 @@ return(
   <div>
     {bands.map(band => (
       <div key={band.id}>
-        {band.first_name}
-        {band.last_name}
+        {band.name}
+        {band.genre}
+        {band.description}
       </div>
     ))}
   </div>
