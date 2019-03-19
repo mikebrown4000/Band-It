@@ -5,7 +5,7 @@ function BandList(props)
 return(
   <div>
     {bands.map(band => (
-      <div key={band.id}>
+      <div className='bands-list' key={band.id}>
         {band.name}
         {band.genre}
         {band.description}
