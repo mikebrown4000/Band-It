@@ -16,9 +16,7 @@ const verify = async token => await jwt.verify(token, SECRET);
 const restrict = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    console.log(token);
     const data = jwt.verify(token, SECRET);
-    console.log(data);
     const user = await Artist.findByPk(data.id);
 
     res.locals.user = user;
