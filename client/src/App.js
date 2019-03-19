@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import './App.css';
 import Main from './components/Main';
 import Header from './components/Header';
+import LoginForm from './components/LoginForm';
 import { createArtist, fetchArtists } from './services/artists';
 import { createBand, fetchBands } from './services/bands';
 

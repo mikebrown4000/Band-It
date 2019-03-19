@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function RegisterForm(props) {
   const {
@@ -70,6 +71,7 @@ function RegisterForm(props) {
         <label htmlFor='looking'>Looking For Band? </label>
         <input onClick={handleCheck} type='checkbox' name='looking' value={looking} />
         <input value='CREATE ACCOUNT' type='submit'/>
+        <small><Link to='/login'>Already have an account?</Link></small>
       </form>
     </div>
   )

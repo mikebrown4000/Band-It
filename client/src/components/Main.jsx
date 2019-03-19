@@ -4,6 +4,7 @@ import RegisterForm from './RegisterForm';
 import CreateBandForm from './CreateBandForm';
 import ArtistList from './ArtistList';
 import BandList from './BandList';
+import LoginForm from './LoginForm';
 
 
 function Main(props) {
@@ -29,9 +30,14 @@ function Main(props) {
 
   return(
     <div>
+      <h1>BandIt</h1>
       <Route exact path='/' />
+      <Route exact path='/login' render={(props) => (
+        <LoginForm
+        handleChange={handleChange}
+        />
+      )} />
       <Route exact path='/createmusician' render={(props) => (
-
         <RegisterForm
           handleChange={handleChange}
           handleCheck={handleCheck}
