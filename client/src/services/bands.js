@@ -4,6 +4,7 @@ import { api } from './api-helper';
 const fetchBands = async () => {
   const resp = await api.get('/bands');
   return resp.data;
+  console.log(resp.data);
 };
 
 const updateBand = async (data, id) => {

@@ -33,6 +33,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.getAllArtists();
+    await this.getAllBands();
   }
 
   async getAllArtists() {
@@ -40,6 +41,13 @@ class App extends Component {
     this.setState({
       artists: artists
     });
+  }
+
+  async getAllBands(){
+    const bands = await fetchBands();
+    this.setState({
+      bands
+    })
   }
 
   handleChange(e) {
