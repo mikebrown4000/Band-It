@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
   return(
-    <div className='main-header'>
-      <h1>BandIt</h1>
-      <nav className='main-nav'>
+    <div>
+      <nav>
         <Link to='/'>Home</Link>
         <Link to='/artists'>Artists</Link>
         <Link to='/bands'>Bands</Link>
