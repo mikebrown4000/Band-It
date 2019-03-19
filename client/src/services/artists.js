@@ -2,7 +2,7 @@ import axios from 'axios';
 import { api } from './api-helper';
 
 const fetchArtists = async () => {
-  const resp = await api.get(`${BASE_URL}`);
+  const resp = await api.get('/artists');
   return resp.data;
 };
 
@@ -16,8 +16,14 @@ const deleteArtist = async (data, id) => {
   return resp.data;
 }
 
-export default {
+const createArtist = async (artist) => {
+  const mkArtist = await api.post('/artists', artist);
+  return mkArtist;
+}
+
+export {
   fetchArtists,
-  updateArtist,
-  deleteArtist
+  // updateArtist,
+  // deleteArtist,
+  createArtist
 }

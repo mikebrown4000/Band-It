@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import './App.css';
-import Welcome from './components/Welcome';
+import Main from './components/Main';
+import { createArtist, fetchArtists } from './services/artists';
 
 class App extends Component {
   constructor() {
@@ -20,7 +21,8 @@ class App extends Component {
       email: ''
     }
     this.handleChange = this.handleChange.bind(this);
-    this.checkLooking = this.checkLooking.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -30,21 +32,49 @@ class App extends Component {
     })
   };
 
-  checkLooking() {
-    this.setState(prevState => {
-      return {
-        looking: true
-      }
+  handleCheck() {
+    this.setState(prevState => ({
+      looking: !prevState.looking
+    }));
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault();
+    const {
+      firstName,
+      lastName,
+      age,
+      instrument,
+      location,
+      looking,
+      password,
+      email
+    } = this.state;
+
+    const newArtist = await createArtist({
+      first_name: firstName,
+      last_name: lastName,
+      age,
+      instrument,
+      location,
+      looking,
+      password,
+      email
     });
+    const artists = await fetchArtists();
+    this.setState({
+      artists
+    })
   }
 
 
   render() {
     return (
       <div className="App">
-        <Welcome
+        <Main
           handleChange={this.handleChange}
-          checkLooking={this.checkLooking}
+          handleCheck={this.handleCheck}
+          handleSubmit={this.handleSubmit}
           firstName={this.state.firstName}
           lastName={this.state.lastName}
           email={this.state.email}
