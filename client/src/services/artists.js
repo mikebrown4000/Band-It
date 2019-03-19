@@ -7,12 +7,12 @@ const fetchArtists = async () => {
 };
 
 const updateArtist = async (data, id) => {
-  const resp = await api.put(`${BASE_URL}/${id}`, data);
+  const resp = await api.put(`/${id}`, data);
   return resp.data.artist
 }
 
 const deleteArtist = async (data, id) => {
-  const resp = await api.delete(`${BASE_URL}/${id}`);
+  const resp = await api.delete(`/${id}`);
   return resp.data;
 }
 
