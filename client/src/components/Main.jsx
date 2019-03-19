@@ -22,10 +22,12 @@ function Main(props) {
     handleCheck,
     handleSubmit,
     handleCreateBand,
+    handleLogin,
     name,
     description,
     genre,
-    bands
+    bands,
+    formErrors
   } = props;
 
   return(
@@ -35,6 +37,8 @@ function Main(props) {
       <Route exact path='/login' render={(props) => (
         <LoginForm
         handleChange={handleChange}
+        handleLogin={handleLogin}
+        formErrors={formErrors}
         />
       )} />
       <Route exact path='/createmusician' render={(props) => (

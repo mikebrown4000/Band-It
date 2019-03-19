@@ -2,43 +2,49 @@ import React from 'react';
 
 function LoginForm(props){
   const {
-    first_name,
-    last_name,
     email,
     password,
-    handleChange
+    handleChangeLogin,
+    formErrors
   } = props;
 
+  const formValid = () => {
+    let valid = true;
+
+
+  }
+  const handleSubmitLogin = (e) => {
+    const { email, password } = this.state;
+    e.preventDefault();
+    console.log(email, password);
+    if(formValid(this.state.formErrors)){
+      console.log(`-- SUBMITTING -- Email: ${email} Password: ${password} `);
+    }
+  }
+
+  handleChangeLogin = (e) => {
+    e.preventDefault();
+
+  }
   return(
 <div>
-  <form>
+  <form noValidate onSubmit={handleSubmitLogin}>
     <input
-    onChange={handleChange}
-    type='text'
-    placeholder='First Name'
-    name='first_name'
-    value={first_name} />
-
-    <input
-    onChange={handleChange}
-    type='text'
-    placeholder='Last Name'
-    name='last_name'
-    value={last_name} />
-
-    <input
-    onChange={handleChange}
+    onChange={handleChangeLogin}
     type='text'
     placeholder='Email'
     name='email'
     value={email} />
 
     <input
-    onChange={handleChange}
+    onChange={handleChangeLogin}
     type='password'
     placeholder='Password'
     name='password'
     value={password} />
+
+    <input
+    type='submit' />
 
     </form>
   </div>

@@ -24,7 +24,11 @@ class App extends Component {
       email: '',
       name: '',
       description: '',
-      genre: ''
+      genre: '',
+      formErrors:{
+        email: '',
+        password: ''
+      }
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
@@ -150,6 +154,7 @@ class App extends Component {
           genre={this.state.genre}
           name={this.state.name}
           description={this.state.description}
+          formErrors={this.state.formErrors}
          />
       </div>
     );
