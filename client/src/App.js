@@ -72,6 +72,11 @@ class App extends Component {
     this.setState({
       bands
     })
+    this.setState({
+      band_name: '',
+      band_desc: '',
+      band_genre: ''
+    })
   }
 
 
@@ -101,6 +106,16 @@ class App extends Component {
     const artists = await fetchArtists();
     this.setState({
       artists
+    })
+    this.setState({
+      first_name: '',
+      last_name: '',
+      age: '',
+      instrument: '',
+      location: '',
+      looking: '',
+      password: '',
+      email: ''
     })
   }
 
