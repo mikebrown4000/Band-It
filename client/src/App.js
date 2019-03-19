@@ -136,6 +136,7 @@ class App extends Component {
           handleChange={this.handleChange}
           handleCheck={this.handleCheck}
           handleSubmit={this.handleSubmit}
+          handleCreateBand={this.handleCreateBand}
           first_name={this.state.first_name}
           last_name={this.state.last_name}
           email={this.state.email}
@@ -145,6 +146,7 @@ class App extends Component {
           age={this.state.age}
           artists={this.state.artists}
           bands={this.state.bands}
+          genre={this.state.genre}
           name={this.state.name}
           description={this.state.description}
          />

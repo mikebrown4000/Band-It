@@ -10,21 +10,21 @@ function  CreateBandForm(props){
     <form onSubmit={handleCreateBand}>
       <input
       type="text"
-      name="band_name"
+      name="name"
       placeholder="Name Of Your Band"
       value={name}
       onChange={handleChange}/>
 
       <input
       type="text"
-      name="band_desc"
+      name="description"
       placeholder="Describe Your Band"
       value={description}
       onChange={handleChange}/>
 
       <input
       type="text"
-      name="band_genre"
+      name="genre"
       placeholder="Genre Of Your Band"
       value={genre}
       onChange={handleChange}/>
