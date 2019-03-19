@@ -106,7 +106,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Header />
@@ -122,6 +121,9 @@ class App extends Component {
           instrument={this.state.instrument}
           age={this.state.age}
           artists={this.state.artists}
+          bands={this.state.bands}
+          band_name={this.state.band_name}
+          band_desc={this.state.band_desc}
          />
       </div>
     );
