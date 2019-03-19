@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
+import ArtistList from './ArtistList';
 
 
 function Main(props) {
   const {
+    artists,
     handleChange,
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     email,
     password,
     location,
@@ -21,19 +23,28 @@ function Main(props) {
   return(
     <div>
       <h1>BandIt</h1>
-      <RegisterForm
-        handleChange={handleChange}
-        handleCheck={handleCheck}
-        handleSubmit={handleSubmit}
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        password={password}
-        location={location}
-        instrument={instrument}
-        age={age}
-        looking={looking}
-       />
+      <Route exact path='/' render={(props) => (
+        <RegisterForm
+          handleChange={handleChange}
+          handleCheck={handleCheck}
+          handleSubmit={handleSubmit}
+          first_name={first_name}
+          last_name={last_name}
+          email={email}
+          password={password}
+          location={location}
+          instrument={instrument}
+          age={age}
+          looking={looking}
+         />
+      )}/>
+       <div>
+        <Route path='/artists' render={(props) => (
+          <ArtistList
+            artists={artists}
+          />
+        )}/>
+       </div>
     </div>
   )
 }

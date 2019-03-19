@@ -1,10 +1,15 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom';
 
-export default () => {
-  <nav>
-    //link to homepage
-    //link to band index
-    //link to artist index?
-    //link to porfile
-  </nav>
+function Header(props) {
+  return(
+    <div>
+      <nav>
+        <Link to='/artists'>Artists</Link>
+        <Link to='/bands'>Bands</Link>
+      </nav>
+    </div>
+  )
 }
+
+export default Header;
