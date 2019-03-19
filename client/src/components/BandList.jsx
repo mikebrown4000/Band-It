@@ -1,14 +1,17 @@
 import React from 'react';
 
-function BandList(props){
-  const { bands } = props;
-  {bands.map((band) => (
-    <div>
-      {band.band_name}
-      {band.band_genre}
-      {band.band_desc}
-    </div>
-  ))}
+function BandList(props)
+{const { bands } = props;
+return(
+  <div>
+    {bands.map(band => (
+      <div key={band.id}>
+        {band.first_name}
+        {band.last_name}
+      </div>
+    ))}
+  </div>
+);
 }
 
 export default BandList;

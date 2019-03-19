@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
 import CreateBandForm from './CreateBandForm';
 import ArtistList from './ArtistList';
+import BandList from './BandList';
 
 
 function Main(props) {
@@ -22,7 +23,8 @@ function Main(props) {
     handleCreateBand,
     band_name,
     band_desc,
-    band_genre
+    band_genre,
+    bands
   } = props;
 
   return(
@@ -50,7 +52,7 @@ function Main(props) {
           />
         )}/>
 
-        <Route exact path='/' render={(props) => (
+        <Route exact path='/createBand' render={(props) => (
           <CreateBandForm
             handleChange={handleChange}
             handleCreateBand={handleCreateBand}
@@ -59,6 +61,11 @@ function Main(props) {
             band_name={band_name}
            />
         )}/>
+        <Route path='/bands' render={(props) => (
+          <BandList
+            bands={bands}
+            />
+        )} />
        </div>
     </div>
   )
