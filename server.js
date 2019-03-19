@@ -5,6 +5,7 @@ const logger = require('morgan');
 
 const artistRouter = require('./routes/artistRouter');
 const bandRouter = require('./routes/bandRouter')
+const commentRouter = require('./routes/commentRouter')
 
 const app = express();
 app.use(logger('dev'));
@@ -18,6 +19,8 @@ app.get('/', (req, res) => {
 app.use('/artists', artistRouter);
 
 app.use('/bands', bandRouter);
+
+app.use('/comments', commentRouter);
 
 
 app.listen(6969, ()=> console.log('listening on 6969'));
