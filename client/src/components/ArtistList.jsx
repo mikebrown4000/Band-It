@@ -6,7 +6,7 @@ function ArtistList(props) {
   return(
     <div>
       {artists.map(artist => (
-        <div key={artist.id}>
+        <div className='artists-list' key={artist.id}>
           {artist.first_name}
           {artist.last_name}
         </div>
