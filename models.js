@@ -35,11 +35,42 @@ const Band = sequelize.define('band', {
   genre: Sequelize.STRING
 });
 
+const Comment = sequelize.define('comment', {
+  content: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  as_band: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  for_band: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+});
+
 Artist.belongsTo(Band);
 Band.hasMany(Artist);
+
+Artist.belongsToMany(Artist, {
+  as: 'commenter',
+  foreignKey: 'commenter_id',
+  otherKey: 'topic_id',
+  constraints: false,
+  through: Comment,
+});
+Artist.belongsToMany(Artist, {
+  as: 'topic',
+  foreignKey: 'topic_id',
+  otherKey: 'commenter_id',
+  constraints: false,
+  through: Comment,
+})
 
 module.exports = {
   sequelize,
   Artist,
-  Band
+  Band,
+  Comment,
 }
