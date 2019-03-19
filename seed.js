@@ -43,7 +43,7 @@ async function seed() {
 
   const band = await Band.create({
     name: 'Scones',
-    location: 'Queens',
+    description: 'Queens',
     genre: 'Rock'
   });
 
@@ -51,13 +51,13 @@ async function seed() {
     content: `pretty cool guy and doesn't afraid of anything`,
     commenter_id: 1,
     topic_id: 2,
-  })
+  });
 
   commentOne = await Comment.create({
     content: `They don't think it be like it is but it do`,
     commenter_id: 4,
     topic_id: 3,
-  })
+  });
 
 
   await firstArtist.setBand(band);
@@ -66,6 +66,6 @@ async function seed() {
   await fourthArtist.setBand(band);
 
   process.exit();
-}
+};
 
 seed();

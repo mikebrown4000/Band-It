@@ -21,18 +21,18 @@ const Artist = sequelize.define('artist', {
   age: Sequelize.INTEGER,
   location: Sequelize.STRING,
   looking: Sequelize.BOOLEAN,
+  img: Sequelize.STRING,
   instrument: Sequelize.STRING,
   password_digest: Sequelize.STRING,
   looking: Sequelize.BOOLEAN,
-
-
 });
 
 
 const Band = sequelize.define('band', {
   name: Sequelize.STRING,
   description: Sequelize.STRING,
-  genre: Sequelize.STRING
+  genre: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
 const Comment = sequelize.define('comment', {

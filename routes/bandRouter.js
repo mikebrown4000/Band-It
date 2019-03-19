@@ -28,6 +28,35 @@ bandRouter.get('/:id', async (req, res) => {
   res.json(band);
 })
 
+bandRouter.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const band = await Band.findByPk(id);
+    if (band !== null) {
+      console.log(req.body);
+      await band.update(req.body);
+      res.json(band)
+    }
+  } catch(e){
+    next(e);
+  }
+})
+
+bandRouter.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const band = await Band.findByPk(id);
+    if (band !== null) {
+      await band.update(req.body);
+      res.json(band)
+    }
+  } catch(e){
+    console.error(e);
+  }
+})
+
 
 // route to let user to delete their band
 bandRouter.delete('/:id', async (req, res) => {

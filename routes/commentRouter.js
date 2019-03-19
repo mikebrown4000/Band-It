@@ -89,4 +89,22 @@ commentRouter.post('/', async (req, res) => {
   };
 });
 
+commentRouter.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const comment = await Comment.findOne({
+      where: {
+        commenter_id: id,
+      }
+    });
+    if (comment !== null) {
+      await comment.update(req.body);
+      res.json(comment)
+    }
+  } catch(e){
+    next(e);
+  }
+})
+
 module.exports = commentRouter;

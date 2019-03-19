@@ -66,11 +66,25 @@ artistRouter.post('/login', async (req, res) => {
         token
       });
     };
-    } catch (e) {
-      res.status(401).send('Invalid Credentials')
-      console.error(e);
-    };
-  });
+  } catch (e) {
+    res.status(401).send('Invalid Credentials')
+    console.error(e);
+  };
+});
+
+artistRouter.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const artist = await Artist.findByPk(id);
+    if (artist !== null) {
+      await artist.update(req.body);
+      res.json(artist)
+    }
+  } catch(e){
+    next(e);
+  }
+})
 
 // route to let user to delete their account
 artistRouter.delete('/:id', async (req, res) => {
