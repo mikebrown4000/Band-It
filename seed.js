@@ -1,8 +1,9 @@
-const { Artist, Band } = require('./models');
+const { Artist, Band, Comment } = require('./models');
 
 async function seed() {
   await Artist.destroy({ where: {}});
   await Band.destroy({where: {}});
+  await Comment.destroy({where: {}});
 
   const firstArtist = await Artist.create({
     first_name: 'James',
@@ -45,6 +46,18 @@ async function seed() {
     location: 'Queens',
     genre: 'Rock'
   });
+
+  commentOne = await Comment.create({
+    content: `pretty cool guy and doesn't afraid of anything`,
+    commenter_id: 1,
+    topic_id: 2,
+  })
+
+  commentOne = await Comment.create({
+    content: `They don't think it be like it is but it do`,
+    commenter_id: 4,
+    topic_id: 3,
+  })
 
 
   await firstArtist.setBand(band);
