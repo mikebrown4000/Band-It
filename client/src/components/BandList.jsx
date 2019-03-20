@@ -1,18 +1,27 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import {withRouter} from 'react-router';
+import ListItem from './ListItem';
 
-function BandList(props)
-{const { bands } = props;
-return(
-  <div>
-    {bands.map(band => (
-      <div className='bands-list' key={band.id}>
-        {band.name}
-        {band.genre}
-        {band.description}
-      </div>
-    ))}
-  </div>
-);
+function BandList(props){
+  const { bands } = props;
+  return(
+    <div>
+      {bands.map(band =>{
+        const { name, description, img, genre, id } = band;
+        const listItem = {
+          title: name,
+          endpoint: `/bands/profile/${id}`,
+          img,
+          field1: description,
+          field2: genre,
+        }
+        return(
+          <ListItem listItem={listItem} key={id} />
+        )
+      })}
+    </div>
+  );
 }
 
-export default BandList;
+export default withRouter(BandList);

@@ -33,10 +33,17 @@ artistRouter.post('/', async (req, res) => {
       password_digest,
       looking
     });
+    const artistData = {
+      ...artist.dataValues
+    };
 
-    delete artist.password_digest;
+    delete artistData.password_digest;
+    const token = await encode(artistData);
 
-    res.json(artist)
+    res.json({
+      artistData,
+      token
+    })
   }
   catch(e) {
     console.error(e);
@@ -60,7 +67,7 @@ artistRouter.post('/login', async (req, res) => {
       };
       const authenticated = await compare(password, artistData.password_digest);
       delete artistData.password_digest;
-      const token = await encode(artistData)
+      const token = await encode(artistData);
       res.json({
         artistData,
         token
@@ -72,6 +79,7 @@ artistRouter.post('/login', async (req, res) => {
   };
 });
 
+//needs restrict
 artistRouter.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;

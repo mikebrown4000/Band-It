@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { api } from './api-helper';
+import { api, updateToken } from './api-helper';
 
 const fetchArtists = async () => {
   const resp = await api.get('/artists');
@@ -21,9 +21,12 @@ const deleteArtist = async (data, id) => {
   return resp.data;
 }
 
+//use update token when building login route as well
 const createArtist = async (artist) => {
   const mkArtist = await api.post('/artists', artist);
-  return mkArtist;
+  console.log(mkArtist.data);
+  await updateToken(mkArtist.data.token);
+  return mkArtist.data;
 }
 
 export {

@@ -8,6 +8,8 @@ bandRouter.get('/', async (req, res) => {
   res.json(bands);
 })
 
+
+//needs restrict
 bandRouter.post('/', async (req, res) => {
   try{
     const { name, location, genre } = req.body;
@@ -28,6 +30,7 @@ bandRouter.get('/:id', async (req, res) => {
   res.json(band);
 })
 
+//needs restrict
 bandRouter.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -43,19 +46,20 @@ bandRouter.put('/:id', async (req, res) => {
   }
 })
 
-bandRouter.put('/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const band = await Band.findByPk(id);
-    if (band !== null) {
-      await band.update(req.body);
-      res.json(band)
-    }
-  } catch(e){
-    console.error(e);
-  }
-})
+//why is this here?
+// bandRouter.put('/:id', async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//
+//     const band = await Band.findByPk(id);
+//     if (band !== null) {
+//       await band.update(req.body);
+//       res.json(band)
+//     }
+//   } catch(e){
+//     console.error(e);
+//   }
+// })
 
 
 // route to let user to delete their band

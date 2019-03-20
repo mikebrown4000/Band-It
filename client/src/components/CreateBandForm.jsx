@@ -34,7 +34,6 @@ function  CreateBandForm(props){
       onSubmit={handleCreateBand}/>
     </form>
   )
-
 }
 
 export default CreateBandForm;
