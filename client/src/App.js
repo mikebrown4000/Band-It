@@ -6,7 +6,6 @@ import Main from './components/Main';
 import Header from './components/Header';
 import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
 import { createBand, fetchBands, fetchBand } from './services/bands';
 import { updateToken } from './services/api-helper'
 import { fetchComments, createComment } from './services/comments';
