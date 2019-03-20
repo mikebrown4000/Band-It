@@ -209,6 +209,7 @@ class App extends Component {
           location={this.state.location}
           instrument={this.state.instrument}
           age={this.state.age}
+          img={this.state.img}
 
 
           bands={this.state.bands}
