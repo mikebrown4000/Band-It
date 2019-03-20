@@ -8,6 +8,9 @@ import Header from './components/Header';
 import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand } from './services/bands';
+import { updateToken } from './services/api-helper'
+import { fetchComments, createComment } from './services/comments';
+
 
 class App extends Component {
   constructor() {
@@ -42,11 +45,13 @@ class App extends Component {
         to_band: '',
       }
     }
+    this.handleLogout = this.handleLogout.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleNestedChange = this.handleNestedChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCreateBand = this.handleCreateBand.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.getArtist = this.getArtist.bind(this);
     this.getBand = this.getBand.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -105,7 +110,7 @@ class App extends Component {
         ...prevState.commentForm,
         [name]: value
       }
-    }))
+    }));
   }
 
   handleCheck() {
@@ -166,6 +171,9 @@ class App extends Component {
     });
     const artists = await fetchArtists();
     this.setState({
+      artists
+    });
+    this.setState({
       artists,
       first_name: '',
       last_name: '',
@@ -179,23 +187,37 @@ class App extends Component {
     this.props.history.push(`/bands`);
   }
 
+
+  async handleCommentSubmit(e) {
+    e.preventDefault();
+    const { content } = this.state.commentForm;
+    const newComment = await createComment(content);
+    const comments = await fetchComments();
+    this.setState({
+      comments
+    });
+  }
+
   async handleLogin(e){
   e.preventDefault();
-  console.log('hi');
   const { email, password } = this.state;
    const user = await loginArtist({email, password});
    this.setState({
       email: '',
       password: '',
    })
-}
+ }
+
+ async handleLogout(e){
+   console.log('hi');
+   updateToken();
+ }
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
-        <Header />
+        <Header handleLogout={this.handleLogout}/>
         <Main
           artists={this.state.artists}
           getArtist={this.getArtist}
@@ -228,6 +250,7 @@ class App extends Component {
           formErrors={this.state.formErrors}
 
           commentForm={this.state.commentForm}
+          handleCommentSubmit={this.handleCommentSubmit}
          />
       </div>
     );

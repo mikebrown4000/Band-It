@@ -80,7 +80,7 @@ artistRouter.post('/login', async (req, res) => {
 });
 
 //needs restrict
-artistRouter.put('/:id', async (req, res) => {
+artistRouter.put('/:id', restrict, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -95,7 +95,7 @@ artistRouter.put('/:id', async (req, res) => {
 })
 
 // route to let user to delete their account
-artistRouter.delete('/:id', async (req, res) => {
+artistRouter.delete('/:id', restrict, async (req, res) => {
   try {
     const { id } = req.params;
     await Artist.destroy({
