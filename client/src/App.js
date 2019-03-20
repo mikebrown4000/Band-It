@@ -156,7 +156,8 @@ class App extends Component {
       location,
       looking,
       password,
-      email
+      email,
+
     } = this.state;
 
     const newArtist = await createArtist({
@@ -184,7 +185,7 @@ class App extends Component {
       password: '',
       email: ''
     })
-    this.props.history.push(`/bands`);
+    this.props.history.push(`/artists`);
   }
 
 
@@ -206,11 +207,13 @@ class App extends Component {
       email: '',
       password: '',
    })
+   this.props.history.push(`/bands`);
  }
 
  async handleLogout(e){
    console.log('hi');
    updateToken();
+   this.props.history.push(`/login`);
  }
 
 

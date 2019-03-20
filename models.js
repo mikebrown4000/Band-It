@@ -13,6 +13,7 @@ const sequelize = new Sequelize({
 const Artist = sequelize.define('artist', {
   first_name: Sequelize.STRING,
   last_name: Sequelize.STRING,
+  artist_description: Sequelize.STRING,
   email: {
     type: Sequelize.STRING,
     allowNull: false,
