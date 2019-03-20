@@ -6,7 +6,10 @@ import Main from './components/Main';
 import Header from './components/Header';
 import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
 import { createBand, fetchBands, fetchBand } from './services/bands';
+import { fetchComments, createComment } from './services/comments';
+
 
 class App extends Component {
   constructor() {
@@ -45,6 +48,7 @@ class App extends Component {
     this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCreateBand = this.handleCreateBand.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
     this.getArtist = this.getArtist.bind(this);
     this.getBand = this.getBand.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -162,6 +166,9 @@ class App extends Component {
     });
     const artists = await fetchArtists();
     this.setState({
+      artists
+    });
+    this.setState({
       artists,
       first_name: '',
       last_name: '',
@@ -172,6 +179,19 @@ class App extends Component {
       password: '',
       email: ''
     })
+  }
+
+
+  async handleCommentSubmit(e) {
+    e.preventDefault();
+    const { content } = this.state;
+    const newComment = await createComment({
+      content
+    });
+    const comments = await fetchComments();
+    this.setState({
+      comments
+    });
   }
 
   async handleLogin(e){
