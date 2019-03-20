@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-
+const PORT = process.env.PORT || 6969
 const artistRouter = require('./routes/artistRouter');
 const bandRouter = require('./routes/bandRouter')
 const commentRouter = require('./routes/commentRouter')
@@ -23,4 +23,4 @@ app.use('/bands', bandRouter);
 app.use('/comments', commentRouter);
 
 
-app.listen(6969, ()=> console.log('listening on 6969'));
+app.listen(PORT, ()=> console.log('listening on 6969'));
