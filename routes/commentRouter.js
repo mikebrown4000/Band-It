@@ -10,7 +10,6 @@ commentRouter.get('/', async (req, res) => {
   res.json(comments);
 })
 
-
 //gets all comments by an artist as an artist
 commentRouter.get('/by/:id', async (req, res) => {
   try {
