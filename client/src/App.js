@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
@@ -124,6 +125,7 @@ class App extends Component {
       description,
       genre
     });
+
     const bands = await fetchBands();
     this.setState({
       bands
@@ -133,6 +135,7 @@ class App extends Component {
       description: '',
       genre: ''
     })
+    this.props.history.push(`/bands`);
   }
 
 
@@ -173,6 +176,7 @@ class App extends Component {
       password: '',
       email: ''
     })
+    this.props.history.push(`/bands`);
   }
 
 
@@ -217,4 +221,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
