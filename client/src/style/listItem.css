@@ -1,0 +1,87 @@
+/* ListItem component */
+.event-container {
+  min-height: 4em;
+  margin: 10px auto;
+  border-top: 1px solid black;
+}
+
+
+
+.event-container a:hover {
+  color: red;
+
+}
+
+.list-item-header {
+  display: flex;
+  flex-direction: row;
+  min-height: 40px;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.list-item-header h2 {
+  padding-right: .7em;
+}
+
+.icon-holder {
+  height: 2.5em;
+  width: 2.5em;
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
+}
+
+.list-item-header-link {
+  display: flex;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  color: black;
+  text-decoration: none;
+  min-height: 40px;
+  height: 100%;
+  width: 80%;
+  padding: .3em .7em .3em 0;
+  text-align: right;
+}
+
+.list-item-header-link img {
+  object-fit: cover;
+  height: 2.5em;
+  width: 2.5em;
+}
+
+.expand-container {
+  line-height: 1.5em;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.key {
+  text-align:right;
+  display: inline-block;
+  width: 20%;
+}
+
+.space{
+  display: inline-block;
+  width: 5%;
+}
+
+.value {
+  display: inline-block;
+  width: 75%;
+}
+
+.expand-container a {
+  text-decoration: none;
+  margin: 0 auto;
+  transition: color 20ms ease-in;
+}
+
+.expand-container div {
+  display: flex;
+}

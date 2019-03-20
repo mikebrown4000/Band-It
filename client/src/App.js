@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import './App.css';
+import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
 import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
