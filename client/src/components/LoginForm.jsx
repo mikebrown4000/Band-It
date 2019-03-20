@@ -4,50 +4,37 @@ function LoginForm(props){
   const {
     email,
     password,
-    handleChangeLogin,
-    formErrors
-  } = props;
+    handleChange
+    } = props;
 
-  const formValid = () => {
-    let valid = true;
-
-
-  }
-  const handleSubmitLogin = (e) => {
-    const { email, password } = this.state;
-    e.preventDefault();
-    console.log(email, password);
-    if(formValid(this.state.formErrors)){
-      console.log(`-- SUBMITTING -- Email: ${email} Password: ${password} `);
+    const test = (e) => {
+      e.preventDefault();
+      console.log(email, password);
     }
-  }
 
-  handleChangeLogin = (e) => {
-    e.preventDefault();
-
-  }
   return(
-<div>
-  <form noValidate onSubmit={handleSubmitLogin}>
-    <input
-    onChange={handleChangeLogin}
-    type='text'
-    placeholder='Email'
-    name='email'
-    value={email} />
+    <div>
+      <form>
 
-    <input
-    onChange={handleChangeLogin}
-    type='password'
-    placeholder='Password'
-    name='password'
-    value={password} />
+        <input
+        onChange={handleChange}
+        type='text'
+        placeholder='Email'
+        name='email'
+        value={email} />
 
-    <input
-    type='submit' />
+        <input
+        onChange={handleChange}
+        minLength={4}
+        type='password'
+        placeholder='Password'
+        name='password'
+        value={password} />
 
-    </form>
-  </div>
-)};
+        <button onClick={test}>Login</button>
+
+        </form>
+      </div>
+)}
 
 export default LoginForm;
