@@ -19,6 +19,7 @@ function Main(props) {
     first_name,
     last_name,
     email,
+    img,
     password,
     location,
     instrument,
@@ -70,6 +71,7 @@ function Main(props) {
           <ArtistList
             artists={artists}
             getArtist={getArtist}
+            img={img}
           />
         )}/>
 

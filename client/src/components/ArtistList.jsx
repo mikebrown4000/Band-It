@@ -19,6 +19,7 @@ changeThisName(id) {
           <div className='artists-list' key={artist.id}>
             {artist.first_name}
             {artist.last_name}
+            <img src={artist.img} alt="image" />
             <div>
               <a href='' onClick={(e) => {
                 e.preventDefault();
