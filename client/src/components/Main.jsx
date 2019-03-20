@@ -4,18 +4,13 @@ import RegisterForm from './RegisterForm';
 import CreateBandForm from './CreateBandForm';
 import ArtistList from './ArtistList';
 import BandList from './BandList';
-import ArtistProfile from './ArtistProfile';
 import LoginForm from './LoginForm';
-import BandView from './BandView'
 
 
 function Main(props) {
   const {
-    artist,
-    getArtist,
     artists,
     handleChange,
-    handleNestedChange,
     first_name,
     last_name,
     email,
@@ -32,15 +27,12 @@ function Main(props) {
     description,
     genre,
     bands,
-    band,
-    getBand,
     formErrors,
-    commentForm,
+    img
   } = props;
 
   return(
     <div>
-      <h1>BandIt</h1>
       <Route exact path='/' />
       <Route exact path='/login' render={(props) => (
         <LoginForm
@@ -63,13 +55,13 @@ function Main(props) {
           instrument={instrument}
           age={age}
           looking={looking}
+          img={img}
          />
       )}/>
        <div>
-        <Route exact path='/artists' render={(props) => (
+        <Route path='/artists' render={(props) => (
           <ArtistList
             artists={artists}
-            getArtist={getArtist}
           />
         )}/>
 
@@ -82,23 +74,11 @@ function Main(props) {
             name={name}
            />
         )}/>
-        <Route exact path='/bands' render={(props) => (
+        <Route path='/bands' render={(props) => (
           <BandList
             bands={bands}
-          />
+            />
         )} />
-        <Route path='/artists/profile/:userid' render={(props) => (
-          <ArtistProfile
-            {...props} artist={artist}
-          />
-        )} />
-
-        <Route path='/bands/profile/:id' render={(props) => (
-          <BandView
-            {...props} band={band} getBand={getBand} handleNestedChange={handleNestedChange} commentForm={commentForm}
-          />
-        )} />
-
        </div>
     </div>
   )
