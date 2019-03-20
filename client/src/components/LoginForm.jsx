@@ -4,17 +4,15 @@ function LoginForm(props){
   const {
     email,
     password,
-    handleChange
+    handleChange,
+    handleLogin,
     } = props;
 
-    const test = (e) => {
-      e.preventDefault();
-      console.log(email, password);
-    }
+
 
   return(
     <div>
-      <form>
+      <form onSubmit={handleLogin}>
 
         <input
         onChange={handleChange}
@@ -25,13 +23,13 @@ function LoginForm(props){
 
         <input
         onChange={handleChange}
-        minLength={4}
-        type='password'
+        minLength={3}
+        type='text'
         placeholder='Password'
         name='password'
         value={password} />
 
-        <button onClick={test}>Login</button>
+        <input type='submit' />
 
         </form>
       </div>

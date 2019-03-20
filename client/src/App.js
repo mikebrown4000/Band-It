@@ -5,7 +5,7 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand } from './services/bands';
 
@@ -48,6 +48,7 @@ class App extends Component {
     this.handleCreateBand = this.handleCreateBand.bind(this);
     this.getArtist = this.getArtist.bind(this);
     this.getBand = this.getBand.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   async componentDidMount() {
@@ -164,9 +165,7 @@ class App extends Component {
     });
     const artists = await fetchArtists();
     this.setState({
-      artists
-    })
-    this.setState({
+      artists,
       first_name: '',
       last_name: '',
       age: '',
@@ -179,9 +178,20 @@ class App extends Component {
     this.props.history.push(`/bands`);
   }
 
+  async handleLogin(e){
+  e.preventDefault();
+  console.log('hi');
+  const { email, password } = this.state;
+   const user = await loginArtist({email, password});
+   this.setState({
+      email: '',
+      password: '',
+   })
+}
+
 
   render() {
-    console.log(this.state.commentForm);
+    console.log(this.state);
     return (
       <div className="App">
         <Header />
@@ -195,6 +205,7 @@ class App extends Component {
           handleCheck={this.handleCheck}
 
           handleSubmit={this.handleSubmit}
+          handleLogin={this.handleLogin}
           first_name={this.state.first_name}
           last_name={this.state.last_name}
           email={this.state.email}
@@ -202,6 +213,7 @@ class App extends Component {
           location={this.state.location}
           instrument={this.state.instrument}
           age={this.state.age}
+          img={this.state.img}
 
 
           bands={this.state.bands}
