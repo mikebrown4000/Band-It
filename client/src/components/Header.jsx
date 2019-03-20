@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Header(props) {
+  const { handleLogout } = props
   return(
     <div className='main-header'>
       <h1>BandIt</h1>
@@ -11,6 +12,7 @@ function Header(props) {
         <Link to='/bands'>Bands</Link>
         <Link to ='/createband'>Create your band</Link>
         <Link to ='/createmusician'>Create a Musician</Link>
+        <button onClick={handleLogout}>Log Out</button>
       </nav>
     </div>
   )

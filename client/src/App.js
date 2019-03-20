@@ -8,6 +8,7 @@ import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, lo
 import LoginForm from './components/LoginForm';
 import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
 import { createBand, fetchBands, fetchBand } from './services/bands';
+import { updateToken } from './services/api-helper'
 import { fetchComments, createComment } from './services/comments';
 
 
@@ -43,6 +44,7 @@ class App extends Component {
         to_band: '',
       }
     }
+    this.handleLogout = this.handleLogout.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleNestedChange = this.handleNestedChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
@@ -196,21 +198,25 @@ class App extends Component {
 
   async handleLogin(e){
   e.preventDefault();
-  console.log('hi');
   const { email, password } = this.state;
    const user = await loginArtist({email, password});
    this.setState({
       email: '',
       password: '',
    })
-}
+ }
+
+ async handleLogout(e){
+   console.log('hi');
+   updateToken();
+ }
 
 
   render() {
     console.log(this.state);
     return (
       <div className="App">
-        <Header />
+        <Header handleLogout={this.handleLogout}/>
         <Main
           artists={this.state.artists}
           getArtist={this.getArtist}
