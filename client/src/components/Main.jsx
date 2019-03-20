@@ -44,6 +44,7 @@ function Main(props) {
       <Route exact path='/' />
       <Route exact path='/login' render={(props) => (
         <LoginForm
+        handleLogin={handleLogin}
         handleChange={handleChange}
         handleLogin={handleLogin}
         formErrors={formErrors}
