@@ -6,7 +6,7 @@ function  CreateBandForm(props){
           name,
           description,
           genre } = props;
-          
+
   return(
     <form onSubmit={handleCreateBand}>
       <input
