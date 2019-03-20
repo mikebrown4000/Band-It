@@ -7,6 +7,11 @@ const fetchBands = async () => {
   console.log(resp.data);
 };
 
+const fetchBand = async (id) => {
+  const resp = await api.get(`/bands/${id}`);
+  return resp.data;
+}
+
 const updateBand = async (data, id) => {
   const resp = await api.put(`/${id}`, data);
   return resp.data.band
@@ -24,6 +29,7 @@ const createBand = async (band) => {
 
 export {
   fetchBands,
+  fetchBand,
   // updateBand,
   // deleteBand,
   createBand

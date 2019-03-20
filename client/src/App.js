@@ -6,7 +6,7 @@ import Main from './components/Main';
 import Header from './components/Header';
 import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
-import { createBand, fetchBands } from './services/bands';
+import { createBand, fetchBands, fetchBand } from './services/bands';
 
 class App extends Component {
   constructor() {
@@ -14,8 +14,9 @@ class App extends Component {
 
     this.state = {
       artists: [],
-      bands: [],
       artist: {},
+      bands: [],
+      band: {},
       first_name: '',
       last_name: '',
       age: '',
@@ -29,20 +30,29 @@ class App extends Component {
       genre: '',
       formErrors:{
         email: '',
-        password: ''
+        password: '',
+      },
+      commentForm: {
+        content: '',
+        commenter_id: '',
+        topic_id: '',
+        as_band: '',
+        to_band: '',
       }
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleNestedChange = this.handleNestedChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCreateBand = this.handleCreateBand.bind(this);
     this.getArtist = this.getArtist.bind(this);
+    this.getBand = this.getBand.bind(this);
   }
 
   async componentDidMount() {
     await this.getAllArtists();
     await this.getAllBands();
-    await this.getArtist(1);
+    await this.getBand(2, 1)
   }
 
   async getArtist(id) {
@@ -68,12 +78,32 @@ class App extends Component {
     })
   }
 
+  async getBand(bandId, propId){
+    if (bandId != propId){
+      const band = await fetchBand(propId);
+      this.setState({
+        band
+      })
+    }
+  }
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     })
   };
+
+  handleNestedChange(e) {
+    const { name, value, form } = e.target;
+    console.log(form);
+    this.setState(prevState =>({
+      commentForm: {
+        ...prevState.commentForm,
+        [name]: value
+      }
+    }))
+  }
 
   handleCheck() {
     this.setState(prevState => ({
@@ -147,17 +177,20 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state);
+    console.log(this.state.commentForm);
     return (
       <div className="App">
         <Header />
         <Main
+          artists={this.state.artists}
           getArtist={this.getArtist}
           artist={this.state.artist}
+
           handleChange={this.handleChange}
+          handleNestedChange={this.handleNestedChange}
           handleCheck={this.handleCheck}
+
           handleSubmit={this.handleSubmit}
-          handleCreateBand={this.handleCreateBand}
           first_name={this.state.first_name}
           last_name={this.state.last_name}
           email={this.state.email}
@@ -165,12 +198,19 @@ class App extends Component {
           location={this.state.location}
           instrument={this.state.instrument}
           age={this.state.age}
-          artists={this.state.artists}
+
+
           bands={this.state.bands}
+          getBand={this.getBand}
+          band={this.state.band}
+
+          handleCreateBand={this.handleCreateBand}
           genre={this.state.genre}
           name={this.state.name}
           description={this.state.description}
           formErrors={this.state.formErrors}
+
+          commentForm={this.state.commentForm}
          />
       </div>
     );

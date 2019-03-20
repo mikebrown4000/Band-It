@@ -6,6 +6,7 @@ import ArtistList from './ArtistList';
 import BandList from './BandList';
 import ArtistProfile from './ArtistProfile';
 import LoginForm from './LoginForm';
+import BandView from './BandView'
 
 
 function Main(props) {
@@ -14,6 +15,7 @@ function Main(props) {
     getArtist,
     artists,
     handleChange,
+    handleNestedChange,
     first_name,
     last_name,
     email,
@@ -30,7 +32,10 @@ function Main(props) {
     description,
     genre,
     bands,
-    formErrors
+    band,
+    getBand,
+    formErrors,
+    commentForm,
   } = props;
 
   return(
@@ -76,16 +81,23 @@ function Main(props) {
             name={name}
            />
         )}/>
-        <Route path='/bands' render={(props) => (
+        <Route exact path='/bands' render={(props) => (
           <BandList
             bands={bands}
-            />
+          />
         )} />
         <Route path='/artists/profile/:userid' render={(props) => (
           <ArtistProfile
             {...props} artist={artist}
           />
         )} />
+
+        <Route path='/bands/profile/:id' render={(props) => (
+          <BandView
+            {...props} band={band} getBand={getBand} handleNestedChange={handleNestedChange} commentForm={commentForm}
+          />
+        )} />
+
        </div>
     </div>
   )

@@ -1,5 +1,7 @@
 import React from 'react';
-import ListItem from './ListItem'
+import { Link, Route } from 'react-router-dom';
+import {withRouter} from 'react-router';
+import ListItem from './ListItem';
 
 function BandList(props){
   const { bands } = props;
@@ -22,4 +24,4 @@ function BandList(props){
   );
 }
 
-export default BandList;
+export default withRouter(BandList);
