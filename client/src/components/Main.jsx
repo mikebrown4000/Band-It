@@ -4,10 +4,13 @@ import RegisterForm from './RegisterForm';
 import CreateBandForm from './CreateBandForm';
 import ArtistList from './ArtistList';
 import BandList from './BandList';
+import ArtistProfile from './ArtistProfile';
 
 
 function Main(props) {
   const {
+    artist,
+    getArtist,
     artists,
     handleChange,
     first_name,
@@ -31,7 +34,6 @@ function Main(props) {
     <div>
       <Route exact path='/' />
       <Route exact path='/createmusician' render={(props) => (
-
         <RegisterForm
           handleChange={handleChange}
           handleCheck={handleCheck}
@@ -47,9 +49,10 @@ function Main(props) {
          />
       )}/>
        <div>
-        <Route path='/artists' render={(props) => (
+        <Route exact path='/artists' render={(props) => (
           <ArtistList
             artists={artists}
+            getArtist={getArtist}
           />
         )}/>
 
@@ -66,6 +69,11 @@ function Main(props) {
           <BandList
             bands={bands}
             />
+        )} />
+        <Route path='/artists/profile/:userid' render={(props) => (
+          <ArtistProfile
+            {...props} artist={artist}
+          />
         )} />
        </div>
     </div>

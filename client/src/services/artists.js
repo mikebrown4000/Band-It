@@ -6,6 +6,11 @@ const fetchArtists = async () => {
   return resp.data;
 };
 
+const fetchArtist = async (id) => {
+  const resp = await api.get(`/artists/${id}`);
+  return resp.data;
+}
+
 const updateArtist = async (data, id) => {
   const resp = await api.put(`/${id}`, data);
   return resp.data.artist
@@ -23,7 +28,8 @@ const createArtist = async (artist) => {
 
 export {
   fetchArtists,
-  // updateArtist,
-  // deleteArtist,
+  fetchArtist,
+  updateArtist,
+  deleteArtist,
   createArtist
 }
