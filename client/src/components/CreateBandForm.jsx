@@ -1,36 +1,39 @@
 import React from 'react';
 
 function  CreateBandForm(props){
-  const { handleChange, handleSubmit, band_name, band_desc, band_genre }
+  const { handleChange,
+          handleCreateBand,
+          name,
+          description,
+          genre } = props;
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleCreateBand}>
       <input
       type="text"
-      name="band_name"
+      name="name"
       placeholder="Name Of Your Band"
-      value={band_name}
+      value={name}
       onChange={handleChange}/>
 
       <input
       type="text"
-      name="band_desc"
+      name="description"
       placeholder="Describe Your Band"
-      value={band_desc}
+      value={description}
       onChange={handleChange}/>
 
       <input
       type="text"
-      name="band_genre"
+      name="genre"
       placeholder="Genre Of Your Band"
-      value={band_genre}
+      value={genre}
       onChange={handleChange}/>
 
       <input
       type="submit"
-      onSubmit={handleSubmit}/>
+      onSubmit={handleCreateBand}/>
     </form>
   )
-
 }
 
 export default CreateBandForm;

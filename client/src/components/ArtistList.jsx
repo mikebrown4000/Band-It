@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link, Route } from 'react-router-dom';
+import {withRouter} from 'react-router';
 
-function ArtistList(props){
-  const { artists } = props;
-  {artists.map((artist) => (
-    <div>
-      {artist.artist_name}
-      {artist.artist_genre}
-      {artist.artist_desc}
-    </div>
-  ))}
+
+class ArtistList extends Component {
+
+changeThisName(id) {
+  this.props.getArtist(id);
+  this.props.history.push(`/artists/profile/${id}`)
 }
 
-export default ArtistList;
+
+  render() {
+    const { artists, getArtist } = this.props;
+    return(
+      <div>
+        {artists.map(artist => (
+          <div className='artists-list' key={artist.id}>
+            {artist.first_name}
+            {artist.last_name}
+            <div>
+              <a href='' onClick={(e) => {
+                e.preventDefault();
+                this.changeThisName(artist.id)
+              }}>View Profile</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
+
+export default withRouter(ArtistList);
