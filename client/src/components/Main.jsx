@@ -36,11 +36,11 @@ function Main(props) {
     getBand,
     formErrors,
     commentForm,
+    handleCommentSubmit
   } = props;
 
   return(
     <div>
-      <h1>BandIt</h1>
       <Route exact path='/' />
       <Route exact path='/login' render={(props) => (
         <LoginForm
@@ -95,7 +95,12 @@ function Main(props) {
 
         <Route path='/bands/profile/:id' render={(props) => (
           <BandView
-            {...props} band={band} getBand={getBand} handleNestedChange={handleNestedChange} commentForm={commentForm}
+            {...props}
+            band={band}
+            getBand={getBand}
+            handleNestedChange={handleNestedChange}
+            commentForm={commentForm}
+            handleCommentSubmit={handleCommentSubmit}
           />
         )} />
 

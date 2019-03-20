@@ -108,7 +108,7 @@ class App extends Component {
         ...prevState.commentForm,
         [name]: value
       }
-    }))
+    }));
   }
 
   handleCheck() {
@@ -185,10 +185,8 @@ class App extends Component {
 
   async handleCommentSubmit(e) {
     e.preventDefault();
-    const { content } = this.state;
-    const newComment = await createComment({
-      content
-    });
+    const { content } = this.state.commentForm;
+    const newComment = await createComment(content);
     const comments = await fetchComments();
     this.setState({
       comments
@@ -212,7 +210,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout}/>
@@ -248,6 +245,7 @@ class App extends Component {
           formErrors={this.state.formErrors}
 
           commentForm={this.state.commentForm}
+          handleCommentSubmit={this.handleCommentSubmit}
          />
       </div>
     );
