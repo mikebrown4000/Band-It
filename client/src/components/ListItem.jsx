@@ -29,7 +29,8 @@ class ListItem extends Component {
   };
 
   render(){
-    const { title, endpoint, img, field1, field2, field3, field4 } = this.props.listItem;
+    //hand it an object with these fields and this component will work for whatever you need listed
+    const { title, endpoint, img, field1, field2 } = this.props.listItem;
     const styleObj = {
       display: this.toggleHeight()
     };
