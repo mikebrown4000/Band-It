@@ -5,6 +5,7 @@ import CreateBandForm from './CreateBandForm';
 import ArtistList from './ArtistList';
 import BandList from './BandList';
 import ArtistProfile from './ArtistProfile';
+import LoginForm from './LoginForm';
 
 
 function Main(props) {
@@ -24,15 +25,25 @@ function Main(props) {
     handleCheck,
     handleSubmit,
     handleCreateBand,
+    handleLogin,
     name,
     description,
     genre,
-    bands
+    bands,
+    formErrors
   } = props;
 
   return(
     <div>
+      <h1>BandIt</h1>
       <Route exact path='/' />
+      <Route exact path='/login' render={(props) => (
+        <LoginForm
+        handleChange={handleChange}
+        handleLogin={handleLogin}
+        formErrors={formErrors}
+        />
+      )} />
       <Route exact path='/createmusician' render={(props) => (
         <RegisterForm
           handleChange={handleChange}

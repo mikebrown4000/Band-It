@@ -4,6 +4,7 @@ import './App.css';
 import Main from './components/Main';
 import Header from './components/Header';
 import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
+import LoginForm from './components/LoginForm';
 import { createBand, fetchBands } from './services/bands';
 
 class App extends Component {
@@ -24,7 +25,11 @@ class App extends Component {
       email: '',
       name: '',
       description: '',
-      genre: ''
+      genre: '',
+      formErrors:{
+        email: '',
+        password: ''
+      }
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
@@ -164,6 +169,7 @@ class App extends Component {
           genre={this.state.genre}
           name={this.state.name}
           description={this.state.description}
+          formErrors={this.state.formErrors}
          />
       </div>
     );
