@@ -22,6 +22,8 @@ export default (props) => {
       form='commentForm'
       value={as_band}
     />
+
+    <input value='Comment' type='submit'/>
     </form>
   )
 }
