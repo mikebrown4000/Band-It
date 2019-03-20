@@ -13,7 +13,8 @@ function RegisterForm(props) {
     age,
     looking,
     handleCheck,
-    handleSubmit
+    handleSubmit,
+    img
   } = props;
 
   return(
@@ -67,6 +68,13 @@ function RegisterForm(props) {
         placeholder='Age'
         name='age'
         value={age} />
+
+        <input
+        onChange={handleChange}
+        type='img'
+        placeholder='Image'
+        name='img'
+        value={img} />
 
         <label htmlFor='looking'>Looking For Band? </label>
         <input onClick={handleCheck} type='checkbox' name='looking' value={looking} />
