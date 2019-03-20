@@ -12,6 +12,7 @@ async function seed() {
     age: 25,
     location: 'Queens',
     instrument: 'Vocal',
+    img: 'https://cdn.images.express.co.uk/img/dynamic/109/590x/Polar-Bear-924655.jpg'
   });
 
   const secondArtist = await Artist.create({
@@ -20,7 +21,8 @@ async function seed() {
     email: 'mb@gmail.com',
     age: 25,
     location: 'Brooklyn',
-    instrument: 'Synth'
+    instrument: 'Synth',
+    img: 'https://media4.s-nbcnews.com/j/newscms/2016_36/1685951/ss-160826-twip-05_8cf6d4cb83758449fd400c7c3d71aa1f.fit-760w.jpg'
   });
 
   const thirdArtist = await Artist.create({
@@ -29,7 +31,8 @@ async function seed() {
     email: 'ah@gmail.com',
     age: 25,
     location: 'Brooklyn',
-    instrument: 'Guitar'
+    instrument: 'Guitar',
+    img: 'https://media4.s-nbcnews.com/j/newscms/2016_36/1685951/ss-160826-twip-05_8cf6d4cb83758449fd400c7c3d71aa1f.fit-760w.jpg'
   });
 
   const fourthArtist = await Artist.create({
@@ -38,12 +41,13 @@ async function seed() {
     email: 'rm@gmail.com',
     age: 28,
     location: 'Queens',
-    instrument: 'Drums'
+    instrument: 'Drums',
+    img: 'http://blogs.discovermagazine.com/inkfish/files/2017/09/8696883646_cc332cc707_z.jpg'
   });
 
   const band = await Band.create({
     name: 'Scones',
-    description: 'Queens',
+    description: 'This is a description',
     genre: 'Rock'
   });
 
