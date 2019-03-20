@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { Band } = require('../models');
+const { restrict } = require('../auth')
 
 const bandRouter = Router();
 
@@ -10,7 +11,7 @@ bandRouter.get('/', async (req, res) => {
 
 
 //needs restrict
-bandRouter.post('/', async (req, res) => {
+bandRouter.post('/', restrict, async (req, res) => {
   try{
     const { name, location, genre } = req.body;
     const band = await Band.create({
@@ -31,7 +32,7 @@ bandRouter.get('/:id', async (req, res) => {
 })
 
 //needs restrict
-bandRouter.put('/:id', async (req, res) => {
+bandRouter.put('/:id', restrict, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -47,7 +48,7 @@ bandRouter.put('/:id', async (req, res) => {
 })
 
 // route to let user to delete their band
-bandRouter.delete('/:id', async (req, res) => {
+bandRouter.delete('/:id', restrict, async (req, res) => {
   try {
     const { id } = req.params;
     await Band.destroy({

@@ -2,7 +2,7 @@ import React from 'react'
 import CommentForm from './CommentForm'
 
 export default (props) => {
-  const { commentForm, band } = props;
+  const { commentForm, band, handleCommentSubmit, handleNestedChange } = props;
   const { name, description, img, genre, id } = band;
   props.getBand(id, props.match.params.id)
   return(
