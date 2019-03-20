@@ -63,6 +63,7 @@ function Main(props) {
         <Route path='/artists' render={(props) => (
           <ArtistList
             artists={artists}
+            img={img}
           />
         )}/>
 

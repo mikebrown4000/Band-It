@@ -27,6 +27,7 @@ class App extends Component {
       password: '',
       email: '',
       name: '',
+      img: '',
       description: '',
       genre: '',
       formErrors:{
