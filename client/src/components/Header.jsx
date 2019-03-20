@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 function Header(props) {
   return(
-    <div>
-      <nav>
+    <div className='main-header'>
+      <h1>BandIt</h1>
+      <nav className='main-nav'>
         <Link to='/'>Home</Link>
         <Link to='/artists'>Artists</Link>
         <Link to='/bands'>Bands</Link>
