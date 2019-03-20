@@ -29,10 +29,17 @@ const createArtist = async (artist) => {
   return mkArtist.data;
 }
 
+const loginArtist = async (loginData) => {
+  const artist = await api.post('/artists/login', loginData);
+  updateToken(artist.data.token);
+  return artist.data
+}
+
 export {
   fetchArtists,
   fetchArtist,
   updateArtist,
   deleteArtist,
-  createArtist
+  createArtist,
+  loginArtist
 }
