@@ -3,8 +3,8 @@ import { Link, Route } from 'react-router-dom';
 import './App.css';
 import Main from './components/Main';
 import Header from './components/Header';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
-import { createArtist, fetchArtists } from './services/artists';
 import { createBand, fetchBands } from './services/bands';
 
 class App extends Component {
@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       artists: [],
       bands: [],
+      artist: {},
       first_name: '',
       last_name: '',
       age: '',
@@ -34,11 +35,22 @@ class App extends Component {
     this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCreateBand = this.handleCreateBand.bind(this);
+    this.getArtist = this.getArtist.bind(this);
   }
 
   async componentDidMount() {
     await this.getAllArtists();
     await this.getAllBands();
+    await this.getArtist(1);
+  }
+
+  async getArtist(id) {
+    if (id !== this.state.artist.id) {
+      const artist = await fetchArtist(id);
+      this.setState({
+        artist
+      });
+    }
   }
 
   async getAllArtists() {
@@ -134,10 +146,13 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <Header />
         <Main
+          getArtist={this.getArtist}
+          artist={this.state.artist}
           handleChange={this.handleChange}
           handleCheck={this.handleCheck}
           handleSubmit={this.handleSubmit}
