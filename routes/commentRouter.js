@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { Comment } = require('../models');
+const { restrict } = require('../auth')
 
 const commentRouter = Router();
 
@@ -72,18 +73,20 @@ commentRouter.get('/toBand/:id', async (req, res) => {
   };
 });
 
-commentRouter.post('/', async (req, res) => {
+commentRouter.post('/', restrict, async (req, res) => {
   try{
-    const { content, commenter_id, topic_id, as_band, to_band } = req.body;
+    const { id } = res.locals.artist;
+    const { content, topic_id, as_band, to_band } = req.body;
     const comment = await Comment.create({
       content,
-      commenter_id,
+      commenter_id: id,
       topic_id,
       as_band,
       to_band,
     });
     res.json(comment);
   } catch(e) {
+    console.error(e);
     res.status(401).send('Invalid Credentials');
   };
 });

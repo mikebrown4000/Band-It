@@ -101,8 +101,6 @@ artistRouter.put('/:id', restrict, async (req, res) => {
 
 artistRouter.post('/bands/:id', restrict, async (req, res) => {
   try {
-  console.log(req.params.id);
-  console.log(res.locals.artist.id);
   const { id } = res.locals.artist;
   const artist = await Artist.findByPk(id);
   artist.bandId = req.params.id;

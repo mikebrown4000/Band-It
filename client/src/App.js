@@ -263,10 +263,9 @@ class App extends Component {
   }
 
 
-  async handleCommentSubmit(e) {
-    e.preventDefault();
-    const { content, commenter_id, topic_id } = this.state.commentForm;
-    const newComment = await createComment({content, commenter_id: 2, topic_id: 1});
+  async handleCommentSubmit(topic_id) {
+    const { content } = this.state.commentForm;
+    const newComment = await createComment({content, topic_id});
     const comments = await fetchComments(2);
     this.setState({
       comments

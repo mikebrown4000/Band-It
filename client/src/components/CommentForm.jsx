@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default (props) => {
-  const { handleCommentSubmit, handleNestedChange, handleNestedCheck, commentForm } = props
+  const { artist, handleCommentSubmit, handleNestedChange, handleNestedCheck, commentForm } = props
   const { content, as_band, to_band } = commentForm;
   return(
-    <form onSubmit={handleCommentSubmit}>
+    <form onSubmit={(e)=>{e.preventDefault(); handleCommentSubmit(artist.id)}}>
 
     <input
       onChange={handleNestedChange}
