@@ -223,7 +223,7 @@ class App extends Component {
       password: '',
       email: ''
     })
-    this.props.history.push(`/login`);
+    this.props.history.push(`/bands`);
   }
 
   async handleEditArtistToggle(e) {
