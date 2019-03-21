@@ -13,7 +13,7 @@ async function seed() {
     artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Queens',
     instrument: 'Vocal',
-    img: 'https://cdn.images.express.co.uk/img/dynamic/109/590x/Polar-Bear-924655.jpg'
+    img: 'https://www.drawingnow.com/file/videos/image/how-to-draw-panda-dabbing.jpg'
   });
 
   const secondArtist = await Artist.create({
@@ -24,7 +24,7 @@ async function seed() {
     artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Brooklyn',
     instrument: 'Synth',
-    img: 'https://media4.s-nbcnews.com/j/newscms/2016_36/1685951/ss-160826-twip-05_8cf6d4cb83758449fd400c7c3d71aa1f.fit-760w.jpg'
+    img: 'https://res.cloudinary.com/teepublic/image/private/s--A7iKK_5Y--/t_Preview/b_rgb:0195c3,c_limit,f_jpg,h_630,q_90,w_630/v1497239277/production/designs/1661769_1.jpg'
   });
 
   const thirdArtist = await Artist.create({
@@ -35,7 +35,7 @@ async function seed() {
     artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Brooklyn',
     instrument: 'Guitar',
-    img: 'https://media4.s-nbcnews.com/j/newscms/2016_36/1685951/ss-160826-twip-05_8cf6d4cb83758449fd400c7c3d71aa1f.fit-760w.jpg'
+    img: 'https://media.kidozi.com/unsafe/600x600/img.kidozi.com/design/600/600/2c5fac/35350/e26058f124a87dfd05e1843950de9193.png.jpg'
   });
 
   const fourthArtist = await Artist.create({
@@ -46,7 +46,7 @@ async function seed() {
     artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Queens',
     instrument: 'Drums',
-    img: 'http://blogs.discovermagazine.com/inkfish/files/2017/09/8696883646_cc332cc707_z.jpg'
+    img: 'https://ae01.alicdn.com/kf/UT8Ry_ZXqNbXXagOFbXb/14-14-7CM-Middle-Finger-Personality-Cute-Panda-Car-Stickers-Classic-Creative-Car-Styling-Decoration-Accessories.jpg_640x640.jpg'
   });
 
   const band = await Band.create({
