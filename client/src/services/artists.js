@@ -16,6 +16,11 @@ const updateArtist = async (data, id) => {
   return resp.data.artist
 }
 
+const updateArtistBand = async (bandId) => {
+  const resp = await api.post(`/artists/bands/${bandId}`)
+  return resp.data.id
+}
+
 const deleteArtist = async (data, id) => {
   const resp = await api.delete(`/${id}`);
   return resp.data;
@@ -41,5 +46,6 @@ export {
   updateArtist,
   deleteArtist,
   createArtist,
-  loginArtist
+  loginArtist,
+  updateArtistBand
 }
