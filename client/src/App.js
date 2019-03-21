@@ -10,6 +10,7 @@ import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
 import { fetchComments, createComment } from './services/comments';
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -355,6 +356,7 @@ class App extends Component {
           handleDeleteArtist={this.handleDeleteArtist}
           handleDelete={this.handleDelete}
          />
+         <Footer />
       </div>
     );
   }
