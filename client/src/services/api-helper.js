@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://sleepy-meadow-80774.herokuapp.com/'
+  baseURL: 'http://localhost:6969'
 });
 
 const updateToken = (token) => {
