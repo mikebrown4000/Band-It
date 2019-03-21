@@ -89,7 +89,11 @@ function Main(props) {
         )} />
         <Route path='/artists/profile/:userid' render={(props) => (
           <ArtistProfile
-            {...props} artist={artist}
+            {...props}
+            artist={artist}
+            handleNestedChange={handleNestedChange}
+            commentForm={commentForm}
+            handleCommentSubmit={handleCommentSubmit}
           />
         )} />
 
