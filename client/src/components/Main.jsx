@@ -39,7 +39,6 @@ function Main(props) {
     getBand,
     commentForm,
     handleCommentSubmit,
-    destroyArtist,
     handleDelete
   } = props;
 
@@ -102,7 +101,6 @@ function Main(props) {
             handleNestedChange={handleNestedChange}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
-            destroyArtist={destroyArtist}
             handleDelete={handleDelete}
           />
         )} />
@@ -116,6 +114,7 @@ function Main(props) {
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
             band_img={band_img}
+            handleDelete={handleDelete}
           />
         )} />
 

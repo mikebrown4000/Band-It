@@ -7,7 +7,7 @@ import Main from './components/Main';
 import Header from './components/Header';
 import { createArtist, fetchArtists, updateArtist, fetchArtist, loginArtist, deleteArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
-import { createBand, fetchBands, fetchBand } from './services/bands';
+import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
 import { fetchComments, createComment } from './services/comments';
 
@@ -95,11 +95,14 @@ class App extends Component {
 
 
   async handleDelete(id) {
-    const resp = await deleteArtist(id);
+    const respArtist = await deleteArtist(id);
+    const respBand = await deleteBand(id);
     const artists = await fetchArtists();
+    const bands = await fetchBands();
     console.log('alright bois');
     this.setState({
       artists,
+      bands
     })
   }
 

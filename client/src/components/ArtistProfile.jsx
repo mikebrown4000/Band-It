@@ -2,7 +2,7 @@ import React from 'react';
 import CommentForm from './CommentForm';
 
 function ArtistProfile(props) {
-  const { artist, handleCommentSubmit, handleNestedChange, handleNestedCheck, commentForm, destroyArtist, handleDelete } = props;
+  const { artist, handleCommentSubmit, handleNestedChange, handleNestedCheck, commentForm, handleDelete } = props;
   console.log(artist.id);
   return(
     <div>
