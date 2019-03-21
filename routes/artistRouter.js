@@ -99,6 +99,21 @@ artistRouter.put('/:id', restrict, async (req, res) => {
   }
 })
 
+artistRouter.post('/bands/:id', restrict, async (req, res) => {
+  try {
+  console.log(req.params.id);
+  console.log(res.locals.user.id);
+  const { id } = res.locals.user;
+  const artist = await Artist.findByPk(id);
+  artist.bandId = req.params.id;
+  await artist.save();
+
+  res.json({id:artist.bandId})
+  }catch (e) {
+        res.status(500).send(e.message)
+    }
+})
+
 // route to let user to delete their account
 artistRouter.delete('/:id', restrict, async (req, res) => {
   try {

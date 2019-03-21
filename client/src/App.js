@@ -5,9 +5,9 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, updateArtistBand } from './services/artists';
 import LoginForm from './components/LoginForm';
-import { createBand, fetchBands, fetchBand } from './services/bands';
+import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
 import { fetchComments, createComment } from './services/comments';
 
@@ -54,8 +54,13 @@ class App extends Component {
     this.getArtist = this.getArtist.bind(this);
     this.getBand = this.getBand.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+
     this.handleEditArtistToggle = this.handleEditArtistToggle.bind(this);
     this.handleEditArtist = this.handleEditArtist.bind(this);
+
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleJoinBand = this.handleJoinBand.bind(this);
+
   }
 
   async componentDidMount() {
@@ -94,6 +99,19 @@ class App extends Component {
         band
       })
     }
+  }
+
+
+  async handleDelete(id) {
+    const respArtist = await deleteArtist(id);
+    const respBand = await deleteBand(id);
+    const artists = await fetchArtists();
+    const bands = await fetchBands();
+    console.log('alright bois');
+    this.setState({
+      artists,
+      bands
+    })
   }
 
   handleChange(e) {
@@ -257,6 +275,15 @@ class App extends Component {
     });
   }
 
+  async handleJoinBand(bandId){
+    const updateId = await updateArtistBand(bandId)
+
+    //axios call to update artist.band_id
+    //await updateArtist()
+    console.log(bandId);
+    return updateId;
+  }
+
   async handleLogin(e){
   e.preventDefault();
   const { email, password } = this.state;
@@ -288,6 +315,7 @@ class App extends Component {
           handleChange={this.handleChange}
           handleNestedChange={this.handleNestedChange}
           handleCheck={this.handleCheck}
+          handleJoinBand={(bandId)=>this.handleJoinBand(bandId)}
 
           handleSubmit={this.handleSubmit}
           handleLogin={this.handleLogin}
@@ -315,6 +343,8 @@ class App extends Component {
 
           commentForm={this.state.commentForm}
           handleCommentSubmit={this.handleCommentSubmit}
+
+          handleDelete={this.handleDelete}
          />
       </div>
     );

@@ -41,6 +41,8 @@ function Main(props) {
     handleCommentSubmit,
     handleEditArtistToggle,
     handleEditArtist,
+    handleDelete,
+    handleJoinBand
   } = props;
 
   return(
@@ -105,6 +107,7 @@ function Main(props) {
             handleNestedChange={handleNestedChange}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
+
             handleChange={handleChange}
             handleCheck={handleCheck}
             handleSubmit={handleSubmit}
@@ -120,6 +123,8 @@ function Main(props) {
             looking={looking}
             handleEditArtistToggle={handleEditArtistToggle}
             handleEditArtist={handleEditArtist}
+            
+            handleDelete={handleDelete}
           />
         )} />
 
@@ -132,6 +137,8 @@ function Main(props) {
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
             band_img={band_img}
+            handleDelete={handleDelete}
+            handleJoinBand={(bandId) => handleJoinBand(bandId)}
           />
         )} />
 

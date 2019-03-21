@@ -25,15 +25,18 @@ function ArtistProfile(props) {
     handleEditArtistToggle,
     handleEditArtist,
     img,
+    handleDelete
   } = props;
 
   getArtist(artist.id, props.match.params.userid)
+
 
     return(
     <div>
       {artist && artist.first_name}&nbsp;
       {artist.last_name} &nbsp;
       {artist.instrument}
+
 
       <br/>
       <img src={artist.img} alt="artist image"/>
@@ -58,7 +61,8 @@ function ArtistProfile(props) {
         artist_description={artist_description}
         looking={looking}
        />
-
+    <br/>
+    <input onClick={()=>(handleDelete(artist.id))} value='Delete artist' type='submit'/>
     </div>
   )
 }

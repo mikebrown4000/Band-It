@@ -1,14 +1,26 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize({
+let sequelize;
+if (process.env.DATABASE_URL){
+  console.log('called');
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
   database: 'bandit_project_db',
   dialect: 'postgres',
   operatorsAliases: false,
   define: {
     underscored: true,
   }
-});
-
+  });
+  } else {
+  sequelize = new Sequelize({
+    database: 'bandit_project_db',
+    dialect: 'postgres',
+    operatorsAliases: false,
+    define: {
+      underscored: true,
+      }
+    })
+  }
 
 const Artist = sequelize.define('artist', {
   first_name: Sequelize.STRING,
