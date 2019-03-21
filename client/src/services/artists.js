@@ -1,6 +1,26 @@
 import axios from 'axios';
 import { api, updateToken } from './api-helper';
 
+const verifyToken = async () => {
+  const token = localStorage.getItem('authToken');
+  if (token == null) {
+    return false;
+  } else {
+    try {
+      const res = await api.get('/artists/verify', {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      updateToken(token);
+      return res.data;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+}
+
 const fetchArtists = async () => {
   const resp = await api.get('/artists');
   return resp.data;
@@ -12,8 +32,8 @@ const fetchArtist = async (id) => {
 }
 
 const updateArtist = async (data, id) => {
-  const resp = await api.put(`/${id}`, data);
-  return resp.data.artist
+  const resp = await api.put(`/artists/${id}`, data);
+  return resp.data
 }
 
 const deleteArtist = async (data, id) => {
@@ -24,7 +44,6 @@ const deleteArtist = async (data, id) => {
 //use update token when building login route as well
 const createArtist = async (artist) => {
   const mkArtist = await api.post('/artists', artist);
-  console.log(mkArtist.data);
   await updateToken(mkArtist.data.token);
   return mkArtist.data;
 }
@@ -41,5 +60,6 @@ export {
   updateArtist,
   deleteArtist,
   createArtist,
-  loginArtist
+  loginArtist,
+  verifyToken
 }

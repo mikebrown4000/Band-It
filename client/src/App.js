@@ -5,7 +5,7 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand } from './services/bands';
 import { updateToken } from './services/api-helper'
@@ -29,6 +29,7 @@ class App extends Component {
       instrument: '',
       location: '',
       looking: false,
+      edit: false,
       password: '',
       email: '',
       name: '',
@@ -53,17 +54,19 @@ class App extends Component {
     this.getArtist = this.getArtist.bind(this);
     this.getBand = this.getBand.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleEditArtistToggle = this.handleEditArtistToggle.bind(this);
+    this.handleEditArtist = this.handleEditArtist.bind(this);
   }
 
   async componentDidMount() {
     await this.getAllArtists();
     await this.getAllBands();
-    await this.getBand(2, 1)
+    await verifyToken();
   }
 
-  async getArtist(id) {
-    if (id !== this.state.artist.id) {
-      const artist = await fetchArtist(id);
+  async getArtist(artistId, propId) {
+    if (artistId != propId) {
+      const artist = await fetchArtist(parseInt(propId));
       this.setState({
         artist
       });
@@ -86,7 +89,7 @@ class App extends Component {
 
   async getBand(bandId, propId){
     if (bandId != propId){
-      const band = await fetchBand(propId);
+      const band = await fetchBand(parseInt(propId));
       this.setState({
         band
       })
@@ -174,10 +177,12 @@ class App extends Component {
       password,
       email
     });
+
     const artists = await fetchArtists();
     this.setState({
       artists
     });
+
     this.setState({
       artists,
       first_name: '',
@@ -192,6 +197,53 @@ class App extends Component {
       email: ''
     })
     this.props.history.push(`/login`);
+  }
+
+  async handleEditArtistToggle(e) {
+    e.preventDefault();
+    const { artist } = this.state
+    this.setState({
+      first_name: artist.first_name,
+      last_name: artist.last_name,
+      age: artist.age,
+      img: artist.img,
+      artist_description: artist.artist_description,
+      instrument: artist.instrument,
+      location: artist.location,
+      looking: artist.looking,
+    })
+  }
+
+  async handleEditArtist(id) {
+    const {
+      first_name,
+      last_name,
+      age,
+      img,
+      artist_description,
+      instrument,
+      location,
+      looking,
+    } = this.state;
+    const artistUpdate = {
+      first_name,
+      last_name,
+      age,
+      img,
+      artist_description,
+      instrument,
+      location,
+      looking,
+    }
+
+    await updateArtist(artistUpdate, id);
+    const artist = await fetchArtist();
+    const artists = await fetchArtists();
+    this.setState({
+      artist,
+      artists,
+      edit:false,
+    })
   }
 
 
@@ -217,14 +269,12 @@ class App extends Component {
  }
 
  async handleLogout(e){
-   console.log('hi');
-   updateToken();
+   localStorage.removeItem('authToken')
    this.props.history.push(`/login`);
  }
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout}/>
@@ -232,6 +282,8 @@ class App extends Component {
           artists={this.state.artists}
           getArtist={this.getArtist}
           artist={this.state.artist}
+          handleEditArtistToggle={this.handleEditArtistToggle}
+          handleEditArtist={this.handleEditArtist}
 
           handleChange={this.handleChange}
           handleNestedChange={this.handleNestedChange}

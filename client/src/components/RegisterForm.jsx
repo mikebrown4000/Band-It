@@ -15,7 +15,8 @@ function RegisterForm(props) {
     looking,
     handleCheck,
     handleSubmit,
-    img
+    img,
+    register,
   } = props;
 
   return(
@@ -35,19 +36,23 @@ function RegisterForm(props) {
         name='last_name'
         value={last_name} />
 
-        <input
-        onChange={handleChange}
-        type='text'
-        placeholder='Email'
-        name='email'
-        value={email} />
+        {register &&
+          <input
+          onChange={handleChange}
+          type='text'
+          placeholder='Email'
+          name='email'
+          value={email} />
+        }
 
-        <input
-        onChange={handleChange}
-        type='password'
-        placeholder='Password'
-        name='password'
-        value={password} />
+        {register &&
+          <input
+          onChange={handleChange}
+          type='password'
+          placeholder='Password'
+          name='password'
+          value={password} />
+        }
 
         <input
         onChange={handleChange}

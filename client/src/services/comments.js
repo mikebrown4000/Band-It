@@ -20,7 +20,6 @@ const fetchComments = async (id) => {
 //
 const createComment = async (content) => {
   const mkComment = await api.post('/comments', content);
-  // await updateToken(mkComment.data.token);
   return mkComment.data;
 }
 

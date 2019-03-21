@@ -17,13 +17,14 @@ const restrict = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     const data = jwt.verify(token, SECRET);
-    const user = await Artist.findByPk(data.id);
+    const artist = await Artist.findByPk(data.id);
 
-    res.locals.user = user;
+    res.locals.artist = artist;
 
     next();
   } catch (e) {
-    res.status(401).send('Not Authorized');
+    next(e)
+    console.error(e);
   }
 }
 
