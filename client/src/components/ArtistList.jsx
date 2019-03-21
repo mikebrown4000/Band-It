@@ -14,15 +14,16 @@ changeThisName(id) {
   render() {
     const { artists, getArtist } = this.props;
     return(
-      <div>
+      <div className='artist-list-container'>
         {artists.map(artist => (
           <div className='artists-list' key={artist.id}>
             <h3>{artist.first_name}</h3>
             {artist.first_name}&nbsp;
             {artist.last_name}&nbsp;
+            <br/>
             {artist.instrument}
             <br/>
-            <img src={artist.img} alt="image" width={130}/>
+            <img className='artist-list-img' src={artist.img} alt="image" width={130}/>
 
             <div>
               <a href='' id='view-profile' onClick={(e) => {

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #E8F3F8;
 }
 
 /*--Selectors--*/
@@ -7,6 +8,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  background-color: #E8F3F8;
 }
 
 a {
@@ -60,8 +62,22 @@ a {
   font-family: 'Source Code Pro', monospace;
 }
 
+.artist-list-container{
+  display: flex;
+  padding: 30px;
+}
+
 .artists-list {
-  background: lightgrey;
+  font-family: 'Source Code Pro', monospace;
+  color: #E8F3F8;
+  width: 30%;
+  border-radius: 10px;
+  background: #A4BCC2;
+  margin: 10px;
+}
+
+.artist-list-img{
+  border-radius: 10px;
 }
 
 .bands-list {
@@ -82,6 +98,8 @@ a {
 
 /* View Profile */
 #view-profile {
+  margin-top: 10px;
+  margin-bottom: 30px;
   color: #227989;
 }
 
