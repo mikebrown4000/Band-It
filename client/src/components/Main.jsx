@@ -39,7 +39,8 @@ function Main(props) {
     getBand,
     commentForm,
     handleCommentSubmit,
-    handleDelete
+    handleDelete,
+    handleJoinBand
   } = props;
 
   return(
@@ -115,6 +116,7 @@ function Main(props) {
             handleCommentSubmit={handleCommentSubmit}
             band_img={band_img}
             handleDelete={handleDelete}
+            handleJoinBand={(bandId) => handleJoinBand(bandId)}
           />
         )} />
 

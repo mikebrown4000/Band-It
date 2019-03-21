@@ -5,7 +5,7 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, updateArtist, fetchArtist, loginArtist, deleteArtist } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, updateArtistBand } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
@@ -54,12 +54,14 @@ class App extends Component {
     this.getBand = this.getBand.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleJoinBand = this.handleJoinBand.bind(this);
   }
 
   async componentDidMount() {
     await this.getAllArtists();
     await this.getAllBands();
   }
+
 
   async getArtist(id) {
     if (id !== this.state.artist.id) {
@@ -218,6 +220,15 @@ class App extends Component {
     });
   }
 
+  async handleJoinBand(bandId){
+    const updateId = await updateArtistBand(bandId)
+
+    //axios call to update artist.band_id
+    //await updateArtist()
+    console.log(bandId);
+    return updateId;
+  }
+
   async handleLogin(e){
   e.preventDefault();
   const { email, password } = this.state;
@@ -249,6 +260,7 @@ class App extends Component {
           handleChange={this.handleChange}
           handleNestedChange={this.handleNestedChange}
           handleCheck={this.handleCheck}
+          handleJoinBand={(bandId)=>this.handleJoinBand(bandId)}
 
           handleSubmit={this.handleSubmit}
           handleLogin={this.handleLogin}

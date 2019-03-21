@@ -16,6 +16,10 @@ const updateArtist = async (data, id) => {
   return resp.data.artist
 }
 
+const updateArtistBand = async (bandId) => {
+  const resp = await api.post(`/artists/bands/${bandId}`)
+  return resp.data.id
+}
 
 //use update token when building login route as well
 const createArtist = async (artist) => {
@@ -43,5 +47,6 @@ export {
   updateArtist,
   deleteArtist,
   createArtist,
-  loginArtist
+  loginArtist,
+  updateArtistBand
 }
