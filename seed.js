@@ -10,8 +10,10 @@ async function seed() {
     last_name: 'Yun',
     email: 'jy@gmail.com',
     age: 25,
+    artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Queens',
     instrument: 'Vocal',
+    img: 'https://www.drawingnow.com/file/videos/image/how-to-draw-panda-dabbing.jpg'
   });
 
   const secondArtist = await Artist.create({
@@ -19,8 +21,10 @@ async function seed() {
     last_name: 'Brown',
     email: 'mb@gmail.com',
     age: 25,
+    artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Brooklyn',
-    instrument: 'Synth'
+    instrument: 'Synth',
+    img: 'https://res.cloudinary.com/teepublic/image/private/s--A7iKK_5Y--/t_Preview/b_rgb:0195c3,c_limit,f_jpg,h_630,q_90,w_630/v1497239277/production/designs/1661769_1.jpg'
   });
 
   const thirdArtist = await Artist.create({
@@ -28,8 +32,10 @@ async function seed() {
     last_name: 'H',
     email: 'ah@gmail.com',
     age: 25,
+    artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Brooklyn',
-    instrument: 'Guitar'
+    instrument: 'Guitar',
+    img: 'https://media.kidozi.com/unsafe/600x600/img.kidozi.com/design/600/600/2c5fac/35350/e26058f124a87dfd05e1843950de9193.png.jpg'
   });
 
   const fourthArtist = await Artist.create({
@@ -37,14 +43,17 @@ async function seed() {
     last_name: 'Morrissey',
     email: 'rm@gmail.com',
     age: 28,
+    artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula, id sagittis velit sollicitudin non. Donec fringilla, libero sit amet vestibulum commodo, augue nunc dapibus libero, sodales euismod augue urna vestibulum velit. Vivamus eu purus a nunc pharetra porta quis sed turpis. Nullam vulputate id quam quis elementum. Aliquam suscipit egestas suscipit. Ut sollicitudin sed sapien in convallis. Nam cursus lobortis aliquam. Curabitur libero lacus, porttitor id dignissim a, facilisis a quam. Cras id eros et nulla gravida rhoncus vitae a dolor. Fusce volutpat elit nibh, mattis viverra magna vestibulum bibendum.',
     location: 'Queens',
-    instrument: 'Drums'
+    instrument: 'Drums',
+    img: 'https://ae01.alicdn.com/kf/UT8Ry_ZXqNbXXagOFbXb/14-14-7CM-Middle-Finger-Personality-Cute-Panda-Car-Stickers-Classic-Creative-Car-Styling-Decoration-Accessories.jpg_640x640.jpg'
   });
 
   const band = await Band.create({
     name: 'Scones',
-    description: 'Queens',
-    genre: 'Rock'
+    band_description: 'This is a description',
+    genre: 'Rock',
+    band_img: 'https://i.pinimg.com/originals/a8/4d/d8/a84dd8802aa91c3b42ece5eefaa16dbd.jpg'
   });
 
   commentOne = await Comment.create({

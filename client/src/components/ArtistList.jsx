@@ -17,10 +17,15 @@ changeThisName(id) {
       <div>
         {artists.map(artist => (
           <div className='artists-list' key={artist.id}>
-            {artist.first_name}
-            {artist.last_name}
+            <h3>{artist.first_name}</h3>
+            {artist.first_name}&nbsp;
+            {artist.last_name}&nbsp;
+            {artist.instrument}
+            <br/>
+            <img src={artist.img} alt="image" width={130}/>
+
             <div>
-              <a href='' onClick={(e) => {
+              <a href='' id='view-profile' onClick={(e) => {
                 e.preventDefault();
                 this.changeThisName(artist.id)
               }}>View Profile</a>

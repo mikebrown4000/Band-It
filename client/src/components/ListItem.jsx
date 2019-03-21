@@ -30,7 +30,7 @@ class ListItem extends Component {
 
   render(){
     //hand it an object with these fields and this component will work for whatever you need listed
-    const { title, endpoint, img, field1, field2 } = this.props.listItem;
+    const { title, endpoint, band_img, field1, field2 } = this.props.listItem;
     const styleObj = {
       display: this.toggleHeight()
     };
@@ -43,7 +43,7 @@ class ListItem extends Component {
           <Link className='list-item-header-link' to={endpoint}>
             <h2>{title}</h2>
             <div className='img-holder'>
-              <img src={img} alt='poster'/>
+              <img src={band_img} alt='poster'/>
             </div>
           </Link>
         </div>

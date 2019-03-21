@@ -20,7 +20,7 @@ artistRouter.get('/:id', async (req, res) => {
 // route to create a new user
 artistRouter.post('/', async (req, res) => {
   try {
-    const { first_name, last_name, email, age, location, instrument, password, looking } = req.body;
+    const { first_name, last_name, email, age, location, instrument, password, looking, img, artist_description } = req.body;
     const password_digest = await hash(password);
 
     const artist = await Artist.create({
@@ -31,7 +31,9 @@ artistRouter.post('/', async (req, res) => {
       location,
       instrument,
       password_digest,
-      looking
+      looking,
+      artist_description,
+      img
     });
     const artistData = {
       ...artist.dataValues

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
@@ -20,8 +21,10 @@ class App extends Component {
       artist: {},
       bands: [],
       band: {},
+      band_img: '',
       first_name: '',
       last_name: '',
+      artist_description: '',
       age: '',
       instrument: '',
       location: '',
@@ -29,12 +32,9 @@ class App extends Component {
       password: '',
       email: '',
       name: '',
-      description: '',
+      img: '',
+      band_description: '',
       genre: '',
-      formErrors:{
-        email: '',
-        password: '',
-      },
       commentForm: {
         content: '',
         commenter_id: '',
@@ -101,8 +101,7 @@ class App extends Component {
   };
 
   handleNestedChange(e) {
-    const { name, value, form } = e.target;
-    console.log(form);
+    const { name, value } = e.target;
     this.setState(prevState =>({
       commentForm: {
         ...prevState.commentForm,
@@ -121,24 +120,29 @@ class App extends Component {
     ev.preventDefault();
     const {
       name,
-      description,
-      genre
+      band_description,
+      genre,
+      band_img
     } = this.state;
 
     const newBand = await createBand({
       name,
-      description,
-      genre
+      band_description,
+      genre,
+      band_img
     });
+
     const bands = await fetchBands();
     this.setState({
       bands
     })
     this.setState({
       name: '',
-      description: '',
-      genre: ''
+      band_description: '',
+      genre: '',
+      band_img: ''
     })
+    this.props.history.push(`/bands`);
   }
 
 
@@ -148,17 +152,22 @@ class App extends Component {
       first_name,
       last_name,
       age,
+      img,
+      artist_description,
       instrument,
       location,
       looking,
       password,
-      email
+      email,
+
     } = this.state;
 
     const newArtist = await createArtist({
       first_name,
       last_name,
       age,
+      img,
+      artist_description,
       instrument,
       location,
       looking,
@@ -174,20 +183,23 @@ class App extends Component {
       first_name: '',
       last_name: '',
       age: '',
+      img: '',
+      artist_description: '',
       instrument: '',
       location: '',
       looking: '',
       password: '',
       email: ''
     })
+    this.props.history.push(`/login`);
   }
 
 
   async handleCommentSubmit(e) {
     e.preventDefault();
-    const { content } = this.state.commentForm;
-    const newComment = await createComment(content);
-    const comments = await fetchComments();
+    const { content, commenter_id, topic_id } = this.state.commentForm;
+    const newComment = await createComment({content, commenter_id: 2, topic_id: 1});
+    const comments = await fetchComments(2);
     this.setState({
       comments
     });
@@ -201,15 +213,18 @@ class App extends Component {
       email: '',
       password: '',
    })
+   this.props.history.push(`/bands`);
  }
 
  async handleLogout(e){
    console.log('hi');
    updateToken();
+   this.props.history.push(`/login`);
  }
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout}/>
@@ -231,6 +246,7 @@ class App extends Component {
           location={this.state.location}
           instrument={this.state.instrument}
           age={this.state.age}
+          artist_description={this.state.artist_description}
           img={this.state.img}
 
 
@@ -241,8 +257,9 @@ class App extends Component {
           handleCreateBand={this.handleCreateBand}
           genre={this.state.genre}
           name={this.state.name}
-          description={this.state.description}
-          formErrors={this.state.formErrors}
+          band_description={this.state.band_description}
+          band_img={this.state.band_img}
+
 
           commentForm={this.state.commentForm}
           handleCommentSubmit={this.handleCommentSubmit}
@@ -252,4 +269,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
