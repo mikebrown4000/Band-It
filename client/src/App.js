@@ -57,6 +57,7 @@ class App extends Component {
 
     this.handleEditArtistToggle = this.handleEditArtistToggle.bind(this);
     this.handleEditArtist = this.handleEditArtist.bind(this);
+    this.handleDeleteArtist = this.handleDeleteArtist.bind(this);
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleJoinBand = this.handleJoinBand.bind(this);
@@ -102,16 +103,24 @@ class App extends Component {
   }
 
 
-  async handleDelete(id) {
+
+  async handleDeleteArtist(id){
     const respArtist = await deleteArtist(id);
-    const respBand = await deleteBand(id);
     const artists = await fetchArtists();
-    const bands = await fetchBands();
-    console.log('alright bois');
+
     this.setState({
       artists,
+    })
+    this.props.history.push(`/artists`);
+  }
+
+  async handleDelete(id) {
+    const respBand = await deleteBand(id);
+    const bands = await fetchBands();
+    this.setState({
       bands
     })
+    this.props.history.push(`/bands`);
   }
 
   handleChange(e) {
@@ -280,7 +289,6 @@ class App extends Component {
 
     //axios call to update artist.band_id
     //await updateArtist()
-    console.log(bandId);
     return updateId;
   }
 
@@ -344,6 +352,7 @@ class App extends Component {
           commentForm={this.state.commentForm}
           handleCommentSubmit={this.handleCommentSubmit}
 
+          handleDeleteArtist={this.handleDeleteArtist}
           handleDelete={this.handleDelete}
          />
       </div>
