@@ -21,11 +21,6 @@ const updateArtistBand = async (bandId) => {
   return resp.data.id
 }
 
-const deleteArtist = async (data, id) => {
-  const resp = await api.delete(`/${id}`);
-  return resp.data;
-}
-
 //use update token when building login route as well
 const createArtist = async (artist) => {
   const mkArtist = await api.post('/artists', artist);
@@ -34,11 +29,17 @@ const createArtist = async (artist) => {
   return mkArtist.data;
 }
 
+const deleteArtist = async (id) => {
+  const delArtist = await api.delete(`/artists/${id}`);
+  return delArtist.data
+}
+
 const loginArtist = async (loginData) => {
   const artist = await api.post('/artists/login', loginData);
   updateToken(artist.data.token);
   return artist.data
 }
+
 
 export {
   fetchArtists,

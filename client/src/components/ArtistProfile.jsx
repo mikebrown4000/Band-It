@@ -2,7 +2,8 @@ import React from 'react';
 import CommentForm from './CommentForm';
 
 function ArtistProfile(props) {
-  const { artist, handleCommentSubmit, handleNestedChange, handleNestedCheck, commentForm } = props;
+  const { artist, handleCommentSubmit, handleNestedChange, handleNestedCheck, commentForm, handleDelete } = props;
+  console.log(artist.id);
   return(
     <div>
 
@@ -16,6 +17,7 @@ function ArtistProfile(props) {
     <p>About me:
     {artist.artist_description}</p>
     <CommentForm {...props} commentForm={commentForm} />
+    <input onClick={()=>(handleDelete(artist.id))} value='Delete artist' type='submit'/>
 
     </div>
   )
