@@ -32,14 +32,16 @@ function  CreateBandForm(props){
       onChange={handleChange}/>
 
       <input
+      type="text"
+      name="band_img"
+      placeholder="Insert the image"
+      value={band_img}
+      onChange={handleChange} />
+
+      <input
       type="submit"
       onSubmit={handleCreateBand}/>
 
-      <input
-      type="text"
-      name="band_img"
-      value={band_img}
-      onChange={handleChange} />
     </form>
   )
 }
