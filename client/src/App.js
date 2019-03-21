@@ -5,7 +5,7 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist } from './services/artists';
+import { createArtist, fetchArtists, updateArtist, fetchArtist, loginArtist, deleteArtist } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand } from './services/bands';
 import { updateToken } from './services/api-helper'
@@ -53,12 +53,12 @@ class App extends Component {
     this.getArtist = this.getArtist.bind(this);
     this.getBand = this.getBand.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   async componentDidMount() {
     await this.getAllArtists();
     await this.getAllBands();
-    await this.getBand(2, 1)
   }
 
   async getArtist(id) {
@@ -91,6 +91,16 @@ class App extends Component {
         band
       })
     }
+  }
+
+
+  async handleDelete(id) {
+    const resp = await deleteArtist(id);
+    const artists = await fetchArtists();
+    console.log('alright bois');
+    this.setState({
+      artists,
+    })
   }
 
   handleChange(e) {
@@ -263,6 +273,8 @@ class App extends Component {
 
           commentForm={this.state.commentForm}
           handleCommentSubmit={this.handleCommentSubmit}
+
+          handleDelete={this.handleDelete}
          />
       </div>
     );
