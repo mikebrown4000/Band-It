@@ -44,7 +44,7 @@ function ArtistProfile(props) {
       <p>About me:
         {artist.artist_description}
       </p>
-      <CommentForm {...props} commentForm={commentForm} />
+      <CommentForm {...props} commentForm={commentForm} artist={artist} />
       <button onClick={handleEditArtistToggle}>edit</button>
       <RegisterForm
         handleChange={handleChange}
