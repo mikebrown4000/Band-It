@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { api, updateToken } from './api-helper';
 
-const fetchComments = async () => {
-  const resp = await api.get(`/`);
+const fetchComments = async (id) => {
+  const resp = await api.get(`/comments/by/${id}`);
   return resp.data;
 };
 
@@ -18,9 +18,9 @@ const fetchComments = async () => {
 // }
 
 //
-const createComment = async (artist) => {
-  const mkComment = await api.post('/', artist);
-  await updateToken(mkComment.data.token);
+const createComment = async (content) => {
+  const mkComment = await api.post('/comments', content);
+  // await updateToken(mkComment.data.token);
   return mkComment.data;
 }
 

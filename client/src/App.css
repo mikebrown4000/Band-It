@@ -17,7 +17,7 @@ a:visited {
   color: #C2CBCE;
 }
 a:hover {
-  color:    #C2CBCE;
+  color: #C2CBCE;
 }
 a {
   color: #C2CBCE;
@@ -49,6 +49,8 @@ a {
 
 /* Nav */
 .main-nav {
+  width: auto;
+  height: 100px;
   padding-top: 140px;
 }
 .main-nav a {
@@ -56,15 +58,6 @@ a {
   padding-left: 10px;
   padding-right: 10px;
   font-family: 'Source Code Pro', monospace;
-}
-
-
-/* BodyBackground */
-
-
-.main-nav {
-  width: auto;
-  height: 100px;
 }
 
 .artists-list {
@@ -87,6 +80,10 @@ a {
   margin-left: 25px;
 }
 
+/* View Profile */
+#view-profile {
+  color: #227989;
+}
 
 
 

@@ -15,13 +15,13 @@ export default (props) => {
       value={content}
     />
 
-    <input
+    {/*}<input
       onClick={handleNestedCheck}
       type='checkbox'
       name='as_band'
       form='commentForm'
       value={as_band}
-    />
+    />*/}
 
     <input value='Comment' type='submit'/>
     </form>

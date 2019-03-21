@@ -101,8 +101,7 @@ class App extends Component {
   };
 
   handleNestedChange(e) {
-    const { name, value, form } = e.target;
-    console.log(form);
+    const { name, value } = e.target;
     this.setState(prevState =>({
       commentForm: {
         ...prevState.commentForm,
@@ -198,9 +197,9 @@ class App extends Component {
 
   async handleCommentSubmit(e) {
     e.preventDefault();
-    const { content } = this.state.commentForm;
-    const newComment = await createComment(content);
-    const comments = await fetchComments();
+    const { content, commenter_id, topic_id } = this.state.commentForm;
+    const newComment = await createComment({content, commenter_id: 2, topic_id: 1});
+    const comments = await fetchComments(2);
     this.setState({
       comments
     });
@@ -225,6 +224,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout}/>

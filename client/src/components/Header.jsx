@@ -10,8 +10,8 @@ function Header(props) {
           <Link to='/'>Home</Link>
           <Link to='/artists'>Artists</Link>
           <Link to='/bands'>Bands</Link>
-          <Link to ='/createband'>Create your band</Link>
-          <Link to ='/createmusician'>Create a Musician</Link>
+          <Link to ='/createband'>Create Your band</Link>
+          <Link to ='/createmusician'>Create A Musician</Link>
           <button id='logout-button' onClick={handleLogout}>Log Out</button>
         </nav>
         <div>

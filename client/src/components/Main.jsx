@@ -97,6 +97,9 @@ function Main(props) {
             {...props} artist={artist}
             img={img}
             artist_description={artist_description}
+            handleNestedChange={handleNestedChange}
+            commentForm={commentForm}
+            handleCommentSubmit={handleCommentSubmit}
           />
         )} />
 
