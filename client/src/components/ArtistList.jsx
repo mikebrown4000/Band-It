@@ -17,8 +17,11 @@ changeThisName(id) {
       <div>
         {artists.map(artist => (
           <div className='artists-list' key={artist.id}>
-            {artist.first_name}
-            {artist.last_name}
+            {artist.first_name}&nbsp;
+            {artist.last_name}&nbsp;
+            {artist.instrument}
+            <br/>
+            <img src={artist.img} alt="image" width={130}/>
             <div>
               <a href='' onClick={(e) => {
                 e.preventDefault();

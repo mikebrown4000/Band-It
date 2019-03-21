@@ -11,6 +11,7 @@ function RegisterForm(props) {
     location,
     instrument,
     age,
+    artist_description,
     looking,
     handleCheck,
     handleSubmit,
@@ -71,10 +72,17 @@ function RegisterForm(props) {
 
         <input
         onChange={handleChange}
-        type='img'
+        type='text'
         placeholder='Image'
         name='img'
         value={img} />
+
+        <input
+        onChange={handleChange}
+        type="text"
+        placeholder="add your description"
+        name="artist_description"
+        value={artist_description} />
 
         <label htmlFor='looking'>Looking For Band? </label>
         <input onClick={handleCheck} type='checkbox' name='looking' value={looking} />
