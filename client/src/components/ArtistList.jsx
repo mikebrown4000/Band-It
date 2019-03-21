@@ -18,6 +18,12 @@ changeThisName(id) {
         {artists.map(artist => (
           <div className='artists-list' key={artist.id}>
             <h3>{artist.first_name}</h3>
+            {artist.first_name}&nbsp;
+            {artist.last_name}&nbsp;
+            {artist.instrument}
+            <br/>
+            <img src={artist.img} alt="image" width={130}/>
+
             <div>
               <a href='' id='view-profile' onClick={(e) => {
                 e.preventDefault();

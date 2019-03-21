@@ -3,7 +3,7 @@ import CommentForm from './CommentForm'
 
 export default (props) => {
   const { commentForm, band, handleCommentSubmit, handleNestedChange } = props;
-  const { name, description, img, genre, id } = band;
+  const { name, band_description, band_img, genre, id } = band;
   props.getBand(id, props.match.params.id)
   return(
     <div>
@@ -11,13 +11,13 @@ export default (props) => {
           {name}
         </h2>
         <div>
-          {img}
+          <img src={band_img} alt="Band Img"/>
         </div>
         <div>
           {genre}
         </div>
         <div>
-          {description}
+          {band_description}
         </div>
         <CommentForm {...props} commentForm={commentForm}/>
     </div>

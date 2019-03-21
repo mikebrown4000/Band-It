@@ -19,6 +19,8 @@ function Main(props) {
     first_name,
     last_name,
     email,
+    img,
+    artist_description,
     password,
     location,
     instrument,
@@ -29,12 +31,12 @@ function Main(props) {
     handleCreateBand,
     handleLogin,
     name,
-    description,
+    band_description,
     genre,
     bands,
     band,
+    band_img,
     getBand,
-    formErrors,
     commentForm,
     handleCommentSubmit
   } = props;
@@ -47,7 +49,6 @@ function Main(props) {
         handleLogin={handleLogin}
         handleChange={handleChange}
         handleLogin={handleLogin}
-        formErrors={formErrors}
         />
       )} />
       <Route exact path='/createmusician' render={(props) => (
@@ -62,6 +63,8 @@ function Main(props) {
           location={location}
           instrument={instrument}
           age={age}
+          img={img}
+          artist_description={artist_description}
           looking={looking}
          />
       )}/>
@@ -70,6 +73,7 @@ function Main(props) {
           <ArtistList
             artists={artists}
             getArtist={getArtist}
+            img={img}
           />
         )}/>
 
@@ -78,8 +82,9 @@ function Main(props) {
             handleChange={handleChange}
             handleCreateBand={handleCreateBand}
             genre={genre}
-            description={description}
+            band_description={band_description}
             name={name}
+            band_img={band_img}
            />
         )}/>
         <Route exact path='/bands' render={(props) => (
@@ -89,8 +94,9 @@ function Main(props) {
         )} />
         <Route path='/artists/profile/:userid' render={(props) => (
           <ArtistProfile
-            {...props}
-            artist={artist}
+            {...props} artist={artist}
+            img={img}
+            artist_description={artist_description}
             handleNestedChange={handleNestedChange}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
@@ -105,6 +111,7 @@ function Main(props) {
             handleNestedChange={handleNestedChange}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
+            band_img={band_img}
           />
         )} />
 
