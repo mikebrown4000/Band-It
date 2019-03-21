@@ -24,7 +24,7 @@ function LoginForm(props){
         <input
         onChange={handleChange}
         minLength={3}
-        type='text'
+        type='password'
         placeholder='Password'
         name='password'
         value={password} />

@@ -42,6 +42,7 @@ function Main(props) {
     handleEditArtistToggle,
     handleEditArtist,
     handleDelete,
+    handleDeleteArtist,
     handleJoinBand
   } = props;
 
@@ -123,8 +124,9 @@ function Main(props) {
             looking={looking}
             handleEditArtistToggle={handleEditArtistToggle}
             handleEditArtist={handleEditArtist}
-            
+
             handleDelete={handleDelete}
+            handleDeleteArtist={handleDeleteArtist}
           />
         )} />
 
