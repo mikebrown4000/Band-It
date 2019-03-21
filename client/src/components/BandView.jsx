@@ -11,7 +11,7 @@ export default (props) => {
           {name}
         </h2>
         <div>
-          {band_img}
+          <img src={band_img} alt="Band Img"/>
         </div>
         <div>
           {genre}
