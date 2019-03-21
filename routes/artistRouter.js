@@ -4,6 +4,10 @@ const { hash, encode, compare, restrict } = require('../auth')
 
 const artistRouter = Router();
 
+artistRouter.get('/verify', restrict, async (req, res) => {
+  res.json({artist: res.locals.artist})
+});
+
 // route to get all artists
 artistRouter.get('/', async (req, res) => {
   const artists = await Artist.findAll();
@@ -85,14 +89,13 @@ artistRouter.post('/login', async (req, res) => {
 artistRouter.put('/:id', restrict, async (req, res) => {
   try {
     const { id } = req.params;
-
     const artist = await Artist.findByPk(id);
-    if (artist !== null) {
+    if (id == res.locals.artist.dataValues.id) {
       await artist.update(req.body);
       res.json(artist)
     }
   } catch(e){
-    next(e);
+    res.status(401).send('Invalid Credentials');
   }
 })
 
@@ -126,6 +129,5 @@ artistRouter.delete('/:id', restrict, async (req, res) => {
     res.status(404).send('Artist not found');
   }
 });
-
 
 module.exports = artistRouter;

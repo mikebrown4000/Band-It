@@ -12,7 +12,7 @@ function BandList(props){
         const listItem = {
           title: name,
           endpoint: `/bands/profile/${id}`,
-          band_img,
+          img: band_img,
           field1: band_description,
           field2: genre,
         }

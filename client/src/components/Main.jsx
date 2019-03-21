@@ -39,6 +39,8 @@ function Main(props) {
     getBand,
     commentForm,
     handleCommentSubmit,
+    handleEditArtistToggle,
+    handleEditArtist,
     handleDelete,
     handleJoinBand
   } = props;
@@ -68,6 +70,7 @@ function Main(props) {
           img={img}
           artist_description={artist_description}
           looking={looking}
+          register={true}
          />
       )}/>
        <div>
@@ -96,12 +99,31 @@ function Main(props) {
         )} />
         <Route path='/artists/profile/:userid' render={(props) => (
           <ArtistProfile
-            {...props} artist={artist}
+            {...props}
+            artist={artist}
             img={img}
+            getArtist={getArtist}
             artist_description={artist_description}
             handleNestedChange={handleNestedChange}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
+
+            handleChange={handleChange}
+            handleCheck={handleCheck}
+            handleSubmit={handleSubmit}
+            first_name={first_name}
+            last_name={last_name}
+            email={email}
+            password={password}
+            location={location}
+            instrument={instrument}
+            age={age}
+            img={img}
+            artist_description={artist_description}
+            looking={looking}
+            handleEditArtistToggle={handleEditArtistToggle}
+            handleEditArtist={handleEditArtist}
+            
             handleDelete={handleDelete}
           />
         )} />
