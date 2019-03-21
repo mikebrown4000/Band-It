@@ -13,7 +13,7 @@ const sequelize = new Sequelize({
 const Artist = sequelize.define('artist', {
   first_name: Sequelize.STRING,
   last_name: Sequelize.STRING,
-  artist_description: Sequelize.STRING,
+  artist_description: Sequelize.TEXT,
   email: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -31,9 +31,9 @@ const Artist = sequelize.define('artist', {
 
 const Band = sequelize.define('band', {
   name: Sequelize.STRING,
-  description: Sequelize.STRING,
+  band_description: Sequelize.TEXT,
   genre: Sequelize.STRING,
-  img: Sequelize.STRING,
+  band_img: Sequelize.STRING,
 });
 
 const Comment = sequelize.define('comment', {

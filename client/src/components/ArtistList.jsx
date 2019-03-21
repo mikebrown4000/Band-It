@@ -19,6 +19,7 @@ changeThisName(id) {
           <div className='artists-list' key={artist.id}>
             {artist.first_name}
             {artist.last_name}
+            {artist.instrument}
             <img src={artist.img} alt="image" width={130}/>
             <div>
               <a href='' onClick={(e) => {

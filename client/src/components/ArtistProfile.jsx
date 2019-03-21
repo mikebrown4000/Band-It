@@ -9,6 +9,7 @@ function ArtistProfile(props) {
     <br/>
     {artist.instrument}
     <img src={artist.img} alt="artist image"/>
+    {artist.artist_description}
     </div>
   )
 }

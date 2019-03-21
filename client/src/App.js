@@ -21,8 +21,10 @@ class App extends Component {
       artist: {},
       bands: [],
       band: {},
+      band_img: '',
       first_name: '',
       last_name: '',
+      artist_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur feugiat neque nec porttitor. Phasellus consectetur aliquet mi. Praesent sit amet porttitor turpis. Mauris lacinia mollis consequat. Donec ac fermentum metus, eu commodo nisi. Nullam cursus quam ut euismod euismod. Vestibulum rutrum accumsan ligula',
       age: '',
       instrument: '',
       location: '',
@@ -30,13 +32,9 @@ class App extends Component {
       password: '',
       email: '',
       name: '',
-      img: '',
-      description: '',
+      img: 'https://media.sweetwater.com/api/i/f-webp__b-original__w-300__h-300__bg-ffffff__q-85__ha-5b257506fc84c2fe__hmac-414d6f12d8592a0de97384a104f1aa01a1adae7b/images/items/350/K14ceBEV8.jpg',
+      band_description: '',
       genre: '',
-      formErrors:{
-        email: '',
-        password: '',
-      },
       commentForm: {
         content: '',
         commenter_id: '',
@@ -123,14 +121,16 @@ class App extends Component {
     ev.preventDefault();
     const {
       name,
-      description,
-      genre
+      band_description,
+      genre,
+      band_img
     } = this.state;
 
     const newBand = await createBand({
       name,
-      description,
-      genre
+      band_description,
+      genre,
+      band_img
     });
 
     const bands = await fetchBands();
@@ -139,8 +139,9 @@ class App extends Component {
     })
     this.setState({
       name: '',
-      description: '',
-      genre: ''
+      band_description: '',
+      genre: '',
+      band_img: ''
     })
     this.props.history.push(`/bands`);
   }
@@ -152,6 +153,8 @@ class App extends Component {
       first_name,
       last_name,
       age,
+      img,
+      artist_description,
       instrument,
       location,
       looking,
@@ -164,6 +167,8 @@ class App extends Component {
       first_name,
       last_name,
       age,
+      img,
+      artist_description,
       instrument,
       location,
       looking,
@@ -179,6 +184,8 @@ class App extends Component {
       first_name: '',
       last_name: '',
       age: '',
+      img: '',
+      artist_description: '',
       instrument: '',
       location: '',
       looking: '',
@@ -239,6 +246,7 @@ class App extends Component {
           location={this.state.location}
           instrument={this.state.instrument}
           age={this.state.age}
+          artist_description={this.state.artist_description}
           img={this.state.img}
 
 
@@ -249,8 +257,9 @@ class App extends Component {
           handleCreateBand={this.handleCreateBand}
           genre={this.state.genre}
           name={this.state.name}
-          description={this.state.description}
-          formErrors={this.state.formErrors}
+          band_description={this.state.band_description}
+          band_img={this.state.band_img}
+          
 
           commentForm={this.state.commentForm}
           handleCommentSubmit={this.handleCommentSubmit}

@@ -4,8 +4,9 @@ function  CreateBandForm(props){
   const { handleChange,
           handleCreateBand,
           name,
-          description,
-          genre } = props;
+          band_description,
+          genre,
+          band_img } = props;
 
   return(
     <form onSubmit={handleCreateBand}>
@@ -18,9 +19,9 @@ function  CreateBandForm(props){
 
       <input
       type="text"
-      name="description"
+      name="band_description"
       placeholder="Describe Your Band"
-      value={description}
+      value={band_description}
       onChange={handleChange}/>
 
       <input
@@ -33,6 +34,12 @@ function  CreateBandForm(props){
       <input
       type="submit"
       onSubmit={handleCreateBand}/>
+
+      <input
+      type="text"
+      name="band_img"
+      value={band_img}
+      onChange={handleChange} />
     </form>
   )
 }
