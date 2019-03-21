@@ -265,20 +265,17 @@ class App extends Component {
     }
 
     await updateArtist(artistUpdate, id);
-    const artist = await fetchArtist();
     const artists = await fetchArtists();
     this.setState({
-      artist,
-      artists,
+      artist: {},
       edit:false,
     })
   }
 
 
-  async handleCommentSubmit(e) {
-    e.preventDefault();
-    const { content, commenter_id, topic_id } = this.state.commentForm;
-    const newComment = await createComment({content, commenter_id: 2, topic_id: 1});
+  async handleCommentSubmit(topic_id) {
+    const { content } = this.state.commentForm;
+    const newComment = await createComment({content, topic_id});
     const comments = await fetchComments(2);
     this.setState({
       comments
@@ -287,9 +284,6 @@ class App extends Component {
 
   async handleJoinBand(bandId){
     const updateId = await updateArtistBand(bandId)
-
-    //axios call to update artist.band_id
-    //await updateArtist()
     return updateId;
   }
 

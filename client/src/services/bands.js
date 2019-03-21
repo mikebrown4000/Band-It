@@ -30,7 +30,7 @@ const createBand = async (band) => {
 export {
   fetchBands,
   fetchBand,
-  // updateBand,
+  updateBand,
   deleteBand,
   createBand
 }
