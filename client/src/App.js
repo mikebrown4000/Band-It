@@ -264,11 +264,9 @@ class App extends Component {
     }
 
     await updateArtist(artistUpdate, id);
-    const artist = await fetchArtist();
     const artists = await fetchArtists();
     this.setState({
-      artist,
-      artists,
+      artist: {},
       edit:false,
     })
   }
@@ -286,9 +284,6 @@ class App extends Component {
 
   async handleJoinBand(bandId){
     const updateId = await updateArtistBand(bandId)
-
-    //axios call to update artist.band_id
-    //await updateArtist()
     return updateId;
   }
 
