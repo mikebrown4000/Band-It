@@ -305,6 +305,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout}/>
