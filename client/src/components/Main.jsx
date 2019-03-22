@@ -46,6 +46,7 @@ function Main(props) {
     handleEditArtist,
     edit,
     owner,
+    member,
     handleDelete,
     handleDeleteArtist,
     handleJoinBand
@@ -154,6 +155,7 @@ function Main(props) {
             band_img={band_img}
             handleDelete={handleDelete}
             handleJoinBand={(bandId) => handleJoinBand(bandId)}
+            member={member}
           />
         )} />
 

@@ -5,7 +5,7 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, verifyOwnership, updateArtistBand, fetchMembers } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, verifyOwnership, verifyMembership, updateArtistBand, fetchMembers } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
@@ -34,6 +34,7 @@ class App extends Component {
       looking: false,
       edit: false,
       owner: false,
+      member: false,
       password: '',
       email: '',
       name: '',
@@ -79,7 +80,6 @@ class App extends Component {
       const artist = await fetchArtist(parseInt(propId));
       const comments = await fetchComments(parseInt(propId));
       const owner = await verifyOwnership(parseInt(propId))
-      console.log(comments);
       this.setState({
         artist,
         comments,
@@ -107,9 +107,11 @@ class App extends Component {
     if (bandId != propId){
       const band = await fetchBand(parseInt(propId));
       const members = await fetchMembers(parseInt(propId));
+      const member = await verifyMembership(parseInt(propId));
       this.setState({
         band,
-        members
+        members,
+        member
       })
     }
   }
@@ -317,7 +319,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout}/>
@@ -329,6 +330,7 @@ class App extends Component {
           handleEditArtist={this.handleEditArtist}
           edit={this.state.edit}
           owner={this.state.owner}
+          member={this.state.member}
 
           handleChange={this.handleChange}
           handleNestedChange={this.handleNestedChange}

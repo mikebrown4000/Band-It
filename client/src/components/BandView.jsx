@@ -3,7 +3,7 @@ import CommentForm from './CommentForm'
 
 export default (props) => {
 
-  const { commentForm, band, handleCommentSubmit, handleNestedChange, handleDelete, handleJoinBand, members } = props;
+  const { commentForm, band, handleCommentSubmit, handleNestedChange, handleDelete, handleJoinBand, members, member } = props;
   const { name, band_description, band_img, genre, id } = band;
   props.getBand(id, props.match.params.id)
   return(
@@ -44,7 +44,6 @@ export default (props) => {
        <a href='#'>Read More</a>
     </div>
    </div>
-
       </div>
 
     </div>
