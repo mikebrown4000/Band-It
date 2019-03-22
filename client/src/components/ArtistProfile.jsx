@@ -2,6 +2,7 @@ import React from 'react';
 import CommentForm from './CommentForm';
 import RegisterForm from './RegisterForm'
 import ArtistComments from './ArtistComments'
+import { verifyOwnership } from '../services/artists'
 
 function ArtistProfile(props) {
   const {
@@ -26,12 +27,13 @@ function ArtistProfile(props) {
     handleSubmit,
     handleEditArtistToggle,
     handleEditArtist,
+    edit,
     img,
-    handleDeleteArtist
+    handleDeleteArtist,
+    owner
   } = props;
 
   getArtist(artist.id, props.match.params.userid)
-
 
     return(
     <div>
@@ -46,10 +48,14 @@ function ArtistProfile(props) {
       <p>About me:
         {artist.artist_description}
       </p>
+
       <CommentForm {...props} commentForm={commentForm} artist={artist} />
+
       <ArtistComments comments={comments} />
-      <button onClick={handleEditArtistToggle}>edit</button>
-      <RegisterForm
+
+      {owner && <button onClick={handleEditArtistToggle}>edit</button>}
+
+      {edit && <RegisterForm
         handleChange={handleChange}
         handleCheck={handleCheck}
         handleSubmit={(e)=>{e.preventDefault(); handleEditArtist(artist.id)}}
@@ -63,9 +69,9 @@ function ArtistProfile(props) {
         img={img}
         artist_description={artist_description}
         looking={looking}
-       />
-    <br/>
-    <input onClick={()=>(handleDeleteArtist(artist.id))} value='Delete artist' type='submit'/>
+      />}
+      <br/>
+      {owner && <input onClick={()=>(handleDeleteArtist(artist.id))} value='Delete artist' type='submit'/>}
     </div>
   )
 }
