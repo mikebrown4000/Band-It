@@ -13,7 +13,31 @@ const verifyToken = async () => {
         }
       })
       updateToken(token);
-      return res.data;
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+}
+
+const verifyOwnership = async (id) => {
+  const token = localStorage.getItem('authToken');
+  if (token == null) {
+    return false;
+  } else {
+    try {
+      const res = await api.get('/artists/verify', {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      console.log(res.data.artist.id, id);
+      if (res.data.artist.id === id) {
+        return true
+        updateToken(token);
+      }
+      return false;
     } catch (e) {
       console.error(e);
       return false;
@@ -28,6 +52,11 @@ const fetchArtists = async () => {
 
 const fetchArtist = async (id) => {
   const resp = await api.get(`/artists/${id}`);
+  return resp.data;
+}
+
+const fetchMembers = async (id) => {
+  const resp = await api.get(`/artists/bands/members/${id}`);
   return resp.data;
 }
 
@@ -68,5 +97,7 @@ export {
   createArtist,
   loginArtist,
   verifyToken,
-  updateArtistBand
+  verifyOwnership,
+  updateArtistBand,
+  fetchMembers,
 }

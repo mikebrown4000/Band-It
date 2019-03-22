@@ -14,6 +14,7 @@ function Main(props) {
     artist,
     getArtist,
     artists,
+    members,
     handleChange,
     handleNestedChange,
     first_name,
@@ -42,6 +43,8 @@ function Main(props) {
     handleCommentSubmit,
     handleEditArtistToggle,
     handleEditArtist,
+    edit,
+    owner,
     handleDelete,
     handleDeleteArtist,
     handleJoinBand
@@ -127,6 +130,9 @@ function Main(props) {
             looking={looking}
             handleEditArtistToggle={handleEditArtistToggle}
             handleEditArtist={handleEditArtist}
+            edit={edit}
+            owner={owner}
+
 
             handleDelete={handleDelete}
             handleDeleteArtist={handleDeleteArtist}
@@ -138,6 +144,7 @@ function Main(props) {
             {...props}
             band={band}
             getBand={getBand}
+            members={members}
             handleNestedChange={handleNestedChange}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}

@@ -91,7 +91,7 @@ function RegisterForm(props) {
 
         <label htmlFor='looking'>Looking For Band? </label>
         <input onClick={handleCheck} type='checkbox' name='looking' value={looking} />
-        <input value='CREATE ACCOUNT' type='submit'/>
+        <input value='Submit' type='submit'/>
         <small><Link to='/login'>Already have an account?</Link></small>
       </form>
     </div>
