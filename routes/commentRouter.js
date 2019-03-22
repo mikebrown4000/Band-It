@@ -1,13 +1,33 @@
 const { Router } = require('express');
-const { Comment } = require('../models');
+const { Comment, Artist, sequelize } = require('../models');
+const { restrict } = require('../auth')
 
 const commentRouter = Router();
 
 
 //All comments DO NOT USE THIS ROUTE
-commentRouter.get('/', async (req, res) => {
-  const comments = await Comment.findAll();
-  res.json(comments);
+commentRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const comment = await sequelize.query(`
+    select
+      artists.first_name,
+      artists.last_name,
+      artists.img,
+      comments.*
+    from
+      comments
+    inner join
+      artists
+      on id = comments.commenter_id
+    where
+      topic_id=${id};
+    `,
+    {
+      type: sequelize.QueryTypes.SELECT
+    },
+  )
+
+  res.json(comment)
 })
 
 //gets all comments by an artist as an artist
@@ -29,12 +49,26 @@ commentRouter.get('/by/:id', async (req, res) => {
 commentRouter.get('/to/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const comments = await Comment.findAll({
-      where: {
-        topic_id: id
-      }
-    })
-    res.json(comments)
+    const comment = await sequelize.query(`
+      select
+        artists.first_name,
+        artists.last_name,
+        artists.img,
+        comments.*
+      from
+        comments
+      inner join
+        artists
+        on id = comments.commenter_id
+      where
+        topic_id=${id};
+      `,
+      {
+        type: sequelize.QueryTypes.SELECT
+      },
+    )
+
+    res.json(comment)
   } catch(e) {
     console.error(e);
   }
@@ -48,7 +82,8 @@ commentRouter.get('/byBand/:id', async (req, res) => {
       where: {
         commenter_id: id,
         as_band: true,
-      }
+      },
+      include:[{model: Artists}]
     })
     res.json(comments)
   } catch(e) {
@@ -72,18 +107,20 @@ commentRouter.get('/toBand/:id', async (req, res) => {
   };
 });
 
-commentRouter.post('/', async (req, res) => {
+commentRouter.post('/', restrict, async (req, res) => {
   try{
-    const { content, commenter_id, topic_id, as_band, to_band } = req.body;
+    const { id } = res.locals.artist;
+    const { content, topic_id, as_band, to_band } = req.body;
     const comment = await Comment.create({
       content,
-      commenter_id,
+      commenter_id: id,
       topic_id,
       as_band,
       to_band,
     });
     res.json(comment);
   } catch(e) {
+    console.error(e);
     res.status(401).send('Invalid Credentials');
   };
 });

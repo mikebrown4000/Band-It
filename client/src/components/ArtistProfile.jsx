@@ -1,10 +1,12 @@
 import React from 'react';
 import CommentForm from './CommentForm';
 import RegisterForm from './RegisterForm'
+import ArtistComments from './ArtistComments'
 
 function ArtistProfile(props) {
   const {
     artist,
+    comments,
     handleCommentSubmit,
     handleNestedChange,
     handleNestedCheck,
@@ -25,7 +27,7 @@ function ArtistProfile(props) {
     handleEditArtistToggle,
     handleEditArtist,
     img,
-    handleDelete
+    handleDeleteArtist
   } = props;
 
   getArtist(artist.id, props.match.params.userid)
@@ -44,7 +46,8 @@ function ArtistProfile(props) {
       <p>About me:
         {artist.artist_description}
       </p>
-      <CommentForm {...props} commentForm={commentForm} />
+      <CommentForm {...props} commentForm={commentForm} artist={artist} />
+      <ArtistComments comments={comments} />
       <button onClick={handleEditArtistToggle}>edit</button>
       <RegisterForm
         handleChange={handleChange}
@@ -62,7 +65,7 @@ function ArtistProfile(props) {
         looking={looking}
        />
     <br/>
-    <input onClick={()=>(handleDelete(artist.id))} value='Delete artist' type='submit'/>
+    <input onClick={()=>(handleDeleteArtist(artist.id))} value='Delete artist' type='submit'/>
     </div>
   )
 }

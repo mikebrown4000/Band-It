@@ -39,10 +39,12 @@ function Main(props) {
     band_img,
     getBand,
     commentForm,
+    comments,
     handleCommentSubmit,
     handleEditArtistToggle,
     handleEditArtist,
     handleDelete,
+    handleDeleteArtist,
     handleJoinBand
   } = props;
 
@@ -106,6 +108,8 @@ function Main(props) {
             getArtist={getArtist}
             artist_description={artist_description}
             handleNestedChange={handleNestedChange}
+
+            comments={comments}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
 
@@ -126,6 +130,7 @@ function Main(props) {
             handleEditArtist={handleEditArtist}
 
             handleDelete={handleDelete}
+            handleDeleteArtist={handleDeleteArtist}
           />
         )} />
 

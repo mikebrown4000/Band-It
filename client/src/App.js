@@ -10,6 +10,7 @@ import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
 import { fetchComments, createComment } from './services/comments';
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
       bands: [],
       band: {},
       members: [],
+      comments:[],
       band_img: '',
       first_name: '',
       last_name: '',
@@ -58,6 +60,7 @@ class App extends Component {
 
     this.handleEditArtistToggle = this.handleEditArtistToggle.bind(this);
     this.handleEditArtist = this.handleEditArtist.bind(this);
+    this.handleDeleteArtist = this.handleDeleteArtist.bind(this);
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleJoinBand = this.handleJoinBand.bind(this);
@@ -73,8 +76,11 @@ class App extends Component {
   async getArtist(artistId, propId) {
     if (artistId != propId) {
       const artist = await fetchArtist(parseInt(propId));
+      const comments = await fetchComments(parseInt(propId));
+      console.log(comments);
       this.setState({
-        artist
+        artist,
+        comments,
       });
     }
   }
@@ -105,16 +111,24 @@ class App extends Component {
   }
 
 
-  async handleDelete(id) {
+
+  async handleDeleteArtist(id){
     const respArtist = await deleteArtist(id);
-    const respBand = await deleteBand(id);
     const artists = await fetchArtists();
-    const bands = await fetchBands();
-    console.log('alright bois');
+
     this.setState({
       artists,
+    })
+    this.props.history.push(`/artists`);
+  }
+
+  async handleDelete(id) {
+    const respBand = await deleteBand(id);
+    const bands = await fetchBands();
+    this.setState({
       bands
     })
+    this.props.history.push(`/bands`);
   }
 
   handleChange(e) {
@@ -217,7 +231,7 @@ class App extends Component {
       password: '',
       email: ''
     })
-    this.props.history.push(`/login`);
+    this.props.history.push(`/bands`);
   }
 
   async handleEditArtistToggle(e) {
@@ -266,18 +280,12 @@ class App extends Component {
   }
 
 
-  async handleCommentSubmit(e) {
-    e.preventDefault();
-    const { content, commenter_id, topic_id } = this.state.commentForm;
-    const newComment = await createComment({content, commenter_id: 2, topic_id: 1});
-    const comments = await fetchComments(2);
-    this.setState({
-      comments
-    });
+  async handleCommentSubmit(topic_id) {
+    const { content } = this.state.commentForm;
+    const newComment = await createComment({content, topic_id});
   }
 
   async handleJoinBand(bandId){
-    console.log(bandId);
     const updateId = await updateArtistBand(bandId)
     return updateId;
   }
@@ -343,9 +351,12 @@ class App extends Component {
 
           commentForm={this.state.commentForm}
           handleCommentSubmit={this.handleCommentSubmit}
+          comments={this.state.comments}
 
+          handleDeleteArtist={this.handleDeleteArtist}
           handleDelete={this.handleDelete}
          />
+         <Footer />
       </div>
     );
   }
