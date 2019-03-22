@@ -363,6 +363,7 @@ footer{
   height:50px;
   background:#227989;
   margin-top: 10px;
+  position: fixed;
   /* yo this footer kind of sucks */
 }
 
