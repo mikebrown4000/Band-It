@@ -32,10 +32,31 @@ const verifyOwnership = async (id) => {
           authorization: `Bearer ${token}`
         }
       })
-      console.log(res.data.artist.id, id);
       if (res.data.artist.id === id) {
-        return true
         updateToken(token);
+        return true
+      }
+      return false;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+}
+
+const verifyMembership = async (id) => {
+  const token = localStorage.getItem('authToken');
+  if (token == null) {
+    return false;
+  } else {
+    try {
+      const res = await api.get('/artists/verify', {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      if (res.data.artist.bandId === id) {
+        return true
       }
       return false;
     } catch (e) {
@@ -98,6 +119,7 @@ export {
   loginArtist,
   verifyToken,
   verifyOwnership,
+  verifyMembership,
   updateArtistBand,
   fetchMembers,
 }

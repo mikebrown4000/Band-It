@@ -37,16 +37,66 @@ textarea::placeholder {
 
 
 /* --Class--*/
+
+/* --Welcome Comp-- */
 .welcome-page{
+  height: 100%;
+  background-color: #E8F3F8;
+  font-family: 'Source Code Pro', monospace;
+  color:#227989;
+  display: flex;
+  justify-content: space-around;
+  margin: 30px;
+}
+
+.welcome-text{
+  text-align: center;
+  vertical-align: middle;
+  width:40%;
+}
+
+.register{
+  font-size: 60px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  padding: 2px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.register:hover{
   background-color: #227989;
 }
+
+.login{
+  font-size: 60px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.login:hover{
+  background-color: #227989;
+}
+
+.subtext{
+  font-family: 'Source Code Pro', monospace;
+}
+
 
 /* Main-Header */
 .main-header {
   background: #227989;
   height: 20vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100vw;
   /* border: 2px solid blue; */
@@ -59,9 +109,9 @@ textarea::placeholder {
   color: #E8F3F8;
   font-size: 9em;
   text-align: right;
-  width: 50vw;
-  height: 20vh;
-  /* border: 5px solid green; */
+  width: 480px;
+  height: 200px;
+  margin-right: 30px;
 }
 
 /* Nav */
@@ -81,8 +131,14 @@ textarea::placeholder {
 
 .artist-list-container{
   display: flex;
+
   padding: 30px;
   flex-wrap: wrap;
+
+.artist-title{
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+  margin: 0 auto
 }
 
 .artists-list {
@@ -198,12 +254,131 @@ textarea::placeholder {
   position: absolute;
 }
 
+/* -- FORM STYLES -- RegisterForm and CreateBandForm -- */
+input{
+  margin: 10px;
+  width: 200px;
+  height:48px;
+  background-color:#DBE6EC;
+  color: #227989;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 16px;
+  border-radius: 10px;
+}
+
+input[type=checkbox]{
+  width: 30px;
+  height: 30px;
+}
+
+label{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+}
+
+small{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  text-align: center;
+}
+
+.artist-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.band-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.login-form-container{
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+/* ARTIST VIEW */
+.main-artist-view{
+  display: flex;
+  width: 45em;
+}
+
+.main-artist-title{
+  font-family: 'Lobster';
+  font-size: 4em;
+  margin: 0;
+  padding-top: 1em;
+}
+
+.main-artist{
+  margin-left: 20em;
+}
+
+.main-artist-img{
+  width: 20em;
+  height: 20em;
+  padding: 1em;
+  border-radius: 2em;
+}
+
+.artist-p{
+  font-size: 25px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.main-artist-img-instrument{
+  margin: 2em;
+}
+
+.main-artist-description{
+  border-radius: 1em;
+  padding: 1em;
+  text-align: justify;
+  font-size: 20px;
+  box-shadow: 5px 10px rgba(63, 102, 109, .3);
+}
+
+footer{
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+  color: #E8F3F8;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  bottom:0;
+  width:100%;
+  height:50px;
+  background:#227989;
+  margin-top: 10px;
+  /* yo this footer kind of sucks */
+}
 
 /*--ID--*/
 /* Logout Button */
-#logout-button {
-  font-size: 20px;
-  margin-left: 25px;
+#logout-button:hover {
+  cursor: pointer;
 }
 
 /* Comment Form */
@@ -248,8 +423,61 @@ textarea::placeholder {
 }
 
 /*--Media Queries--*/
+
 @media screen and (max-width: 900px) {
   body {
     background-color: blue;
   }
+
+
+/* -- Experiments with nav bar  dropdown -- */
+/* Style The Dropdown Button */
+.dropbtn {
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 200px;
+}
+
+.dropdown {
+  font-family: 'Source Code Pro', monospace;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #227989;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:#E8F3F8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color:#E8F3F8;
+  color:#227989;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* an animation cause why not? */
+@keyframes spookyFadeAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0.1; }
+  100% { opacity:1; }
+
 }
