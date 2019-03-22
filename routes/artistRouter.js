@@ -4,6 +4,10 @@ const { hash, encode, compare, restrict } = require('../auth')
 
 const artistRouter = Router();
 
+artistRouter.get('/verify', restrict, async (req, res) => {
+  res.json({artist: res.locals.artist})
+});
+
 // route to get all artists
 artistRouter.get('/', async (req, res) => {
   const artists = await Artist.findAll();
@@ -17,10 +21,20 @@ artistRouter.get('/:id', async (req, res) => {
   res.json(artist);
 })
 
+artistRouter.get('/bands/members/:id', async (req, res) => {
+  const { id } = req.params;
+  const members = await Artist.findAll({
+    where: {
+      bandId: id
+    }
+  });
+  res.json(members);
+})
+
 // route to create a new user
 artistRouter.post('/', async (req, res) => {
   try {
-    const { first_name, last_name, email, age, location, instrument, password, looking } = req.body;
+    const { first_name, last_name, email, age, location, instrument, password, looking, img, artist_description } = req.body;
     const password_digest = await hash(password);
 
     const artist = await Artist.create({
@@ -31,7 +45,9 @@ artistRouter.post('/', async (req, res) => {
       location,
       instrument,
       password_digest,
-      looking
+      looking,
+      artist_description,
+      img
     });
     const artistData = {
       ...artist.dataValues
@@ -83,15 +99,28 @@ artistRouter.post('/login', async (req, res) => {
 artistRouter.put('/:id', restrict, async (req, res) => {
   try {
     const { id } = req.params;
-
     const artist = await Artist.findByPk(id);
-    if (artist !== null) {
+    if (id == res.locals.artist.dataValues.id) {
       await artist.update(req.body);
       res.json(artist)
     }
   } catch(e){
-    next(e);
+    res.status(401).send('Invalid Credentials');
   }
+})
+
+artistRouter.post('/bands/:id', restrict, async (req, res) => {
+  try {
+  const { id } = res.locals.artist;
+  const artist = await Artist.findByPk(id);
+  artist.bandId = req.params.id;
+  await artist.save();
+
+  res.json({id:artist.bandId})
+  }catch (e) {
+        console.error(e);
+        res.status(500).send(e.message)
+    }
 })
 
 // route to let user to delete their account
@@ -109,6 +138,5 @@ artistRouter.delete('/:id', restrict, async (req, res) => {
     res.status(404).send('Artist not found');
   }
 });
-
 
 module.exports = artistRouter;

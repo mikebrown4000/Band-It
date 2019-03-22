@@ -4,9 +4,12 @@ function  CreateBandForm(props){
   const { handleChange,
           handleCreateBand,
           name,
-          description,
-          genre } = props;
+          band_description,
+          genre,
+          band_img } = props;
+
   return(
+    <div className='band-form-container'>
     <form onSubmit={handleCreateBand}>
       <input
       type="text"
@@ -17,9 +20,9 @@ function  CreateBandForm(props){
 
       <input
       type="text"
-      name="description"
+      name="band_description"
       placeholder="Describe Your Band"
-      value={description}
+      value={band_description}
       onChange={handleChange}/>
 
       <input
@@ -30,9 +33,18 @@ function  CreateBandForm(props){
       onChange={handleChange}/>
 
       <input
+      type="text"
+      name="band_img"
+      placeholder="Insert the image"
+      value={band_img}
+      onChange={handleChange} />
+
+      <input
       type="submit"
       onSubmit={handleCreateBand}/>
+
     </form>
+    </div>
   )
 }
 

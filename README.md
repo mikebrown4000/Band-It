@@ -1,6 +1,6 @@
 # Band-It
 Music can be hard, but making a band should be easy.
-That's wyh we created a platform that makes it easier for bands to find musicians and for musicians to network with bands.
+That's why we created a platform that makes it easier for bands to find musicians and for musicians to network with bands.
 
 ## User Stories
 ![alt text](https://i.imgur.com/mTvPSeK.jpg)
@@ -21,3 +21,21 @@ That's wyh we created a platform that makes it easier for bands to find musician
 
 ### Artist Index
 ![alt text](https://i.imgur.com/GBiHRF3.jpg)
+
+## Code Snippet
+
+```artistRouter.post('/bands/:id', restrict, async (req, res) => {
+  try {
+  console.log(req.params.id);
+  console.log(res.locals.user.id);
+  const { id } = res.locals.user;
+  const artist = await Artist.findByPk(id);
+  artist.bandId = req.params.id;
+  await artist.save();
+
+  res.json({id:artist.bandId})
+  }catch (e) {
+        res.status(500).send(e.message)
+    }
+})
+```

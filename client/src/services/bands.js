@@ -17,9 +17,9 @@ const updateBand = async (data, id) => {
   return resp.data.band
 }
 
-const deleteBand = async (data, id) => {
-  const resp = await api.delete(`/${id}`);
-  return resp.data;
+const deleteBand = async (id) => {
+  const delBand = await api.delete(`/bands/${id}`);
+  return delBand.data
 }
 
 const createBand = async (band) => {
@@ -30,7 +30,7 @@ const createBand = async (band) => {
 export {
   fetchBands,
   fetchBand,
-  // updateBand,
-  // deleteBand,
+  updateBand,
+  deleteBand,
   createBand
 }

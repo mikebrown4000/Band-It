@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
 let sequelize;
+
 if (process.env.DATABASE_URL){
   console.log('called');
   sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -25,6 +26,7 @@ if (process.env.DATABASE_URL){
 const Artist = sequelize.define('artist', {
   first_name: Sequelize.STRING,
   last_name: Sequelize.STRING,
+  artist_description: Sequelize.TEXT,
   email: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -42,9 +44,9 @@ const Artist = sequelize.define('artist', {
 
 const Band = sequelize.define('band', {
   name: Sequelize.STRING,
-  description: Sequelize.STRING,
+  band_description: Sequelize.TEXT,
   genre: Sequelize.STRING,
-  img: Sequelize.STRING,
+  band_img: Sequelize.STRING,
 });
 
 const Comment = sequelize.define('comment', {

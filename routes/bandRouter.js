@@ -13,9 +13,11 @@ bandRouter.get('/', async (req, res) => {
 //needs restrict
 bandRouter.post('/', restrict, async (req, res) => {
   try{
-    const { name, location, genre } = req.body;
+    const { name, location, genre, band_description, band_img } = req.body;
     const band = await Band.create({
       name,
+      band_description,
+      band_img,
       location,
       genre
     })

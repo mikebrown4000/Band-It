@@ -11,7 +11,7 @@ function LoginForm(props){
 
 
   return(
-    <div>
+    <div className='login-form-container'>
       <form onSubmit={handleLogin}>
 
         <input
@@ -24,7 +24,7 @@ function LoginForm(props){
         <input
         onChange={handleChange}
         minLength={3}
-        type='text'
+        type='password'
         placeholder='Password'
         name='password'
         value={password} />

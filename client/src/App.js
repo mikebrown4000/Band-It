@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, verifyOwnership, verifyMembership, updateArtistBand, fetchMembers } from './services/artists';
 import LoginForm from './components/LoginForm';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist } from './services/artists';
-import { createBand, fetchBands, fetchBand } from './services/bands';
+import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
 import { fetchComments, createComment } from './services/comments';
+import Footer from './components/Footer';
 
 
 class App extends Component {
@@ -21,21 +22,25 @@ class App extends Component {
       artist: {},
       bands: [],
       band: {},
+      members: [],
+      comments:[],
+      band_img: '',
       first_name: '',
       last_name: '',
+      artist_description: '',
       age: '',
       instrument: '',
       location: '',
       looking: false,
+      edit: false,
+      owner: false,
+      member: false,
       password: '',
       email: '',
       name: '',
-      description: '',
+      img: '',
+      band_description: '',
       genre: '',
-      formErrors:{
-        email: '',
-        password: '',
-      },
       commentForm: {
         content: '',
         commenter_id: '',
@@ -54,19 +59,32 @@ class App extends Component {
     this.getArtist = this.getArtist.bind(this);
     this.getBand = this.getBand.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+
+    this.handleEditArtistToggle = this.handleEditArtistToggle.bind(this);
+    this.handleEditArtist = this.handleEditArtist.bind(this);
+    this.handleDeleteArtist = this.handleDeleteArtist.bind(this);
+
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleJoinBand = this.handleJoinBand.bind(this);
+
   }
 
   async componentDidMount() {
     await this.getAllArtists();
     await this.getAllBands();
-    await this.getBand(2, 1)
+    await verifyToken();
   }
 
-  async getArtist(id) {
-    if (id !== this.state.artist.id) {
-      const artist = await fetchArtist(id);
+  async getArtist(artistId, propId) {
+    if (artistId != propId) {
+      const artist = await fetchArtist(parseInt(propId));
+      const comments = await fetchComments(parseInt(propId));
+      const owner = await verifyOwnership(parseInt(propId))
       this.setState({
-        artist
+        artist,
+        comments,
+        edit: false,
+        owner
       });
     }
   }
@@ -87,11 +105,36 @@ class App extends Component {
 
   async getBand(bandId, propId){
     if (bandId != propId){
-      const band = await fetchBand(propId);
+      const band = await fetchBand(parseInt(propId));
+      const members = await fetchMembers(parseInt(propId));
+      const member = await verifyMembership(parseInt(propId));
       this.setState({
-        band
+        band,
+        members,
+        member
       })
     }
+  }
+
+
+
+  async handleDeleteArtist(id){
+    const respArtist = await deleteArtist(id);
+    const artists = await fetchArtists();
+
+    this.setState({
+      artists,
+    })
+    this.props.history.push(`/artists`);
+  }
+
+  async handleDelete(id) {
+    const respBand = await deleteBand(id);
+    const bands = await fetchBands();
+    this.setState({
+      bands
+    })
+    this.props.history.push(`/bands`);
   }
 
   handleChange(e) {
@@ -102,14 +145,13 @@ class App extends Component {
   };
 
   handleNestedChange(e) {
-    const { name, value, form } = e.target;
-    console.log(form);
+    const { name, value } = e.target;
     this.setState(prevState =>({
       commentForm: {
         ...prevState.commentForm,
         [name]: value
       }
-    }))
+    }));
   }
 
   handleCheck() {
@@ -122,24 +164,29 @@ class App extends Component {
     ev.preventDefault();
     const {
       name,
-      description,
-      genre
+      band_description,
+      genre,
+      band_img
     } = this.state;
 
     const newBand = await createBand({
       name,
-      description,
-      genre
+      band_description,
+      genre,
+      band_img
     });
+
     const bands = await fetchBands();
     this.setState({
       bands
     })
     this.setState({
       name: '',
-      description: '',
-      genre: ''
+      band_description: '',
+      genre: '',
+      band_img: ''
     })
+    this.props.history.push(`/bands`);
   }
 
 
@@ -149,51 +196,109 @@ class App extends Component {
       first_name,
       last_name,
       age,
+      img,
+      artist_description,
       instrument,
       location,
       looking,
       password,
-      email
+      email,
+
     } = this.state;
 
     const newArtist = await createArtist({
       first_name,
       last_name,
       age,
+      img,
+      artist_description,
       instrument,
       location,
       looking,
       password,
       email
     });
+
     const artists = await fetchArtists();
     this.setState({
       artists
     });
+
     this.setState({
       artists,
       first_name: '',
       last_name: '',
       age: '',
+      img: '',
+      artist_description: '',
       instrument: '',
       location: '',
       looking: '',
       password: '',
       email: ''
     })
+    this.props.history.push(`/bands`);
+  }
+
+  async handleEditArtistToggle(e) {
+    e.preventDefault();
+    const { artist } = this.state
+    this.setState({
+      first_name: artist.first_name,
+      last_name: artist.last_name,
+      age: artist.age,
+      img: artist.img,
+      artist_description: artist.artist_description,
+      instrument: artist.instrument,
+      location: artist.location,
+      looking: artist.looking,
+      edit: true,
+    })
+  }
+
+  async handleEditArtist(id) {
+
+    const {
+      first_name,
+      last_name,
+      age,
+      img,
+      artist_description,
+      instrument,
+      location,
+      looking,
+    } = this.state;
+
+    const artistUpdate = {
+      first_name,
+      last_name,
+      age,
+      img,
+      artist_description,
+      instrument,
+      location,
+      looking,
+    }
+
+    await updateArtist(artistUpdate, id);
+    const artists = await fetchArtists();
+    const artist = await fetchArtist(id);
+    this.setState({
+      artists,
+      artist,
+      edit:false,
+    })
   }
 
 
-  async handleCommentSubmit(e) {
-    e.preventDefault();
-    const { content } = this.state;
-    const newComment = await createComment({
-      content
-    });
-    const comments = await fetchComments();
-    this.setState({
-      comments
-    });
+  async handleCommentSubmit(topic_id) {
+    const { content } = this.state.commentForm;
+    const newComment = await createComment({content, topic_id});
+  }
+
+  async handleJoinBand(bandId){
+    const updateId = await updateArtistBand(bandId)
+    return updateId;
   }
 
   async handleLogin(e){
@@ -204,16 +309,16 @@ class App extends Component {
       email: '',
       password: '',
    })
+   this.props.history.push(`/bands`);
  }
 
  async handleLogout(e){
-   console.log('hi');
-   updateToken();
+   localStorage.removeItem('authToken')
+   this.props.history.push(`/login`);
  }
 
 
   render() {
-    console.log(this.state);
     return (
       <div className="App">
         <Header handleLogout={this.handleLogout}/>
@@ -221,10 +326,16 @@ class App extends Component {
           artists={this.state.artists}
           getArtist={this.getArtist}
           artist={this.state.artist}
+          handleEditArtistToggle={this.handleEditArtistToggle}
+          handleEditArtist={this.handleEditArtist}
+          edit={this.state.edit}
+          owner={this.state.owner}
+          member={this.state.member}
 
           handleChange={this.handleChange}
           handleNestedChange={this.handleNestedChange}
           handleCheck={this.handleCheck}
+          handleJoinBand={(bandId)=>this.handleJoinBand(bandId)}
 
           handleSubmit={this.handleSubmit}
           handleLogin={this.handleLogin}
@@ -235,24 +346,33 @@ class App extends Component {
           location={this.state.location}
           instrument={this.state.instrument}
           age={this.state.age}
+          artist_description={this.state.artist_description}
           img={this.state.img}
 
 
           bands={this.state.bands}
           getBand={this.getBand}
           band={this.state.band}
+          members={this.state.members}
 
           handleCreateBand={this.handleCreateBand}
           genre={this.state.genre}
           name={this.state.name}
-          description={this.state.description}
-          formErrors={this.state.formErrors}
+          band_description={this.state.band_description}
+          band_img={this.state.band_img}
+
 
           commentForm={this.state.commentForm}
+          handleCommentSubmit={this.handleCommentSubmit}
+          comments={this.state.comments}
+
+          handleDeleteArtist={this.handleDeleteArtist}
+          handleDelete={this.handleDelete}
          />
+         <Footer />
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

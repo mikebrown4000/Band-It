@@ -1,5 +1,7 @@
+MY CSS
 .App {
   text-align: center;
+  background-color: #E8F3F8;
 }
 
 /*--Selectors--*/
@@ -7,46 +9,456 @@ html,
 body {
   height: 100%;
   width: 100%;
+  background-color: #E8F3F8;
+}
+
+a {
+  text-decoration: none;
+
+}
+a:visited {
+  color: #C2CBCE;
+}
+a:hover {
+  color: #C2CBCE;
+}
+a {
+  color: #C2CBCE;
+}
+textarea:focus {
+  outline: none;
+}
+textarea::placeholder {
+  text-align: center;
+  font-size: 18px;
 }
 
 
 
 
 /* --Class--*/
-/* Nav */
-.main-nav a {
-  padding-left: 20px;
+
+/* --Welcome Comp-- */
+.welcome-page{
+  height: 100%;
+  background-color: #E8F3F8;
+  font-family: 'Source Code Pro', monospace;
+  color:#227989;
+  display: flex;
+  justify-content: space-around;
+  margin: 30px;
 }
 
-/* Header */
-.main-header h1 {
-  margin-top: 0;
+.welcome-text{
+  text-align: center;
+  vertical-align: middle;
+  width:40%;
+}
+
+.register{
+  font-size: 60px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  padding: 2px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.register:hover{
+  background-color: #227989;
+}
+
+.login{
+  font-size: 60px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.login:hover{
+  background-color: #227989;
+}
+
+.subtext{
+  font-family: 'Source Code Pro', monospace;
 }
 
 
-
-/* BodyBackground */
+/* Main-Header */
 .main-header {
-  background: red;
+  background: #227989;
+  height: 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.main-header h1 {
+  font-family: 'Lobster', cursive;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #E8F3F8;
+  font-size: 150px;
+  text-align: right;
+  width: 480px;
+  height: 200px;
+  margin-right: 30px;
+}
+
+/* Nav */
 .main-nav {
-  background: green;
+  width: auto;
+  height: 100px;
+  padding-top: 140px;
+}
+.main-nav a {
+  font-size: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.artist-list-container{
+  display: flex;
+  padding: 20px;
+
+}
+
+.artist-title{
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+  margin: 0 auto
 }
 
 .artists-list {
-  background: lightgrey;
+  font-family: 'Source Code Pro', monospace;
+  color: #E8F3F8;
+  width: 30%;
+  border-radius: 10px;
+  background: #A4BCC2;
+  margin: 10px;
+}
+
+.artist-list-img{
+  border-radius: 10px;
 }
 
 .bands-list {
   background: papayawhip;
 }
 
+/* .band-logo-description {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #A4BCC2;
+  border-radius: 40px;
+} */
 
 
+/* .main-band-view h2 {
+  width: 100%;
+  padding-top: 20px;
+} */
+.main-band{
+  margin-left: 25em;
+  margin-top: 5em;
+  margin-bottom: 6em;
+}
+.main-band-view{
+  display: flex;
+  align-self: center;
+  width: 30em;
+  height: 30em;
+  margin: 0;
+}
+.band-img{
+  width: 30em;
+  height: auto;
+}
+.main-band-img{
+  width: 25em;
+  margin-top: 3em;
+  align-self: center;
+  border-radius: 1em;
+}
 
+.band-title{
+  font-family: 'Lobster';
+  font-size: 4em;
+  margin: 0;
+}
 
+.band_description{
+  padding: 2em;
+  width: 30em;
+  height: 35em;
+}
+
+.band-description-logos{
+  width: 30em;
+  height: 8em;
+  cursor: pointer;
+}
+
+.band-logos{
+  width: 3em;
+  height: 3em;
+  padding: 1em;
+  margin: 1em;
+}
+.band_description-p{
+  text-align: justify !important;
+  padding: 1em;
+}
+.band-member-imgs{
+  width: 3em;
+  border-radius: 4em;
+  padding: 1em;
+}
+.band-members{
+  display: inline-flex;
+  align-items: center;
+}
+
+/* .main-band-content {
+  height: 80px;
+  width: 10%;
+  margin-left: 30em;
+  margin-top: 20px;
+  background: #A4BCC2;
+  border-radius: 40px;
+} */
+
+.join-delete-button {
+  margin-top: 7px;
+  position: absolute;
+}
+
+/* -- FORM STYLES -- RegisterForm and CreateBandForm -- */
+input{
+  margin: 10px;
+  width: 200px;
+  height:48px;
+  background-color:#DBE6EC;
+  color: #227989;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 16px;
+  border-radius: 10px;
+}
+
+input[type=checkbox]{
+  width: 30px;
+  height: 30px;
+}
+
+label{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+}
+
+small{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  text-align: center;
+}
+
+.artist-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.band-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.login-form-container{
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+/* ARTIST VIEW */
+.main-artist-view{
+  display: flex;
+  width: 45em;
+}
+
+.main-artist-title{
+  font-family: 'Lobster';
+  font-size: 4em;
+  margin: 0;
+  padding-top: 1em;
+}
+
+.main-artist{
+  margin-left: 20em;
+}
+
+.main-artist-img{
+  width: 20em;
+  height: 20em;
+  padding: 1em;
+  border-radius: 2em;
+}
+
+.artist-p{
+  font-size: 25px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.main-artist-img-instrument{
+  margin: 2em;
+}
+
+.main-artist-description{
+  border-radius: 1em;
+  padding: 1em;
+  text-align: justify;
+  font-size: 20px;
+  box-shadow: 5px 10px rgba(63, 102, 109, .3);
+}
+
+footer{
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+  color: #E8F3F8;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  bottom:0;
+  width:100%;
+  height:50px;
+  background:#227989;
+  margin-top: 10px;
+  /* yo this footer kind of sucks */
+}
 
 /*--ID--*/
+/* Logout Button */
+#logout-button:hover {
+  cursor: pointer;
+}
+
+/* Comment Form */
+#comment-text-area {
+  resize: none;
+  margin-left: 0.8em;
+  margin-top: 20px;
+}
+
+#comment-button {
+  margin-left: 10px;
+}
+
+/* View Profile */
+#view-profile {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: #227989;
+}
+
+/* Band Logo Img */
+/* #band-logo-img {
+  width: 30vh;
+  border-radius: 50px;
+  margin-left: -10.9em;
+} */
+
+/* Band Genre */
+/* #band-content-p {
+  width: 140%;
+  margin-left: -8em;
+  margin-top: 0;
+} */
+
+/* Join Band Button */
+#join-band {
+  margin-right: 15px;
+
+}
 
 /*--Media Queries--*/
+
+/* -- Experiments with nav bar  dropdown -- */
+/* Style The Dropdown Button */
+.dropbtn {
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 200px;
+}
+
+.dropdown {
+  font-family: 'Source Code Pro', monospace;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #227989;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:#E8F3F8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color:#E8F3F8;
+  color:#227989;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* an animation cause why not? */
+@keyframes spookyFadeAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0.1; }
+  100% { opacity:1; }
+}

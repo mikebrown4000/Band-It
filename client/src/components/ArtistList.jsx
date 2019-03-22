@@ -14,13 +14,19 @@ changeThisName(id) {
   render() {
     const { artists, getArtist } = this.props;
     return(
-      <div>
+      <div className='artist-list-container'>
         {artists.map(artist => (
           <div className='artists-list' key={artist.id}>
-            {artist.first_name}
-            {artist.last_name}
+            <h3 className='artist-title'>{artist.first_name}</h3>
+            {artist.first_name}&nbsp;
+            {artist.last_name}&nbsp;
+            <br/>
+            {artist.instrument}
+            <br/>
+            <img className='artist-list-img' src={artist.img} alt="image" width={130}/>
+
             <div>
-              <a href='' onClick={(e) => {
+              <a href='' id='view-profile' onClick={(e) => {
                 e.preventDefault();
                 this.changeThisName(artist.id)
               }}>View Profile</a>
