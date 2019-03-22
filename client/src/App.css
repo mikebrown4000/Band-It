@@ -183,6 +183,46 @@ textarea::placeholder {
   position: absolute;
 }
 
+/* ARTIST VIEW */
+.main-artist-view{
+  display: flex;
+  width: 45em;
+}
+
+.main-artist-title{
+  font-family: 'Lobster';
+  font-size: 4em;
+  margin: 0;
+  padding-top: 1em;
+}
+
+.main-artist{
+  margin-left: 20em;
+}
+
+.main-artist-img{
+  width: 20em;
+  height: 20em;
+  padding: 1em;
+  border-radius: 2em;
+}
+
+.artist-p{
+  font-size: 25px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.main-artist-img-instrument{
+  margin: 2em;
+}
+
+.main-artist-description{
+  border-radius: 1em;
+  padding: 1em;
+  text-align: justify;
+  font-size: 20px;
+  box-shadow: 5px 10px rgba(63, 102, 109, .3);
+}
 
 /*--ID--*/
 /* Logout Button */
