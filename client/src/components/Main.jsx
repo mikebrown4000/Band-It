@@ -38,6 +38,7 @@ function Main(props) {
     band_img,
     getBand,
     commentForm,
+    comments,
     handleCommentSubmit,
     handleEditArtistToggle,
     handleEditArtist,
@@ -105,6 +106,8 @@ function Main(props) {
             getArtist={getArtist}
             artist_description={artist_description}
             handleNestedChange={handleNestedChange}
+
+            comments={comments}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
 
@@ -123,7 +126,7 @@ function Main(props) {
             looking={looking}
             handleEditArtistToggle={handleEditArtistToggle}
             handleEditArtist={handleEditArtist}
-            
+
             handleDelete={handleDelete}
           />
         )} />
