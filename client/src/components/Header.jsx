@@ -11,7 +11,7 @@ function Header(props) {
           <Link to='/artists'>Artists</Link>
           <Link to='/bands'>Bands</Link>
           <Link to ='/createband'>Create Your band</Link>
-          <Link to ='/createmusician'>Create A Musician</Link>
+          <Link to ='/createmusician'>Create Musician</Link>
           <button id='logout-button' onClick={handleLogout}>Log Out</button>
         </nav>
         <div>

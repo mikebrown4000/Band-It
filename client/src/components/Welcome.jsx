@@ -8,8 +8,7 @@ function Welcome() {
 
   return(
     <div className='welcome-page'>
-      <Link to ='/findArtists'> Find Artists </Link>
-      <Link to ='/createBand'> Create Band </Link>
+
     </div>
   )
 }
