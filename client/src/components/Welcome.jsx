@@ -8,8 +8,12 @@ function Welcome() {
 
   return(
     <div className='welcome-page'>
-      <Link to ='/findArtists'> Find Artists </Link>
-      <Link to ='/createBand'> Create Band </Link>
+      <div className='welcome-text'>
+        <div className='register'>
+          <Link to='/login' className='register'> Register </Link>
+        </div>
+        <h4>Music can be hard but starting a band should be easy. Find Musicians, steal the show</h4>
+      </div>
     </div>
   )
 }
