@@ -5,7 +5,7 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, updateArtistBand } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, updateArtistBand, fetchMembers } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
@@ -22,6 +22,7 @@ class App extends Component {
       artist: {},
       bands: [],
       band: {},
+      members: [],
       comments:[],
       band_img: '',
       first_name: '',
@@ -101,8 +102,10 @@ class App extends Component {
   async getBand(bandId, propId){
     if (bandId != propId){
       const band = await fetchBand(parseInt(propId));
+      const members = await fetchMembers(parseInt(propId));
       this.setState({
-        band
+        band,
+        members
       })
     }
   }
@@ -337,6 +340,7 @@ class App extends Component {
           bands={this.state.bands}
           getBand={this.getBand}
           band={this.state.band}
+          members={this.state.members}
 
           handleCreateBand={this.handleCreateBand}
           genre={this.state.genre}

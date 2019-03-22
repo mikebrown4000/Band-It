@@ -14,6 +14,7 @@ function Main(props) {
     artist,
     getArtist,
     artists,
+    members,
     handleChange,
     handleNestedChange,
     first_name,
@@ -138,6 +139,7 @@ function Main(props) {
             {...props}
             band={band}
             getBand={getBand}
+            members={members}
             handleNestedChange={handleNestedChange}
             commentForm={commentForm}
             handleCommentSubmit={handleCommentSubmit}
