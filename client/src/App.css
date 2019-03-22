@@ -36,6 +36,10 @@ textarea::placeholder {
 
 
 /* --Class--*/
+.welcome-page{
+  background-color: #227989;
+}
+
 /* Main-Header */
 .main-header {
   background: #227989;
