@@ -51,7 +51,7 @@ async function seed() {
 
   const band = await Band.create({
     name: 'Scones',
-    band_description: 'This is a description',
+    band_description: 'Our band was created in 1998 and suspendisse in risus ut nibh finibus vulputate at non sem. Vivamus elit lectus, consectetur a dolor a, ullamcorper sagittis mi. Sed ultricies eget tortor eu efficitur. Integer ultricies est eget odio cursus vestibulum. Ut consectetur ex ac sem gravida, id accumsan mi malesuada. Nunc fermentum et eros nec laoreet. Nulla urna mi, laoreet sed turpis ut, dignissim maximus neque. Nulla facilisi. Nam sapien orci, volutpat sit amet venenatis elementum, blandit vel nisl. In hac habitasse platea dictumst. Nam malesuada quam sit amet turpis tristique bibendum. Nam elit risus, efficitur eget faucibus quis, rhoncus vel sapien. Vivamus a orci at lectus finibus consectetur. Nullam dignissim suscipit massa at congue. Donec sit amet lacinia tellus. Ut tempor ligula est, nec facilisis tortor auctor eget.',
     genre: 'Rock',
     band_img: 'https://i.pinimg.com/originals/a8/4d/d8/a84dd8802aa91c3b42ece5eefaa16dbd.jpg'
   });
