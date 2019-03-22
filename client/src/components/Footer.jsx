@@ -2,6 +2,7 @@ import React from 'react';
 
 export default () => {
   return(
+
 <div className="div-footer">
   <footer>
       <p>Copyright Sad Pandas &copy;</p>
