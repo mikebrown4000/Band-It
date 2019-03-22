@@ -20,7 +20,7 @@ function RegisterForm(props) {
   } = props;
 
   return(
-    <div>
+    <div className='artist-form-container'>
       <form onSubmit={handleSubmit}>
         <input
         onChange={handleChange}
@@ -85,7 +85,7 @@ function RegisterForm(props) {
         <input
         onChange={handleChange}
         type="text"
-        placeholder="add your description"
+        placeholder="Add Your Description"
         name="artist_description"
         value={artist_description} />
 

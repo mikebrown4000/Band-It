@@ -57,8 +57,37 @@ textarea::placeholder {
 
 .register{
   font-size: 60px;
-  border: 20px;
-  border-color: #227989;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  padding: 2px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.register:hover{
+  background-color: #227989;
+}
+
+.login{
+  font-size: 60px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.login:hover{
+  background-color: #227989;
+}
+
+.subtext{
+  font-family: 'Source Code Pro', monospace;
 }
 
 
@@ -67,7 +96,7 @@ textarea::placeholder {
   background: #227989;
   height: 140px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -98,7 +127,14 @@ textarea::placeholder {
 
 .artist-list-container{
   display: flex;
-  padding: 30px;
+  padding: 20px;
+
+}
+
+.artist-title{
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+  margin: 0 auto
 }
 
 .artists-list {
@@ -209,6 +245,71 @@ textarea::placeholder {
   position: absolute;
 }
 
+/* -- FORM STYLES -- RegisterForm and CreateBandForm -- */
+input{
+  margin: 10px;
+  width: 200px;
+  height:48px;
+  background-color:#DBE6EC;
+  color: #227989;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 16px;
+  border-radius: 10px;
+}
+
+input[type=checkbox]{
+  width: 30px;
+  height: 30px;
+}
+
+label{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+}
+
+small{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  text-align: center;
+}
+
+.artist-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.band-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.login-form-container{
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
 /* ARTIST VIEW */
 .main-artist-view{
   display: flex;
@@ -267,9 +368,8 @@ footer{
 
 /*--ID--*/
 /* Logout Button */
-#logout-button {
-  font-size: 20px;
-  margin-left: 25px;
+#logout-button:hover {
+  cursor: pointer;
 }
 
 /* Comment Form */
@@ -322,7 +422,7 @@ footer{
 }
 
 .dropdown {
-  font-family: 'Lobster', cursive;
+  font-family: 'Source Code Pro', monospace;
   position: relative;
   display: inline-block;
 }
@@ -354,4 +454,11 @@ footer{
 
 .dropdown:hover .dropbtn {
   background-color: rgba(0,0,0,0.2);
+}
+
+/* an animation cause why not? */
+@keyframes spookyFadeAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0.1; }
+  100% { opacity:1; }
 }

@@ -7,19 +7,15 @@ function Header(props) {
   return(
     <div className='whole-div-header'>
       <header className='main-header'>
-        <nav className='main-nav'>
-
-          <button id='logout-button' onClick={handleLogout}>Log Out</button>
-        </nav>
-
         <div className="dropdown">
           <img className="dropbtn" src={slider} alt="slider" width={120}/>
           <div className="dropdown-content">
             <Link to='/'>Home</Link>
             <Link to='/artists'>Artists</Link>
             <Link to='/bands'>Bands</Link>
-            <Link to ='/createband'>Create Your band</Link>
+            <Link to ='/createband'>Create Your Band</Link>
             <Link to ='/createmusician'>Create A Musician</Link>
+            <a id='logout-button' onClick={handleLogout}>Log Out</a>
           </div>
         </div>
         <div>
