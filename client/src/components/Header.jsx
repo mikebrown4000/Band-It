@@ -13,7 +13,7 @@ function Header(props) {
             <Link to='/'>Home</Link>
             <Link to='/artists'>Artists</Link>
             <Link to='/bands'>Bands</Link>
-            <Link to ='/createband'>Create Your band</Link>
+            <Link to ='/createband'>Create Your Band</Link>
             <Link to ='/createmusician'>Create A Musician</Link>
             <a id='logout-button' onClick={handleLogout}>Log Out</a>
           </div>

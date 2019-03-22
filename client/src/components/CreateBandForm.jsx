@@ -9,6 +9,7 @@ function  CreateBandForm(props){
           band_img } = props;
 
   return(
+    <div className='band-form-container'>
     <form onSubmit={handleCreateBand}>
       <input
       type="text"
@@ -43,6 +44,7 @@ function  CreateBandForm(props){
       onSubmit={handleCreateBand}/>
 
     </form>
+    </div>
   )
 }
 

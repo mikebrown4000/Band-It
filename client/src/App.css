@@ -209,6 +209,59 @@ textarea::placeholder {
   position: absolute;
 }
 
+/* -- FORM STYLES -- RegisterForm and CreateBandForm -- */
+input{
+  margin: 10px;
+  width: 200px;
+  height:48px;
+  background-color:#DBE6EC;
+  color: #227989;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 16px;
+  border-radius: 10px;
+}
+
+input[type=checkbox]{
+  width: 30px;
+  height: 30px;
+}
+
+label{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+}
+
+small{
+  color: #DBE6EC;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  text-align: center;
+}
+
+.artist-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.band-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
 /* ARTIST VIEW */
 .main-artist-view{
   display: flex;
@@ -321,7 +374,7 @@ footer{
 }
 
 .dropdown {
-  font-family: 'Lobster', cursive;
+  font-family: 'Source Code Pro', monospace;
   position: relative;
   display: inline-block;
 }
