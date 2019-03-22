@@ -18,7 +18,7 @@ export default (props) => {
          <button id='join-band' onClick={(id) => handleJoinBand(props.match.params.id)}>
            Join Band
          </button>
-         <input onClick={()=>(handleDelete(band.id))} value='Delete band' type='submit'/>
+        {member && <input onClick={()=>(handleDelete(band.id))} value='Delete band' type='submit'/>}
        </div>
      </div>
      <div className='band_description'>
