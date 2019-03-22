@@ -6,7 +6,8 @@ import ArtistList from './ArtistList';
 import BandList from './BandList';
 import ArtistProfile from './ArtistProfile';
 import LoginForm from './LoginForm';
-import BandView from './BandView'
+import BandView from './BandView';
+import Welcome from './Welcome';
 
 
 function Main(props) {
@@ -52,7 +53,9 @@ function Main(props) {
 
   return(
     <div>
-      <Route exact path='/' />
+      <Route exact path='/' render={(props) => (
+        <Welcome />
+      )} />
       <Route exact path='/login' render={(props) => (
         <LoginForm
         handleLogin={handleLogin}
