@@ -57,8 +57,33 @@ textarea::placeholder {
 
 .register{
   font-size: 60px;
-  border: 20px;
-  border-color: #227989;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  padding: 2px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.register:hover{
+  background-color: #227989;
+}
+
+.login{
+  font-size: 60px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #C2CBCE;
+  border-radius: 15px;
+  animation: spookyFadeAnimation 4s infinite;
+  font-family: 'Lobster', cursive;
+  padding-bottom: 5px;
+}
+
+.login:hover{
+  background-color: #227989;
 }
 
 
@@ -406,4 +431,11 @@ footer{
 
 .dropdown:hover .dropbtn {
   background-color: rgba(0,0,0,0.2);
+}
+
+/* an animation cause why not? */
+@keyframes spookyFadeAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0.1; }
+  100% { opacity:1; }
 }
