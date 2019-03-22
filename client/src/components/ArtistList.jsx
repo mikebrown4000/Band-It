@@ -17,7 +17,7 @@ changeThisName(id) {
       <div className='artist-list-container'>
         {artists.map(artist => (
           <div className='artists-list' key={artist.id}>
-            <h3>{artist.first_name}</h3>
+            <h3 className='artist-title'>{artist.first_name}</h3>
             {artist.first_name}&nbsp;
             {artist.last_name}&nbsp;
             <br/>

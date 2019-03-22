@@ -16,7 +16,7 @@ function Welcome() {
         <div className='login'>
           <Link to='/login'> Login </Link>
         </div>
-        <h2>Music can be hard, but starting a band should be easy. Find Musicians; steal the show.</h2>
+        <h2 className='subtext'>Music can be hard, but starting a band should be easy. Find Musicians; steal the show.</h2>
       </div>
     </div>
   )

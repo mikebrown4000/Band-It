@@ -86,6 +86,10 @@ textarea::placeholder {
   background-color: #227989;
 }
 
+.subtext{
+  font-family: 'Source Code Pro', monospace;
+}
+
 
 /* Main-Header */
 .main-header {
@@ -123,7 +127,14 @@ textarea::placeholder {
 
 .artist-list-container{
   display: flex;
-  padding: 30px;
+  padding: 20px;
+
+}
+
+.artist-title{
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+  margin: 0 auto
 }
 
 .artists-list {
@@ -278,6 +289,18 @@ small{
 }
 
 .band-form-container{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: #227989;
+}
+
+.login-form-container{
+  display: flex;
+  justify-content: space-around;
   width: 75%;
   margin-left: auto;
   margin-right: auto;

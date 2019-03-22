@@ -11,7 +11,7 @@ function LoginForm(props){
 
 
   return(
-    <div>
+    <div className='login-form-container'>
       <form onSubmit={handleLogin}>
 
         <input
