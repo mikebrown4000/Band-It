@@ -5,7 +5,7 @@ import './App.css';
 import './style/listItem.css'
 import Main from './components/Main';
 import Header from './components/Header';
-import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, updateArtistBand } from './services/artists';
+import { createArtist, fetchArtists, deleteArtist, updateArtist, fetchArtist, loginArtist, verifyToken, verifyOwnership, updateArtistBand } from './services/artists';
 import LoginForm from './components/LoginForm';
 import { createBand, fetchBands, fetchBand, deleteBand } from './services/bands';
 import { updateToken } from './services/api-helper'
@@ -32,6 +32,7 @@ class App extends Component {
       location: '',
       looking: false,
       edit: false,
+      owner: false,
       password: '',
       email: '',
       name: '',
@@ -76,10 +77,13 @@ class App extends Component {
     if (artistId != propId) {
       const artist = await fetchArtist(parseInt(propId));
       const comments = await fetchComments(parseInt(propId));
+      const owner = await verifyOwnership(parseInt(propId))
       console.log(comments);
       this.setState({
         artist,
         comments,
+        edit: false,
+        owner
       });
     }
   }
@@ -243,10 +247,12 @@ class App extends Component {
       instrument: artist.instrument,
       location: artist.location,
       looking: artist.looking,
+      edit: true,
     })
   }
 
   async handleEditArtist(id) {
+
     const {
       first_name,
       last_name,
@@ -257,6 +263,7 @@ class App extends Component {
       location,
       looking,
     } = this.state;
+
     const artistUpdate = {
       first_name,
       last_name,
@@ -270,8 +277,10 @@ class App extends Component {
 
     await updateArtist(artistUpdate, id);
     const artists = await fetchArtists();
+    const artist = await fetchArtist(id);
     this.setState({
-      artist: {},
+      artists,
+      artist,
       edit:false,
     })
   }
@@ -315,6 +324,8 @@ class App extends Component {
           artist={this.state.artist}
           handleEditArtistToggle={this.handleEditArtistToggle}
           handleEditArtist={this.handleEditArtist}
+          edit={this.state.edit}
+          owner={this.state.owner}
 
           handleChange={this.handleChange}
           handleNestedChange={this.handleNestedChange}

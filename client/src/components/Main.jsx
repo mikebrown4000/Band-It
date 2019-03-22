@@ -42,6 +42,8 @@ function Main(props) {
     handleCommentSubmit,
     handleEditArtistToggle,
     handleEditArtist,
+    edit,
+    owner,
     handleDelete,
     handleDeleteArtist,
     handleJoinBand
@@ -127,6 +129,9 @@ function Main(props) {
             looking={looking}
             handleEditArtistToggle={handleEditArtistToggle}
             handleEditArtist={handleEditArtist}
+            edit={edit}
+            owner={owner}
+
 
             handleDelete={handleDelete}
             handleDeleteArtist={handleDeleteArtist}
