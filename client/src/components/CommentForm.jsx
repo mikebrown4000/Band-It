@@ -6,14 +6,19 @@ export default (props) => {
   return(
     <form onSubmit={handleCommentSubmit}>
 
-    <input
+    <textarea
+      id='comment-text-area'
+      cols='50'
+      rows='5'
+      className='main-form'
       onChange={handleNestedChange}
       type='text'
       name='content'
-      placeholder='Talk some smack'
+      placeholder='Ask Or Comment'
       form='commentForm'
       value={content}
     />
+    <br/>
 
     {/*}<input
       onClick={handleNestedCheck}
@@ -23,7 +28,7 @@ export default (props) => {
       value={as_band}
     />*/}
 
-    <input value='Comment' type='submit'/>
+    <input id='comment-button' value='Comment' type='submit'/>
     </form>
   )
 }
