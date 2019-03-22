@@ -22,6 +22,7 @@ class App extends Component {
       artist: {},
       bands: [],
       band: {},
+      comments:[],
       band_img: '',
       first_name: '',
       last_name: '',
@@ -74,8 +75,11 @@ class App extends Component {
   async getArtist(artistId, propId) {
     if (artistId != propId) {
       const artist = await fetchArtist(parseInt(propId));
+      const comments = await fetchComments(parseInt(propId));
+      console.log(comments);
       this.setState({
-        artist
+        artist,
+        comments,
       });
     }
   }
@@ -276,10 +280,6 @@ class App extends Component {
   async handleCommentSubmit(topic_id) {
     const { content } = this.state.commentForm;
     const newComment = await createComment({content, topic_id});
-    const comments = await fetchComments(2);
-    this.setState({
-      comments
-    });
   }
 
   async handleJoinBand(bandId){
@@ -346,6 +346,7 @@ class App extends Component {
 
           commentForm={this.state.commentForm}
           handleCommentSubmit={this.handleCommentSubmit}
+          comments={this.state.comments}
 
           handleDeleteArtist={this.handleDeleteArtist}
           handleDelete={this.handleDelete}
