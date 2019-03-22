@@ -10,7 +10,7 @@ export default (props) => {
     <div>
       <div className='main-band-view'>
         <div className='main-band-content'>
-          <h2>
+          <h2 className="main-band-title">
             {name}
           </h2>
         </div>
@@ -32,7 +32,6 @@ export default (props) => {
         </button>
         <input onClick={()=>(handleDelete(band.id))} value='Delete band' type='submit'/>
       </div>
-      <CommentForm {...props} commentForm={commentForm}/>
     </div>
   )
 }

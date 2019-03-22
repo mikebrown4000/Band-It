@@ -94,18 +94,21 @@ textarea::placeholder {
 .band-logo-description {
   display: flex;
   justify-content: space-around;
-  width: 50%;
+  width: 40em;
+  height: 40em;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  background: #A4BCC2;
-  border-radius: 40px;
+  margin-bottom: 3em;
+  /* background: #A4BCC2; */
+  /* border-radius: 40px; */
+  /* box-shadow: 5px 10px rgba(65,75,77, .5); */
 }
 
 .main-band-view {
 
 }
-.main-band-view h2 {
+.main-band-view {
   width: 100%;
   padding-top: 20px;
 }
@@ -114,9 +117,12 @@ textarea::placeholder {
   height: 80px;
   width: 10%;
   margin-left: 30em;
-  margin-top: 20px;
-  background: #A4BCC2;
-  border-radius: 40px;
+
+}
+
+.main-band-title{
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
 }
 
 .join-delete-button {
@@ -151,7 +157,7 @@ textarea::placeholder {
 
 /* Band Logo Img */
 #band-logo-img {
-  width: 30vh;
+  width: 20em;
   border-radius: 50px;
   margin-left: -10.9em;
 }
