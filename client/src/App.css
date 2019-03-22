@@ -67,7 +67,7 @@ textarea::placeholder {
   background: #227989;
   height: 140px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -267,9 +267,8 @@ footer{
 
 /*--ID--*/
 /* Logout Button */
-#logout-button {
-  font-size: 20px;
-  margin-left: 25px;
+#logout-button:hover {
+  cursor: pointer;
 }
 
 /* Comment Form */
