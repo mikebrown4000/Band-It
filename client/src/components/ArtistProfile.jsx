@@ -1,10 +1,12 @@
 import React from 'react';
 import CommentForm from './CommentForm';
 import RegisterForm from './RegisterForm'
+import ArtistComments from './ArtistComments'
 
 function ArtistProfile(props) {
   const {
     artist,
+    comments,
     handleCommentSubmit,
     handleNestedChange,
     handleNestedCheck,
@@ -45,6 +47,7 @@ function ArtistProfile(props) {
         {artist.artist_description}
       </p>
       <CommentForm {...props} commentForm={commentForm} artist={artist} />
+      <ArtistComments comments={comments} />
       <button onClick={handleEditArtistToggle}>edit</button>
       <RegisterForm
         handleChange={handleChange}

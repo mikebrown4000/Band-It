@@ -8,23 +8,31 @@ export default (props) => {
   props.getBand(id, props.match.params.id)
   return(
     <div>
-        <h2>
-          {name}
-        </h2>
-        <div>
-          <img src={band_img} alt="Band Img"/>
+      <div className='main-band-view'>
+        <div className='main-band-content'>
+          <h2>
+            {name}
+          </h2>
         </div>
-        <div>
-          {genre}
+        <div className='band-logo-description'>
+          <div id='band-logo'>
+            <img id='band-logo-img' src={band_img} alt="Band Img"/>
+            <p id='band-content-p'>
+              Genre: {genre}
+            </p>
+          </div>
+          <div id='band-description'>
+            {band_description}
+          </div>
         </div>
-        <div>
-          {band_description}
-        </div>
-        <button onClick={(id) => handleJoinBand(props.match.params.id)}>
+      </div>
+      <div className='join-delete-button'>
+        <button id='join-band' onClick={(id) => handleJoinBand(props.match.params.id)}>
           Join Band
         </button>
-        <CommentForm {...props} commentForm={commentForm}/>
         <input onClick={()=>(handleDelete(band.id))} value='Delete band' type='submit'/>
+      </div>
+      <CommentForm {...props} commentForm={commentForm}/>
     </div>
   )
 }
