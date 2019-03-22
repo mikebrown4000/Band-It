@@ -94,10 +94,12 @@ textarea::placeholder {
 /* Main-Header */
 .main-header {
   background: #227989;
-  height: 140px;
+  height: 20vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100vw;
+  /* border: 2px solid blue; */
 }
 
 .main-header h1 {
@@ -105,7 +107,7 @@ textarea::placeholder {
   margin-top: 0;
   margin-bottom: 0;
   color: #E8F3F8;
-  font-size: 150px;
+  font-size: 9em;
   text-align: right;
   width: 480px;
   height: 200px;
@@ -114,22 +116,24 @@ textarea::placeholder {
 
 /* Nav */
 .main-nav {
-  width: auto;
-  height: 100px;
-  padding-top: 140px;
+  width: 50vw;
+  height: 10vh;
+  padding-top: 15vh;
+  /* border: 1px solid red; */
 }
 .main-nav a {
-  font-size: 30px;
+  font-size: 1.3em;
   padding-left: 10px;
   padding-right: 10px;
   font-family: 'Source Code Pro', monospace;
+  /* border: 1px solid pink; */
 }
 
 .artist-list-container{
   display: flex;
-  padding: 20px;
 
-}
+  padding: 30px;
+  flex-wrap: wrap;
 
 .artist-title{
   font-family: 'Lobster', cursive;
@@ -140,14 +144,19 @@ textarea::placeholder {
 .artists-list {
   font-family: 'Source Code Pro', monospace;
   color: #E8F3F8;
-  width: 30%;
+  width: 30em;
   border-radius: 10px;
   background: #A4BCC2;
-  margin: 10px;
+  margin: 10px auto;
+  text-align: center;
 }
 
 .artist-list-img{
   border-radius: 10px;
+  height: 15em;
+  width: 15em;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .bands-list {
@@ -178,8 +187,8 @@ textarea::placeholder {
 .main-band-view{
   display: flex;
   align-self: center;
-  width: 30em;
-  height: 30em;
+  width: 100%;
+  height: 100%;
   margin: 0;
 }
 .band-img{
@@ -363,6 +372,7 @@ footer{
   height:50px;
   background:#227989;
   margin-top: 10px;
+  position: fixed;
   /* yo this footer kind of sucks */
 }
 
@@ -407,10 +417,19 @@ footer{
 /* Join Band Button */
 #join-band {
   margin-right: 15px;
+}
 
+#footer {
+  text-align: center;
 }
 
 /*--Media Queries--*/
+
+@media screen and (max-width: 900px) {
+  body {
+    background-color: blue;
+  }
+
 
 /* -- Experiments with nav bar  dropdown -- */
 /* Style The Dropdown Button */
@@ -461,4 +480,5 @@ footer{
   0%   { opacity:1; }
   50%  { opacity:0.1; }
   100% { opacity:1; }
+
 }

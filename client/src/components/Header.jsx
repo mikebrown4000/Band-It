@@ -7,6 +7,7 @@ function Header(props) {
   return(
     <div className='whole-div-header'>
       <header className='main-header'>
+
         <div className="dropdown">
           <img className="dropbtn" src={slider} alt="slider" width={120}/>
           <div className="dropdown-content">
@@ -18,6 +19,7 @@ function Header(props) {
             <a id='logout-button' onClick={handleLogout}>Log Out</a>
           </div>
         </div>
+
         <div>
           <Link to='/'>
             <h1>Band-It</h1>

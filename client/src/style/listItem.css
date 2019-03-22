@@ -2,26 +2,26 @@
 .event-container {
   min-height: 4em;
   margin: 10px auto;
-  border-top: 1px solid black;
 }
 
 
 
 .event-container a:hover {
-  color: red;
-
+  color: #227989;
 }
 
 .list-item-header {
+  margin-top: 5vh;
   display: flex;
   flex-direction: row;
   min-height: 40px;
-  background-color: white;
+  background-color: #E8F3F8;
   justify-content: space-between;
 }
 
 .list-item-header h2 {
   padding-right: .7em;
+  font-size: 2em;
 }
 
 .icon-holder {
@@ -50,8 +50,8 @@
 
 .list-item-header-link img {
   object-fit: cover;
-  height: 2.5em;
-  width: 2.5em;
+  height: 8em;
+  width: 13.5em;
 }
 
 .expand-container {
