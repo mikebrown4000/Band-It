@@ -3,7 +3,7 @@ import CommentForm from './CommentForm'
 
 export default (props) => {
 
-  const { commentForm, band, handleCommentSubmit, handleNestedChange, handleDelete, handleJoinBand, members } = props;
+  const { commentForm, band, handleCommentSubmit, handleNestedChange, handleDelete, handleJoinBand, members, member } = props;
   const { name, band_description, band_img, genre, id } = band;
   props.getBand(id, props.match.params.id)
   return(
@@ -35,7 +35,7 @@ export default (props) => {
         <button id='join-band' onClick={(id) => handleJoinBand(props.match.params.id)}>
           Join Band
         </button>
-        <input onClick={()=>(handleDelete(band.id))} value='Delete band' type='submit'/>
+        {member && <input onClick={()=>(handleDelete(band.id))} value='Delete band' type='submit'/>}
       </div>
       <CommentForm {...props} commentForm={commentForm}/>
     </div>
