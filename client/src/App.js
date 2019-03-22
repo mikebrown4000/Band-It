@@ -294,10 +294,18 @@ class App extends Component {
   async handleCommentSubmit(topic_id) {
     const { content } = this.state.commentForm;
     const newComment = await createComment({content, topic_id});
+    const comments = await fetchComments(parseInt(topic_id))
+    this.setState({
+      comments
+    })
   }
 
   async handleJoinBand(bandId){
     const updateId = await updateArtistBand(bandId)
+    const members = await fetchMembers(bandId)
+    this.setState({
+      members
+    })
     return updateId;
   }
 
