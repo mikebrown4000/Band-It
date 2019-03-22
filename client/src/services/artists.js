@@ -31,6 +31,11 @@ const fetchArtist = async (id) => {
   return resp.data;
 }
 
+const fetchMembers = async (id) => {
+  const resp = await api.get(`/artists/bands/members/${id}`);
+  return resp.data;
+}
+
 const updateArtist = async (data, id) => {
   const resp = await api.put(`/artists/${id}`, data);
   return resp.data
@@ -68,5 +73,6 @@ export {
   createArtist,
   loginArtist,
   verifyToken,
-  updateArtistBand
+  updateArtistBand,
+  fetchMembers
 }

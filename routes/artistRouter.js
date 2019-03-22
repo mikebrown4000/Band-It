@@ -21,6 +21,16 @@ artistRouter.get('/:id', async (req, res) => {
   res.json(artist);
 })
 
+artistRouter.get('/bands/members/:id', async (req, res) => {
+  const { id } = req.params;
+  const members = await Artist.findAll({
+    where: {
+      bandId: id
+    }
+  });
+  res.json(members);
+})
+
 // route to create a new user
 artistRouter.post('/', async (req, res) => {
   try {
