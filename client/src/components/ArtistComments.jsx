@@ -5,11 +5,11 @@ export default function ArtistComments(props){
   return(
     <div>
       {comments && comments.map(comment => (
-        <div>
+        <div key={comment.content}>
           <div>
             {comment.first_name} &nbsp; {comment.last_name}
           </div>
-          
+
           {comment.content}
         </div>
       ))}

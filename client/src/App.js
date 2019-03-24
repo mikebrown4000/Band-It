@@ -76,10 +76,14 @@ class App extends Component {
   }
 
   async getArtist(artistId, propId) {
+    console.log('get artist called');
     if (artistId != propId) {
       const artist = await fetchArtist(parseInt(propId));
+      console.log(artist);
       const comments = await fetchComments(parseInt(propId));
+      console.log('comments?', comments);
       const owner = await verifyOwnership(parseInt(propId))
+      console.log(owner);
       this.setState({
         artist,
         comments,
@@ -294,10 +298,6 @@ class App extends Component {
   async handleCommentSubmit(topic_id) {
     const { content } = this.state.commentForm;
     const newComment = await createComment({content, topic_id});
-    const comments = await fetchComments(parseInt(topic_id))
-    this.setState({
-      comments
-    })
   }
 
   async handleJoinBand(bandId){

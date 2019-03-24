@@ -50,6 +50,11 @@ const Band = sequelize.define('band', {
 });
 
 const Comment = sequelize.define('comment', {
+  id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+  },
   content: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -62,25 +67,45 @@ const Comment = sequelize.define('comment', {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
+  commenter_id: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: Artist,
+      key: 'id'
+    },
+    field: 'commenter_id',
+    allowNull: false
+  },
+  topic_id: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: Artist,
+      key: 'id'
+    },
+    field: 'topic_id',
+    allowNull: false
+  },
 });
 
 Artist.belongsTo(Band);
 Band.hasMany(Artist);
 
-Artist.belongsToMany(Artist, {
-  as: 'commenter',
-  foreignKey: 'commenter_id',
-  otherKey: 'topic_id',
-  constraints: false,
-  through: Comment,
-});
-Artist.belongsToMany(Artist, {
-  as: 'topic',
-  foreignKey: 'topic_id',
-  otherKey: 'commenter_id',
-  constraints: false,
-  through: Comment,
-})
+// Artist.belongsToMany(Artist, {
+//   as: 'commenter',
+//   foreignKey: 'commenter_id',
+//   otherKey: 'topic_id',
+//   constraints: false,
+//   through: Comment,
+//   unique: false
+// });
+// Artist.belongsToMany(Artist, {
+//   as: 'topic',
+//   foreignKey: 'topic_id',
+//   otherKey: 'commenter_id',
+//   constraints: false,
+//   through: Comment,
+//   unique: false,
+// })
 
 module.exports = {
   sequelize,

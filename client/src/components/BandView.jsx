@@ -33,7 +33,7 @@ export default (props) => {
        <hr />
        <h3> Our members: </h3>
        {members.map(member => (
-         <div className='band-members'>
+         <div className='band-members' key={member.id}>
            {member.first_name}
            <div><img className='band-member-imgs'src={member.img} alt='member-imgs' /></div>
          </div>

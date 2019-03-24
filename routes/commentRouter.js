@@ -18,7 +18,7 @@ commentRouter.get('/:id', async (req, res) => {
       comments
     inner join
       artists
-      on id = comments.commenter_id
+      on artists.id = comments.commenter_id
     where
       topic_id=${id};
     `,
@@ -59,7 +59,7 @@ commentRouter.get('/to/:id', async (req, res) => {
         comments
       inner join
         artists
-        on id = comments.commenter_id
+        on artists.id = comments.commenter_id
       where
         topic_id=${id};
       `,
