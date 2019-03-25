@@ -39,3 +39,6 @@ That's why we created a platform that makes it easier for bands to find musician
     }
 })
 ```
+Deployed Site:
+http://banditproject.surge.sh/
+
