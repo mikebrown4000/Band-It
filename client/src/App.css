@@ -134,6 +134,7 @@ textarea::placeholder {
 
   padding: 30px;
   flex-wrap: wrap;
+}
 
 .artist-title{
   font-family: 'Lobster', cursive;
